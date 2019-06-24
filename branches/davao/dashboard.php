@@ -3,7 +3,7 @@
     ob_start();
 ?>
 <!doctype html>
-<html>
+<html ng-app="dashboard">
     <style type="text/css">
 
         .beacon-logo{
@@ -47,7 +47,7 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
-<body ng-app="dashboard">
+<body>
     
     <div class="wrapper">
        <div class="sidebar" data-image="assets/img/bgpos.png">
@@ -94,15 +94,17 @@
                             <li>
                                 <a href="">
                                     <p><span class="glyphicon glyphicon-user"></span>&nbsp;
-                                        <?php  if(isset($_SESSION['username'])) 
+                                        <?php
+                                            if(isset($_SESSION['username'])) 
                                             
                                                 echo $_SESSION['username'];
                                             
                                             else{
                                                 header("location:../../index.php");
                                             }
-                                          
-                                        ?></p>
+                                            
+                                        ?>
+                                    </p>
                                 </a>
                             </li>
                             <li>

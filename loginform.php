@@ -31,7 +31,7 @@
             
             else{
 
-                $wrong = '<html><div style="font-size:13px;" class="alert alert-warning">Username or Password incorrect davao<span class="glyphicon glyphicon-exclamation-sign" style="float:right;"></span></div></html>'; 
+                $wrong = '<html><div style="font-size:13px;" class="alert alert-warning">Username or Password incorrect<span class="glyphicon glyphicon-exclamation-sign" style="float:right;"></span></div></html>'; 
 
             }  
         }
@@ -58,7 +58,7 @@
 
             else{
 
-                $wrong = '<html><div style="font-size:13px;" class="alert alert-warning">Username or Password incorrect cavite<span class="glyphicon glyphicon-exclamation-sign" style="float:right;"></span></div></html>'; 
+                $wrong = '<html><div style="font-size:13px;" class="alert alert-warning">Username or Password incorrect <span class="glyphicon glyphicon-exclamation-sign" style="float:right;"></span></div></html>'; 
 
             }  
         }
