@@ -1,5 +1,5 @@
 <?php
-    include('loginform.php');
+    include('superadminloginform.php');
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -27,11 +27,12 @@
             
             background-image: url(images/img/bgpos.png);
             background-position: center;
-            background-repeat: no-repeat;   
+            background-repeat: no-repeat;
             background-size: cover;
         }
 
     </style>
+
 </head>
 <body ng-app="myApp" ng-controller="LoginCtrl">
 	
@@ -42,7 +43,7 @@
         <div class="content-right">
             <div class="container-login100">
                 <div class="wrap-login100" data-aos="fade-down">
-                    <form class="login100-form validate-form" method="post" action="index.php" >
+                    <form class="login100-form validate-form" method="post" action="superadminlogin.php" >
                         <span class="login100-form-title p-b-20 p-t-0">
                             <img class="logo1" src="images/img/logoform2.png">
                         </span>
@@ -54,30 +55,11 @@
                                 }
                             ?> 
                         </span>
-                        
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <p style="color:white">Branches</p>
-                                    <select name="branches" class="form-control" required>
-                                      <option value="" disabled selected ></option>
-                                      <option value="davao">Davao</option>
-                                      <option value="cavite">Cavite</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="color:white">Type</p>
-                                    <select name="type" class="form-control" required>
-                                      <option value="" disabled selected></option>
-                                      <option value="employee">Employee</option>
-                                      <option value="admin">Admin</option>  
-                                    </select>
-                                </div>
-                            </div>
                             <br>
                             <div class="wrap-input100 validate-input" data-validate ="Enter username">
-                                <input class="input100" type="text" name="username" placeholder="Username" id="username" value="<?php 
-                                     if (isset($username)) 
-                                      echo $username; 
+                                <input class="input100" type="text" name="superadmin" placeholder="Username" id="username" value="<?php 
+                                     if (isset($superadmin)) 
+                                      echo $superadmin; 
                                  ?>" autocomplete="off">
                                 <span class="focus-input100" data-placeholder="&#xf207;"></span>
                             </div>
