@@ -1,6 +1,8 @@
 <?php
+
     session_start();
     ob_start();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,6 +23,7 @@
         }
     </style>
 <head>
+        
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -101,16 +104,13 @@
                         <div class="card">
                             <div class="content">
                                 <div class="row">
-                                    <?php
-                                        include('assets/php/POSmodal.php');
-                                    ?>
                                     <div class="col-md-12">
                                         <div class="panel with-nav-tabs">
                                             <div class="panel-heading">
                                                 <ul class="nav nav-tabs">
                                                     <li class="active"><a href="#tab1primary" data-toggle="tab">Services</a></li>
-                                                    <li><a href="#tab2primary" data-toggle="tab">Primary 2</a></li>
-                                                    <li><a href="#tab3primary" data-toggle="tab">Primary 3</a></li>
+                                                    <li><a href="#tab2primary" data-toggle="tab">Unpaid</a></li>
+                                                    <li><a href="#tab3primary" data-toggle="tab">Customer</a></li>
                                                     <li class="dropdown">
                                                         <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                                                         <ul class="dropdown-menu" role="menu">
@@ -121,45 +121,63 @@
                                                 </ul>
                                             </div>
                                             <div class="panel-body">
+                                                <?php
+                                                
+                                                    include('assets/php/POSmodal.php');
+                                                    include('assets/php/proceed.php');
+                                                    include('assets/php/BasicCare.php');
+                                                    include('assets/php/SpecialCare.php');
+                                                    include('assets/php/PremiumCare.php');
+
+                                                ?>
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade in active" id="tab1primary">
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <a href="#chooseservices" data-toggle="modal">
+                                                                <a href="#basiccare" data-toggle="modal">
                                                                     <div class="alert alert-success" style="height:80px; font-size:18px;" >
                                                                         <span>Basic<br>Care</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <a href="#/specialcare">
+                                                                <a href="#specialcare"  data-toggle="modal">
                                                                     <div class="alert alert-danger"  style="height:80px; font-size:18px;" >
                                                                         <span>Special<br>Care</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <a href="#/premiumcare">
+                                                                <a href="#premiumcare" data-toggle="modal">
                                                                     <div class="alert alert-info"  style="height:80px; font-size:18px;" >
                                                                         <span>Premium Care</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3" >
-                                                                <a href="#/corporate">
+                                                                <a href="#/">
                                                                     <div class="alert alert-info" style="height:80px; font-size:18px;" >
                                                                         <span>Corporate</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
-
-                                                            <div ng-view="">
-
+                                                            
+                                                            <div class="col-md-3" >
+                                                                <a href="#/">
+                                                                    <div class="alert alert-info" style="height:80px; font-size:18px;" >
+                                                                        <span>branch partner</span>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                            
+
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane fade" id="tab2primary"><a href="#enterkilo" data-toggle="modal" class="btn btn-primary">choose2</a></div>
+                                                    <div class="tab-pane fade" id="tab2primary">
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    </div>
                                                     <div class="tab-pane fade" id="tab3primary"><a href="#enterkilo" data-toggle="modal" class="btn btn-primary">choose2</a></div>
                                                     <div class="tab-pane fade" id="tab4primary">Primary 4</div>
                                                     <div class="tab-pane fade" id="tab5primary">Primary 5</div>
@@ -183,19 +201,20 @@
                     <div class="col-md-5">
                         <div class="card" style="height:100px;">
                             <div style="padding:10px 20px;">
-                                <label style="font-size:30px;">Total</label>
-                                <h2 style="float:right;">₱ 1,220.00</h2>
+                                <label style="font-size:20px;">Total</label>
+                                <input style="font-size:50px; background-color:white; text-align:right; padding:10px; border:none;" class="form-control" type="text" id="totaltotal" value="0.00" readonly >
                             </div>
                         </div>
                         <div class="card" style="margin-top:-15px;">
                             <div class="table-wrapper-scroll-x my-custom-scrollbar-2 justify-content-center">
-                                <table class="table table-fixed table-hover">
+                                <table class="table table-fixed table-hover" id="myTable" >
                                     <thead class="bg-primary">
                                         <tr>
                                             <th style="color:white;">type</th>
                                             <th style="color:white;">desciption</th>
-                                            <th style="color:white;">kilo/Pieces</th>
-                                            <th style="color:white;">Quantity</th>
+                                            <th style="color:white;">per kilo/pcs</th>
+                                            <th style="color:white;">kilo</th>
+                                            <th style="color:white;">Pieces</th>
                                             <th style="color:white;">Subtotal</th>
                                             <th style="color:white;">remove</th>
                                         </tr>
@@ -204,34 +223,9 @@
                                     <tbody>
                                         <tr style="cursor:pointer;">
 
-                                                <td>Basic Care</td>
-                                                <td>WASH-DRY-FOLD</td>
-                                                <td>₱ 50</td>
-                                                <td>4</td>
-                                                <td>₱ 200</td>
-                                                <td><center><a style="color:red;" class="glyphicon glyphicon-remove"></a></center></td>
-
+                        
                                         </tr>
-                                        <tr style="cursor:pointer;">
 
-                                                <td>Basic Care</td>
-                                                <td>WASH-DRY-FOLD</td>
-                                                <td>₱ 50</td>
-                                                <td>4</td>
-                                                <td>₱ 200</td>
-                                                <td><center><a style="color:red;" class="glyphicon glyphicon-remove"></a></center></td>
-
-                                        </tr>
-                                        <tr style="cursor:pointer;">
-
-                                                <td>Basic Care</td>
-                                                <td>WASH-DRY-FOLD</td>
-                                                <td>₱ 50</td>
-                                                <td>4</td>
-                                                <td>₱ 200</td>
-                                                <td><center><a style="color:red;" class="glyphicon glyphicon-remove"></a></center></td>
-
-                                        </tr>
                                         
                                     </tbody>
                                 </table>
@@ -239,7 +233,7 @@
                         </div>
                         <center>
                             <div class="col-lg-12" style="margin-top:-15px;">
-                                <button style="width:100%;" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ProceedModal"><span class="glyphicon glyphicon-ok"></span>&nbsp;Proceed</button>
+                                <button style="width:100%;" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ProceedModal"><span class="glyphicon glyphicon-ok" ></span>&nbsp;Proceed</button>
                             </div>
 
                             <div class="col-lg-12"  style="margin-top:15px;">

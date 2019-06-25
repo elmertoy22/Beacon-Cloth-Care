@@ -11,7 +11,7 @@
         if($branches == "davao"){
             
             include('database/connect_davao.php');
-            $sql1 = "SELECT * FROM davao_accounts WHERE username='$username' AND password='$password' AND type='$type' ";
+            $sql1 = "SELECT * FROM accounts WHERE username='$username' AND password='$password' AND type='$type' ";
             $res1 = mysqli_query($connect,$sql1); 
 
             if(mysqli_num_rows($res1) > 0 && $type == "admin") {
@@ -39,7 +39,7 @@
         else if($branches == "cavite"){
             
             include('database/connect_cavite.php');
-            $sql2 = "SELECT * FROM cavite_accounts WHERE username='$username' AND password='$password' AND type='$type' ";
+            $sql2 = "SELECT * FROM accounts WHERE username='$username' AND password='$password' AND type='$type' ";
             $res2 = mysqli_query($connect,$sql2); 
 
 
