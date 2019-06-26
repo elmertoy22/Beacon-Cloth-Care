@@ -23,10 +23,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="assets/js/angular.min.js"> </script>
-    <script src="assets/js/angular-route.min.js"></script>
-    <script src="assets/angularjs/module.js"></script>
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -47,6 +43,40 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
+<script>
+$(document).ready(function(){
+  $("#sales").click(function(){
+    $("#sales").addClass("active");
+    $("#accounts").removeClass("active");
+    $("#inventory").removeClass("active");
+    $("#logbook").removeClass("active");
+    $("#contents").load('assets/partials/sales.php');
+  });
+    
+  $("#accounts").click(function(){
+      $("#accounts").addClass("active");
+      $("#sales").removeClass("active");
+    $("#inventory").removeClass("active");
+    $("#logbook").removeClass("active");
+    $("#contents").load('assets/partials/accounts.php');
+  });  
+  $("#inventory").click(function(){
+      $("#inventory").addClass("active");
+      $("#sales").removeClass("active");
+    $("#accounts").removeClass("active");
+    $("#logbook").removeClass("active");
+    $("#contents").load('assets/partials/inventory.php');
+  });  
+  $("#logbook").click(function(){
+      $("#logbook").addClass("active");
+      $("#sales").removeClass("active");
+    $("#accounts").removeClass("active");
+    $("#inventory").removeClass("active");
+    $("#contents").load('assets/partials/branchreceivinglogbook.php');
+  });
+});    
+    
+</script>
 <body>
     
     <div class="wrapper">
@@ -56,22 +86,28 @@
                     <center><img class="beacon-logo" src="assets/img/indexlogo.png"></center> 
                 </div>
                 <ul class="nav">
-                    <li>
-                        <a href="#/dashboard">
+                    <li id="sales">
+                        <a href="#/sales">
                             <i class="pe-7s-graph"></i>
-                            <p>Dashboard</p>
+                            <p>Sales</p>
                         </a>
                     </li>
-                     <li>
-                        <a href="#/branches">
-                            <i class="pe-7s-map-marker"></i>
-                            <p>Branches</p>
-                        </a>
-                    </li>
-                     <li>
+                     <li id="accounts">
                         <a href="#/accounts">
                             <i class="pe-7s-user"></i>
                             <p>Accounts</p>
+                        </a>
+                    </li>
+                     <li id="logbook">
+                        <a href="#/logbook">
+                            <i class="pe-7s-map-marker"></i>
+                            <p>Branch Receiving Log</p>
+                        </a>
+                    </li>
+                     <li id="inventory">
+                        <a href="#/inventory">
+                            <i class="pe-7s-map-marker"></i>
+                            <p>Inventory</p>
                         </a>
                     </li>
                 </ul>
@@ -117,15 +153,10 @@
                     </div>
                 </div>
             </nav>
-            <div class="content">
-                <div class="container-fluid">
-                    <div ng-view="">
+            <div id="contents" >
                 
-                    
-                    </div>
-                </div>
             </div>
-
+            
                     
         </div>
         <div id="myModal" class="modal fade" role="dialog">

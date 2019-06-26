@@ -1,242 +1,41 @@
 <script>
-    ////// BASIC CARE
-    ///// select category 
-    function discount(){
+    function drycleaningPC(){
+        var items = document.getElementById('itemsPC').value;
         
-        if(amount == ""){
-            alert("Please choose a category!")
-        }
-        
-        else{
-
-            $("#discount-input").show();   
-        }
-    }
-    function discountcancel(){
-        var amount = document.getElementById('amount').value;
-        document.getElementById('newamount').value = amount;
-        document.getElementById('totalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        $("#discount-input").hide();
-    }
-    function cancel(){
-        document.getElementById('status').value = "";
-        document.getElementById('totalamount').value = "0";
-        document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
-        document.getElementById('amount').value = "0";
-        document.getElementById('newamount').value = "0";
-        document.getElementById('kilo').disabled = true;
-        document.getElementById('pieces').disabled = true;
-        document.getElementById('status').disabled = true;
-        $("#enterkilo").hide();
-        $("#enterpieces").hide();
-        $("#type-select1").hide();
-        $("#type-select2").hide();
-    }
-    ////// type select
-    function typeselect(){
-
-        var type1 = document.getElementById("items").value;
-        var type2 = document.getElementById("items").value;
-        
-        if(type1 == "WDF"){
-            $("#type-select1").show();
-            $("#type-select2").hide();
-            document.getElementById('totalamount').value = "0";
-            document.getElementById('kilo').value = "0";
-            document.getElementById('pieces').value = "0";
-            document.getElementById('newamount').value = "0";
-            document.getElementById('kilo').disabled = true;
-            document.getElementById('pieces').disabled = true;
-            document.getElementById('status').value = "";
+        if(items == "WDFPC"){
+            $('#type-select1-PC').show();
+            $('#type-select2-PC').hide();
         }
         else{
-            $("#type-select2").show();
-            $("#type-select1").hide ();
-            document.getElementById('totalamount').value = "0";
-            document.getElementById('kilo').value = "0";
-            document.getElementById('pieces').value = "0";
-            document.getElementById('amount').value = "0";
-            document.getElementById('newamount').value = "0";
-            document.getElementById('kilo').disabled = true;
-            document.getElementById('pieces').disabled = true;
-            document.getElementById('status').value = "";
-        }
-        
-    }
-    
-    function WDFchoices(){
-        
-        var WDFoption = document.getElementById('WDFoption').value;
-        
-        if (WDFoption == ""){
-         
-            document.getElementById('amount').value = "0";
-            document.getElementById('newamount').value = "0";
-
-        }
-        else{
-            document.getElementById('amount').value = WDFoption;
-            document.getElementById('newamount').value = WDFoption;
-            document.getElementById('kilo').disabled = false;
-            document.getElementById('pieces').disabled = false;
             
+            $('#type-select1-PC').hide();
+            $('#type-select2-PC').show();
         }
     }
     
-    function WDPchoices(){
+    function dc(){
         
-        var WDPoption = document.getElementById('WDPoption').value;
+        var dc = document.getElementById('DC').value;
         
-        if (WDPoption == ""){
-         
-            document.getElementById('amount').value = "0";
-            document.getElementById('newamount').value = "0";
-
-        }
-        else{
-            document.getElementById('amount').value = WDPoption;
-            document.getElementById('newamount').value = WDPoption;
-            document.getElementById('kilo').disabled = false;
-            document.getElementById('pieces').disabled = false;
-            
-        }
-    }
-    
-    function enterkilo(){
-        $("#enterkilo").show();
-        $("#enterpieces").hide();
-        document.getElementById('status').value = "";
-        document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
-    }
-    function enterpieces(){
-        $("#enterpieces").show();
-        $("#enterkilo").hide();
-        document.getElementById('status').value = "";
-        document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('totalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
-    }
-    
-    function rushregular(){
-        var total = document.getElementById('totalamount').value;
-        var status = document.getElementById('status').value;
-        
-        if(status == "regular"){
-            document.getElementById('finaltotalamount').value = total;
+        if(dc == "othersDC"){
+            $('#othersDC').show();
         }
         else{
-            document.getElementById('finaltotalamount').value = total * 2 + ".00";
-          
+            $('#othersDC').hide();
         }
     }
     
-    
-    function computetotalkilo(){
+    function gc(){
         
-        var amount1 = document.getElementById('newamount').value;
-        var kilo1 = document.getElementById('kilo').value;
+        var gc = document.getElementById('GC').value;
         
-       var amount = parseFloat(amount1);
-        var kilo = parseFloat(kilo1);
-        
-            if(kilo1 == "" || kilo1 == null ){
-                document.getElementById('totalamount').value = "0";
-                document.getElementById('finaltotalamount').value = "0";
-                document.getElementById('status').disabled = true;
-            }
-            else{
-                document.getElementById('status').disabled = false;
-                if(kilo <= 2.9999999999999999){
-                    $("#minimumalert").show();
-                    document.getElementById('totalamount').value = amount * 3.00 + ".00";
-                    
-                }
-
-                else{
-                    $("#minimumalert").hide();
-                    var subto = document.getElementById('totalamount').value = amount * kilo + ".00";
-                    var subtoto = parseInt(subto);
-                    document.getElementById('totalamount').value = subtoto+".00";
-                }   
-            }
-        
+        if(gc == "othersGC"){
+            $('#othersGC').show();
+        }
+        else{
+            $('#othersGC').hide();
+        }
     }
-    
-    function computetotalpieces(){
-        var amount1 = document.getElementById('newamount').value;
-        var pieces1 = document.getElementById('pieces').value;
-        
-        var amount = parseFloat(amount1);
-        var pieces = parseFloat(pieces1);
-        
-        document.getElementById('status').disabled = false;
-        var subto = document.getElementById('totalamount').value = amount * pieces + ".00";
-        var subtoto = parseInt(subto);
-        document.getElementById('totalamount').value = subtoto+".00";
-    }
-    
-    function ok(){
-        var finaltotal = document.getElementById('finaltotalamount').value;
-        document.getElementById('totaltotal').value = finaltotal;
-        
-        document.getElementById('status').value = "";
-        document.getElementById('totalamount').value = "0";
-        document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
-        document.getElementById('amount').value = "0";
-        document.getElementById('newamount').value = "0";
-        document.getElementById('kilo').disabled = true;
-        document.getElementById('pieces').disabled = true;
-        document.getElementById('status').disabled = true;
-        $("#enterkilo").hide();
-        $("#enterpieces").hide();
-        $("#type-select1").hide();
-        $("#type-select2").hide();
-    }
-    
-     
-    function okay()
-    {
-              var rIndex,
-     table = document.getElementsByTagName('table')[0];
-              
-    
-                  // add new empty row to the table
-                  // 0 = in the top 
-                  // table.rows.length = the end
-                  // table.rows.length/2+1 = the center
-                  var newRow = table.insertRow(table.rows.length);
-                  
-                  // add cells to the row
-                  var cel1 = newRow.insertCell(0);
-                  var cel2 = newRow.insertCell(1);
-                  var cel3 = newRow.insertCell(2);
-                  var cel4 = newRow.insertCell(3);
-                  var cel5 = newRow.insertCell(4);
-                  var cel6 = newRow.insertCell(5);
-                  var cel7 = newRow.insertCell(6);
-        
-                  var type = document.getElementById('items').value;
-                  var type = document.getElementById('items').value;
-                  // add values to the cells
-                  cel1.innerHTML = type;
-                  cel2.innerHTML = "lname";
-                  cel3.innerHTML = "age";
-                  cel4.innerHTML = "age";
-                  cel5.innerHTML = "age";
-                  cel6.innerHTML = "age";
-                  cel7.innerHTML = "<button class='btn btn-danger'>Remove</button>";
-        }  
-
-    
-
 </script>
 
 <div id="premiumcare" class="modal fade" role="dialog">
@@ -254,35 +53,74 @@
                         <div class="col-md-10 col-md-offset-1">
                             <div class="col-md-12">
                                 <label>Type</label>
-                                <select class="form-control" id="items" onchange="typeselect()" required >
+                                <select class="form-control" id="itemsPC" onchange="drycleaningPC()" required >
                                   <option value="" disabled selected >Select</option>
-                                  <option value="WDF">WASH-DRY-FOLD</option>
-                                  <option value="WDP">WASH-DRY-PRESS</option>
+                                  <option value="WDFPC">DRY-CLEANING</option>
+                                  <option value="WDPPC">GENTLE-CARE</option>
                                 </select>
 
                             </div>
 
-                            <div class="col-md-12 bg-info" id="type-select1" onchange="WDFchoices()" style="display:none; border-radius:10px;">
-                                <p align="center">WASH-DRY-FOLD</p>
-                                <select class="form-control" id="WDFoption" required >
+                            <div class="col-md-12 bg-info" id="type-select1-PC" style="display:none; border-radius:10px;">
+                                <p align="center">DRY-CLEANING  /piece</p>
+                                <select class="form-control" id="DC" required onchange="dc()">
                                   <option value="" disabled selected >Select</option>
-                                  <option value="25.00">Regular Clothes</option>
-                                  <option value="50.00">Regular Towel/Bedsheet</option>
+                                  <option value="25.00">Barong Jusi ₱150 & up</option>
+                                  <option value="25.00">Barong Pina ₱15 & up</option>
+                                  <option value="50.00">Coat/Blazer ₱200 & up</option>
+                                  <option value="50.00">Vest ₱90 & up</option>
+                                  <option value="50.00">Skirt ₱100 & up</option>
+                                  <option value="50.00">Sweater/Cardigan ₱150 & up</option>
+                                  <option value="50.00">Gown/Dress ₱300 & up</option>
+                                  <option value="50.00">Wedding Gown ₱1000 & up</option>
+                                  <option value="othersDC">Others</option>
                                 </select>
-
+                                <div style="display:none;" id="othersDC">
+                                    <div class="col-md-5">
+                                        <label>Items</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Price</label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>okay</label>
+                                        <input type="button" class="btn btn-primary" value="okay">
+                                    </div>
+                                </div>
                             </div>    
 
-                            <div class="col-md-12 bg-info" id="type-select2" onchange="WDPchoices()" style="display:none; border-radius:10px;">
-                                <p align="center">WASH-DRY-PRESS</p>
-                                <select class="form-control" id="WDPoption" required >
-                                  <option value="" disabled selected >Select</option>
-                                  <option value="75.00">Regular Clothes</option>
-                                  <option value="50.00">Regular Towel/Bedsheet</option>
-                                  <option value="6.00">Hanger ₱6/pcs</option>
-                                </select>
 
-                            </div>    
-                            
+                            <div class="col-md-12 bg-info" id="type-select2-PC" style="display:none; border-radius:10px;">
+                                <p align="center">DRY-CLEANING  /piece</p>
+                                <select class="form-control" id="GC" required onchange="gc()">
+                                  <option value="" disabled selected >Select</option>
+                                  <option value="25.00">Barong Jusi ₱150 & up</option>
+                                  <option value="25.00">Barong Pina ₱15 & up</option>
+                                  <option value="50.00">Coat/Blazer ₱200 & up</option>
+                                  <option value="50.00">Vest ₱90 & up</option>
+                                  <option value="50.00">Skirt ₱100 & up</option>
+                                  <option value="50.00">Sweater/Cardigan ₱150 & up</option>
+                                  <option value="50.00">Gown/Dress ₱300 & up</option>
+                                  <option value="50.00">Wedding Gown ₱1000 & up</option>
+                                  <option value="othersGC">Others</option>
+                                </select>
+                                <div style="display:none;" id="othersGC">
+                                    <div class="col-md-5">
+                                        <label>Items</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Price</label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>okay</label>
+                                        <input type="button" class="btn btn-primary" value="okay">
+                                    </div>
+                                </div>
+                            </div>  
                             <div class="col-md-12">
                                 <div class="col-md-8">
                                     <label>Amount per kilo/pcs</label>

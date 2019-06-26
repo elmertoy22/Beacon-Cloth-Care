@@ -355,7 +355,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal"  onclick="okay()">Okay</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"  onclick="">Okay</button>
 
                 </div>
             </form>
