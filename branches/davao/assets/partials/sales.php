@@ -20,7 +20,7 @@
     <div class="panel-body">
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1primary">
-                            <div class="row">
+                <div class="row">
                     <div class="col-md-12">
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
@@ -128,49 +128,92 @@
                         <table class="table table-striped">
                             <thead class="bg-primary">
                               <tr>
-                                <th style="color:white;" >Job Order No.</th>
-                                <th style="color:white;" >Customer Name</th>
-                                <th style="color:white;" >Contact</th>
-                                <th style="color:white;" >Address</th>
-                                <th style="color:white;" ></th>
+                                <th style="color:white;" >Date Received</th>
+                                <th style="color:white;" >Job order #</th>
+                                <th style="color:white;" >name of customer</th>
+                                <th style="color:white;" >kilos/pcs</th>
+                                <th style="color:white;" >amount</th>
+                                <th style="color:white;" >pickup date</th>
+                                <th style="color:white;" >pickup time</th>
+                                <th style="color:white;" >date release</th>
+                                <th style="color:white;" >Deposit/payment</th>
+                                <th style="color:white;" >Received</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td>001</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>002</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>003</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>004</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>005</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              
                             </tbody>
                           </table>
                     </div>
@@ -185,56 +228,320 @@
                         <table class="table table-striped">
                             <thead class="bg-primary">
                               <tr>
-                                <th style="color:white;" >Job Order No.</th>
-                                <th style="color:white;" >Customer Name</th>
-                                <th style="color:white;" >Contact</th>
-                                <th style="color:white;" >Address</th>
-                                <th style="color:white;" ></th>
+                                <th style="color:white;" >Date Received</th>
+                                <th style="color:white;" >Job order #</th>
+                                <th style="color:white;" >name of customer</th>
+                                <th style="color:white;" >kilos/pcs</th>
+                                <th style="color:white;" >amount</th>
+                                <th style="color:white;" >pickup date</th>
+                                <th style="color:white;" >pickup time</th>
+                                <th style="color:white;" >date release</th>
+                                <th style="color:white;" >Deposit/payment</th>
+                                <th style="color:white;" >Received</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td>001</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><a href="#customerlist" data-toggle="modal"><button class="btn btn-success">open</button></a></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>002</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><button class="btn btn-success">open</button></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>003</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><button class="btn btn-success">open</button></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>004</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><button class="btn btn-success">open</button></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
                               <tr>
-                                <td>005</td>
-                                <td>juan dela cruz</td>
-                                <td>09360459353</td>
-                                <td>001 mandaluyong city</td>
-                                <td><button class="btn btn-success">open</button></td>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
                               </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              
                             </tbody>
                           </table>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="tab4primary">Primary 4</div>
-            <div class="tab-pane fade" id="tab5primary">Primary 5</div>
+            <div class="tab-pane fade" id="tab4primary">
+                <div class="row">
+                    <div class="col-md-12">
+                        <select class="form-control">
+                            <option disabled selected>Selct corporate account</option>
+                            <option>corporate account 1</option>
+                            <option>corporate account 2</option>
+                            <option>corporate account 3</option>
+                            <option>corporate account 4</option>
+                            <option>corporate account 5</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <input type="search" class="form-control" placeholder="Search">
+                    </div>
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <table class="table table-striped">
+                            <thead class="bg-primary">
+                              <tr>
+                                <th style="color:white;" >Date Received</th>
+                                <th style="color:white;" >Job order #</th>
+                                <th style="color:white;" >name of customer</th>
+                                <th style="color:white;" >kilos/pcs</th>
+                                <th style="color:white;" >amount</th>
+                                <th style="color:white;" >pickup date</th>
+                                <th style="color:white;" >pickup time</th>
+                                <th style="color:white;" >date release</th>
+                                <th style="color:white;" >Deposit/payment</th>
+                                <th style="color:white;" >Received</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            
+            
+            </div>
+            <div class="tab-pane fade" id="tab5primary">         
+                <div class="row">
+                    <div class="col-md-12">
+                        <select class="form-control">
+                            <option disabled selected>Selct Branch partner</option>
+                            <option>branch partner 1</option>
+                            <option>branch partner 2</option>
+                            <option>branch partner 3</option>
+                            <option>branch partner 4</option>
+                            <option>branch partner 5</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <input type="search" class="form-control" placeholder="Search">
+                    </div>
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <table class="table table-striped">
+                            <thead class="bg-primary">
+                              <tr>
+                                <th style="color:white;" >Date Received</th>
+                                <th style="color:white;" >Job order #</th>
+                                <th style="color:white;" >name of customer</th>
+                                <th style="color:white;" >kilos/pcs</th>
+                                <th style="color:white;" >amount</th>
+                                <th style="color:white;" >pickup date</th>
+                                <th style="color:white;" >pickup time</th>
+                                <th style="color:white;" >date release</th>
+                                <th style="color:white;" >Deposit/payment</th>
+                                <th style="color:white;" >Received</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>employee 1</td>
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            
+            </div>
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
         }
         .my-custom-scrollbar-2 {
             position: relative;
-            height: 350px;
+            height: 370px;
             overflow: auto;
             
         }
@@ -136,6 +136,19 @@
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade in active" id="tab1primary">
                                                         <div class="row">
+                                                            
+                                                            
+                                                            <div class="col-md-12 alert alert-info">
+                                                                <div align="center" style="font-size:20px;">
+                                                                    <div class="col-md-6">Sales For Today</div>
+                                                                    <div class="col-md-6">2:28 PM / 6/26/2019</div>
+                                                                </div>
+                                                                <div align="center" style="margin-top:60px;">
+                                                                    <p style="font-size:80px;">₱ 5,353.00</p>
+                                                                </div>
+                                                                <div class="bg-warning" style="height:30px;"></div>
+                                                            </div>
+                                                            
                                                             <div class="col-md-3">
                                                                 <a href="#basiccare" data-toggle="modal">
                                                                     <div class="alert alert-success" style="height:80px; font-size:18px;" >
@@ -160,19 +173,10 @@
                                                             <div class="col-md-3" >
                                                                 <a href="#corporate" data-toggle="modal">
                                                                     <div class="alert alert-info" style="height:80px; font-size:18px;" >
-                                                                        <span>Corporate</span>
+                                                                        <span>Corporate Accounts</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
-                                                            
-                                                            <div class="col-md-3" >
-                                                                <a href="#/">
-                                                                    <div class="alert alert-info" style="height:80px; font-size:18px;" >
-                                                                        <span>branch partner</span>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade" id="tab2primary">
@@ -231,9 +235,6 @@
                                                                   </table>
                                                             </div>
                                                         </div>
-                                                    
-                                                    
-                                                    
                                                     </div>
                                                     <div class="tab-pane fade" id="tab3primary">
                                                         <div class="row">
@@ -293,7 +294,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade" id="tab4primary">
-                                                        <h4>Cash Advance Form</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <p>Cash Advance Form</p>
+                                                                <label>Employee Name</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="tab-pane fade" id="tab5primary">Primary 5</div>
                                                 </div>
@@ -307,7 +313,7 @@
 
                         <div class="footer">
                             <div class="col-lg-12">
-                                <button class="btn btn-primary" style="width:100%; margin-top:-10px;">BEACON CLOTH CARE</button>
+                                <button class="btn btn-primary" style="width:100%; margin-top:-10px;" disabled>BEACON CLOTH CARE</button>
                             </div>
                         </div>
                     </div>
@@ -324,10 +330,10 @@
                                     <thead class="bg-primary">
                                         <tr>
                                             <th style="color:white;">type</th>
-                                            <th style="color:white;">desciption</th>
-                                            <th style="color:white;">per kilo/pcs</th>
-                                            <th style="color:white;">kilo</th>
-                                            <th style="color:white;">Pieces</th>
+                                            <th style="color:white;">description</th>
+                                            <th style="color:white;">items</th>
+                                            <th style="color:white;">amount</th>
+                                            <th style="color:white;">kilos/pieces</th>
                                             <th style="color:white;">Subtotal</th>
                                             <th style="color:white;">remove</th>
                                         </tr>
@@ -335,8 +341,13 @@
                                     </thead>
                                     <tbody>
                                         <tr style="cursor:pointer;">
-
-                        
+                                            <td>Basic Care</td>
+                                            <td>Wash-Dry-Fold</td>
+                                            <td>3x white T-shirt<br>10 colored shirt</td>
+                                            <td>₱ 25</td>
+                                            <td>3 kilos</td>
+                                            <td>₱ 75</td>
+                                            <td><button class="btn btn-danger">Remove</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

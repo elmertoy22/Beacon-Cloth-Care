@@ -9,7 +9,7 @@
         
         else{
 
-            $("#discount-input").slideDown();   
+            $("#discount-input").show();   
         }
     }
     function discountcancel(){
@@ -17,7 +17,7 @@
         document.getElementById('newamount').value = amount;
         document.getElementById('totalamount').value = "0";
         document.getElementById('kilo').value = "0";
-        $("#discount-input").slideUp();
+        $("#discount-input").hide();
     }
     function cancel(){
         document.getElementById('status').value = "";
@@ -42,8 +42,8 @@
         var type2 = document.getElementById("items").value;
         
         if(type1 == "WDF"){
-            $("#type-select1").slideDown();
-            $("#type-select2").slideUp();
+            $("#type-select1").show();
+            $("#type-select2").hide();
             document.getElementById('totalamount').value = "0";
             document.getElementById('kilo').value = "0";
             document.getElementById('pieces').value = "0";
@@ -53,8 +53,8 @@
             document.getElementById('status').value = "";
         }
         else{
-            $("#type-select2").slideDown();
-            $("#type-select1").slideUp ();
+            $("#type-select2").show();
+            $("#type-select1").hide ();
             document.getElementById('totalamount').value = "0";
             document.getElementById('kilo').value = "0";
             document.getElementById('pieces').value = "0";
@@ -68,6 +68,7 @@
     }
     
     function WDFchoices(){
+        
         var WDFoption = document.getElementById('WDFoption').value;
         
         if (WDFoption == ""){
@@ -76,20 +77,17 @@
             document.getElementById('newamount').value = "0";
 
         }
-        else if (WDFoption == "6.00"){
-             $('#items-list').hide();
-        }
         else{
             document.getElementById('amount').value = WDFoption;
             document.getElementById('newamount').value = WDFoption;
             document.getElementById('kilo').disabled = false;
             document.getElementById('pieces').disabled = false;
             
-        $('#items-list').slideDown();
         }
     }
     
     function WDPchoices(){
+        
         var WDPoption = document.getElementById('WDPoption').value;
         
         if (WDPoption == ""){
@@ -104,21 +102,20 @@
             document.getElementById('kilo').disabled = false;
             document.getElementById('pieces').disabled = false;
             
-            $('#items-list').slideDown();
         }
     }
     
     function enterkilo(){
-        $("#enterkilo").slideDown();
-        $("#enterpieces").slideUp();
+        $("#enterkilo").show();
+        $("#enterpieces").hide();
         document.getElementById('status').value = "";
         document.getElementById('finaltotalamount').value = "0";
         document.getElementById('kilo').value = "0";
         document.getElementById('pieces').value = "0";
     }
     function enterpieces(){
-        $("#enterpieces").slideDown();
-        $("#enterkilo").slideUp();
+        $("#enterpieces").show();
+        $("#enterkilo").hide();
         document.getElementById('status').value = "";
         document.getElementById('finaltotalamount').value = "0";
         document.getElementById('totalamount').value = "0";
@@ -205,7 +202,7 @@
     }
     
      
-    function addto()
+    function okay()
     {
               var rIndex,
      table = document.getElementsByTagName('table')[0];
@@ -272,6 +269,7 @@
                                   <option value="25.00">Regular Clothes</option>
                                   <option value="50.00">Regular Towel/Bedsheet</option>
                                 </select>
+
                             </div>    
 
                             <div class="col-md-12 bg-info" id="type-select2" onchange="WDPchoices()" style="display:none; border-radius:10px;">
@@ -284,43 +282,7 @@
                                 </select>
 
                             </div>    
-                            <div class="col-md-12" style="display:none;" id="items-list">
-                                <div class="col-md-3">
-                                    <input type="checkbox">T-Shirt    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="checkbox">Shorts    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="checkbox">Pants    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="checkbox">Sando    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                
-                                <label>Others</label>
-                                <textarea style="width:100%;"></textarea>
-                            </div>
+                            
                             <div class="col-md-12">
                                 <div class="col-md-8">
                                     <label>Amount per kilo/pcs</label>
@@ -356,7 +318,7 @@
                             </div> 
 
 
-                            <div class="col-md-12 bg-info" id="enterkilo" style="display:; border-radius:10px;">
+                            <div class="col-md-12 bg-info" id="enterkilo" style="display:none; border-radius:10px;">
                                 <label>No. of Kilograms</label>
                                 <div class="bg-danger" id="minimumalert" style="display:none; text-align:center; padding:5px;">minimum of 3 kilos   </div>
                                 <input style="text-align:center" type="number" class="form-control" id="kilo" onkeyup="computetotalkilo()" min="1" disabled>
@@ -393,7 +355,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal"  onclick="okay()">Okay</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"  onclick="">Okay</button>
 
                 </div>
             </form>

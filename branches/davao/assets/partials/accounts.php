@@ -5,6 +5,7 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab1primary" data-toggle="tab">Employee Lists</a></li>
                 <li><a href="#tab2primary" data-toggle="tab">Add Employee</a></li>
+                <!--
                 <li><a href="#tab3primary" data-toggle="tab">Branch 2</a></li>
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -13,6 +14,7 @@
                         <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
                     </ul>
                 </li>
+                -->
             </ul>
         </div>
         <div class="panel-body">

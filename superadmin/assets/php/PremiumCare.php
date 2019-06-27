@@ -162,7 +162,7 @@
                                 <input style="text-align:center" type="number" class="form-control" id="kilo" onkeyup="computetotalkilo()" min="1" disabled>
                             </div> 
                             
-                            <div class="col-md-12 bg-danger" id="enterpieces" style="display:; border-radius:10px;">
+                            <div class="col-md-12 bg-danger" id="enterpieces" style="display:none; border-radius:10px;">
                                 <label>No. of Pieces</label>
                                 
                                 <input style="text-align:center" type="number" class="form-control" id="pieces" min="1" onkeyup="computetotalpieces()"  disabled>

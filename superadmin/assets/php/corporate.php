@@ -21,7 +21,7 @@
                     <div class="row" style="text-align:center;">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="col-md-12">
-                                <label>Select</label>
+                                <label>Type</label>
                                 <select class="form-control" id="corporate-select" onchange="corporate()" required >
                                   <option value="" disabled selected >Corporate Account</option>
                                   <option value="cor1" >Corporate Account 1</option>
@@ -43,7 +43,6 @@
                                       <option value="cor3" >Items 3</option>
                                       <option value="cor4" >Items 4</option>
                                       <option value="cor5" >Items 5</option>
-                                      <option value="cor6" >Others</option>
                                     </select>
                                 
                                 <div class="col-md-12">

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -86,7 +87,7 @@ $(document).ready(function(){
                     <center><img class="beacon-logo" src="assets/img/indexlogo.png"></center> 
                 </div>
                 <ul class="nav">
-                    <li id="sales">
+                    <li id="sales" class="active">
                         <a href="#/sales">
                             <i class="pe-7s-graph"></i>
                             <p>Sales</p>
@@ -124,7 +125,7 @@ $(document).ready(function(){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Davao Branch</a>
+                    <a class="navbar-brand" href="#">Davao City</a>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
@@ -138,7 +139,6 @@ $(document).ready(function(){
                                             else{
                                                 header("location:../../index.php");
                                             }
-                                            
                                         ?>
                                     </p>
                                 </a>
@@ -154,7 +154,9 @@ $(document).ready(function(){
                 </div>
             </nav>
             <div id="contents" >
-                
+                <?php
+                    include('assets/partials/sales.php');
+                ?>
             </div>
             
                     
@@ -184,7 +186,6 @@ $(document).ready(function(){
                  
 </body>
  <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Charts Plugin -->
