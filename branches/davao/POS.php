@@ -115,7 +115,7 @@
                                                         <a href="#" data-toggle="dropdown">Others <span class="caret"></span></a>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li><a href="#tab4primary" data-toggle="tab">Cash Advance</a></li>
-                                                            <li><a href="#tab5primary" data-toggle="tab">Primary 5</a></li>
+                                                            <li><a href="#tab5primary" data-toggle="tab">Vouchers</a></li>
                                                         </ul>
                                                     </li>
                                                 </ul>
@@ -131,6 +131,7 @@
                                                     include('assets/php/unpaid.php');
                                                     include('assets/php/customerlist.php');
                                                     include('assets/php/corporate.php');
+                                                    include('assets/php/vouchers.php');
 
                                                 ?>
                                                 <div class="tab-content">
@@ -301,7 +302,73 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane fade" id="tab5primary">Primary 5</div>
+                                                    <div class="tab-pane fade" id="tab5primary">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-6">
+                                                                    <p>VOUCHERS LIST</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <a href="#voucher-modal" data-toggle="modal">
+                                                                        <button style="float:right;" class="btn btn-success">Buy Vouchers</button>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12" style="margin-top:10px;">
+                                                                <div class="col-md-6">
+                                                                    <select class="form-control">
+                                                                        <option>All Vouchers</option>
+                                                                        <option>Used</option>
+                                                                        <option>Unused</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <input type="search" placeholder="Search" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12" style="margin-top:10px;">
+                                                              <table class="table table-striped" >
+                                                                <thead class="bg-primary">
+                                                                  <tr>
+                                                                    <th style="color:white;" >VOUCHER CODE</th>
+                                                                    <th style="color:white;" >SOLD TO</th>
+                                                                    <th style="color:white;" >RECEIVED DATE</th>
+                                                                    <th style="color:white;" >AMOUNT</th>
+                                                                    <th style="color:white;" >STATUS</th>
+                                                                    <th style="color:white;" >Used Date</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>BCC09876</td>
+                                                                        <td>Juan dela cruz</td>
+                                                                        <td>03/22/2019</td>
+                                                                        <td>P100</td>
+                                                                        <td>unused</td>
+                                                                        <td>N/A</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>BCC09876</td>
+                                                                        <td>Paul dela cruz</td>
+                                                                        <td>03/22/2019</td>
+                                                                        <td>P100</td>
+                                                                        <td>used</td>
+                                                                        <td>3/30/2019</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>BCC09876</td>
+                                                                        <td>Mary dela cruz</td>
+                                                                        <td>03/22/2019</td>
+                                                                        <td>P100</td>
+                                                                        <td>used</td>
+                                                                        <td>4/01/2019</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

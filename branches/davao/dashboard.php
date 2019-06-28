@@ -51,6 +51,7 @@ $(document).ready(function(){
     $("#accounts").removeClass("active");
     $("#inventory").removeClass("active");
     $("#logbook").removeClass("active");
+    $("#vouchers").removeClass("active");
     $("#contents").load('assets/partials/sales.php');
   });
     
@@ -59,6 +60,7 @@ $(document).ready(function(){
       $("#sales").removeClass("active");
     $("#inventory").removeClass("active");
     $("#logbook").removeClass("active");
+    $("#vouchers").removeClass("active");
     $("#contents").load('assets/partials/accounts.php');
   });  
   $("#inventory").click(function(){
@@ -66,6 +68,7 @@ $(document).ready(function(){
       $("#sales").removeClass("active");
     $("#accounts").removeClass("active");
     $("#logbook").removeClass("active");
+    $("#vouchers").removeClass("active");
     $("#contents").load('assets/partials/inventory.php');
   });  
   $("#logbook").click(function(){
@@ -73,7 +76,16 @@ $(document).ready(function(){
       $("#sales").removeClass("active");
     $("#accounts").removeClass("active");
     $("#inventory").removeClass("active");
+    $("#vouchers").removeClass("active");
     $("#contents").load('assets/partials/branchreceivinglogbook.php');
+  });
+    $("#vouchers").click(function(){
+    $("#vouchers").addClass("active");
+    $("#logbook").removeClass("active");
+    $("#accounts").removeClass("active");
+    $("#inventory").removeClass("active");
+    $("#sales").removeClass("active");
+    $("#contents").load('assets/partials/vouchers.php');
   });
 });    
     
@@ -109,6 +121,12 @@ $(document).ready(function(){
                         <a href="#/inventory">
                             <i class="pe-7s-map-marker"></i>
                             <p>Inventory</p>
+                        </a>
+                    </li>
+                     <li id="vouchers">
+                        <a href="#/vouchers">
+                            <i class="pe-7s-map-marker"></i>
+                            <p>Vouchers</p>
                         </a>
                     </li>
                 </ul>

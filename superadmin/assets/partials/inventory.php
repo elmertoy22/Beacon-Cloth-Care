@@ -25,7 +25,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr style="background-color:red;">
+                              <tr>
                                 <td>Powder Detergent</td>
                                 <td>3 pcs</td>
                               </tr>
@@ -57,7 +57,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr style="background-color:red;">
+                              <tr>
                                 <td>Powder Detergent</td>
                                 <td>3 pcs</td>
                               </tr>
@@ -89,7 +89,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr style="background-color:red;">
+                              <tr>
                                 <td>Powder Detergent</td>
                                   <td>3 pcs</td>
                               </tr>

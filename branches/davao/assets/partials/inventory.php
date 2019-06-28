@@ -33,7 +33,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr style="background-color:red;">
+                              <tr>
                                 <td>Powder Detergent</td>
                                 <td><input class="form-control" type="number" value="3" disabled></td>
                                 <td><button class="btn btn-success">Edit</button></td>
@@ -72,7 +72,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr style="background-color:red;">
+                              <tr>
                                 <td>Powder Detergent</td>
                                 <td><input class="form-control" type="number" value="3" disabled></td>
                                 <td><button class="btn btn-success">Edit</button></td>
@@ -111,7 +111,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr style="background-color:red;">
+                              <tr>
                                 <td>Powder Detergent</td>
                                 <td><input class="form-control" type="number" value="3" disabled></td>
                                 <td><button class="btn btn-success">Edit</button></td>

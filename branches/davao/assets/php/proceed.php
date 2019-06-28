@@ -50,7 +50,9 @@
                           <label>Customer Type</label>
                             <select class="form-control" id="customertype" onchange="customertype()">
                                 <option disabled selected>Select</option>
-                                <option value="regular">Individual</option>
+                                <option value="regular">Warehouse</option>
+                                <option value="regular">Branch 1</option>
+                                <option value="regular">Branch 2</option>
                                 <option value="branchpartner">Branch Partner</option>
                             </select> 
                             <div id="branchpartner-form" style="display:none;" class="bg-info">
@@ -225,7 +227,7 @@
                           <div class="col-md-6">
                               <label>Received Date: 05/26/2019</label>
                               <label>Job Order No : 0098</label>
-                              <label>Customer Name: Elmer gwapo</label>
+                              <label>Customer Name: Elmer Torres</label>
                               
                           </div>
                           <div class="col-md-6">
@@ -320,7 +322,7 @@
                           <div class="col-md-6">
                               <label>Received Date: 05/26/2019</label>
                               <label>Job Order No : 0098</label>
-                              <label>Customer Name: Elmer gwapo</label>
+                              <label>Customer Name: Elmer Torres</label>
                               
                           </div>
                           <div class="col-md-6">

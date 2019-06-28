@@ -1,4 +1,17 @@
+
 <script>
+    function selectYorM(){
+        var selectYorM = document.getElementById('selectYorM').value;
+        
+        if (selectYorM == "yearly"){
+            $('#YorMmonth1').slideDown();
+            $('#YorMmonth2').slideUp();
+        }
+        else{
+            $('#YorMmonth1').slideUp();
+            $('#YorMmonth2').slideDown();
+        }
+    }
 </script>
 <div class="col-md-12 bg-primary"><h3>Overall Sales</h3></div>
 <div class="col-md-12">
@@ -21,61 +34,109 @@
     <div class="panel-body">
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tabprimarysales">
-               <div class="row">
-                   <div class="col-md-6">
-                       <center>
-                           <select class="form-control">
-                               <option disabled selected>Select</option>
-                               <option>yearly</option>
-                               <option>monthly</option>
+                <div class="row">
+                    
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <div class="col-md-5">
+                           <select class="form-control" id="selectYorM" onchange="selectYorM()">
+                               <option disabled selected >Select</option>
+                               <option value="yearly">All Sales</option>
+                               <option value="monthly">Paid</option>
+                               <option value="monthly">Unpaid</option>
                            </select>
-
-                           <div class="col-md-12" style="display:none;">
-                               <select class="form-control">
-                                   <option disabled selected>Select</option>
-                                   <option>January</option>
-                                   <option>February</option>
-                                   <option>March</option>
-                                   <option>April</option>
-                                   <option>May</option>
-                                   <option>June</option>
-                                   <option>July</option>
-                                   <option>August</option>
-                                   <option>September</option>
-                                   <option>October</option>
-                                   <option>November</option>
-                                   <option>December</option>
-                               </select>
-
-                           </div>
-                           <div class="col-md-12" style="display:none;">
-                               <select class="form-control">
-                                   <option disabled selected>Select</option>
-                                   <option>2015</option>
-                                   <option>2016</option>
-                                   <option>2017</option>
-                                   <option>2018</option>
-                                   <option>2019</option>
-                                   <option>2020</option>
-                                   <option>2021</option>
-                                   <option>2022</option>
-                                   <option>2023</option>
-                                   <option>2024</option>
-                                   <option>2025</option>
-                                   <option>2026</option>
-                                   <option>2027</option>
-                                   <option>2028</option>
-                                   <option>2029</option>
-                                   <option>2030</option>
-                               </select>
-
-                           </div>
-                        </center>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-1">
+                            <input type="text" value="TO" class="form-control" disabled style="border:none; background-color:white;">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control">
+                        </div>
+                    </div> 
+                    
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <input type="search" class="form-control" placeholder="Search">
                     </div>
-                </div>
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <table class="table table-striped">
+                            <thead class="bg-primary">
+                              <tr>
+                                <th style="color:white;" >Date Received</th>
+                                <th style="color:white;" >Job order #</th>
+                                <th style="color:white;" >name of customer</th>
+                                <th style="color:white;" >kilos/pcs</th>
+                                <th style="color:white;" >amount</th>
+                                <th style="color:white;" >pickup date</th>
+                                <th style="color:white;" >pickup time</th>
+                                <th style="color:white;" >date release</th>
+                                <th style="color:white;" >Deposit/payment</th>
+                                <th style="color:white;" >Date of payment</th>
+                                <th style="color:white;" >Received</th>
+                              </tr>
+                            </thead>
+                            <tbody align="center">
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>03/04/2019</td>
+                                <td>employee 1</td>
+                              </tr>
+                              <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>03/04/2019</td>
+                                <td>employee 1</td>
+                              </tr>
+                                <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>03/04/2019</td>
+                                <td>employee 1</td>
+                              </tr>
+                                <tr>
+                                <td>03/02/2019</td>
+                                <td>0081</td>
+                                <td>Juan dela Cruz</td>
+                                <td>3 kilos</td>
+                                <td>150.00</td>
+                                <td>03/04/2019</td>
+                                <td>3:02 pm</td>
+                                <td>03/04/2019</td>
+                                <td>Paid</td>
+                                <td>03/04/2019</td>
+                                <td>employee 1</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>          
             </div>
             <div class="tab-pane fade" id="tab1primarysales">
-             <?php
+            
+                 <?php
                     include('city/muntinlupa.php');
                 ?>
             
@@ -88,3 +149,4 @@
         </div>
     </div>
 </div>
+

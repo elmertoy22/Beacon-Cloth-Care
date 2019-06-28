@@ -13,9 +13,6 @@
     </style>
 <head>
     
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    
     
 	<title>Beacon Laundry Shop</title>
 
@@ -78,9 +75,7 @@
     
 </script>
 <body>
-    
     <div class="wrapper">
-        
        <div class="sidebar" data-image="assets/img/bgpos.png">
             <div class="sidebar-wrapper" style="background-color:#181242; opacity:0.8;"> 
                 <div class="logo">
@@ -107,9 +102,7 @@
                     </li>
                 </ul>
            </div>
-        
         </div>
-        
         <div class="main-panel">
             <nav class="navbar navbar-default navbar-fixed">
                 <div class="container-fluid">
@@ -174,6 +167,28 @@
 
                 </div>
             </div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+            <!-- Modal content-->
+                <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Logout</h4>
+                      </div>
+                      <div class="modal-body">
+                          <p>Are you sure want to logout?</p>
+
+                      </div>
+                      <div class="modal-footer">
+                          <a href="logout.php"><button type="button" class="btn btn-primary">Yes</button></a>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                      </div>
+                </div>
+
+                </div>
+            </div>
+
     </div>
                  
 </body>
@@ -208,3 +223,6 @@
 	</script>
    -->
 </html>
+
+
+

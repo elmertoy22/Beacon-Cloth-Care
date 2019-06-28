@@ -140,7 +140,7 @@
     }
     
     
-    function computetotalkilo(){
+/*    function computetotalkilo(){
         
         var amount1 = document.getElementById('newamount').value;
         var kilo1 = document.getElementById('kilo').value;
@@ -170,6 +170,32 @@
             }
         
     }
+*/
+    
+       function computetotalkilo(){
+        
+        var amount1 = document.getElementById('newamount').value;
+        var kilo1 = document.getElementById('kilo').value;
+        
+       var amount = parseFloat(amount1);
+        var kilo = parseFloat(kilo1);
+        
+            if(kilo1 == "" || kilo1 == null ){
+                document.getElementById('totalamount').value = "0";
+                document.getElementById('finaltotalamount').value = "0";
+                document.getElementById('status').disabled = true;
+            }
+            else{
+                document.getElementById('status').disabled = false;
+                
+                    var subto = document.getElementById('totalamount').value = amount * kilo + ".00";
+                    var subtoto = parseInt(subto);
+                    document.getElementById('totalamount').value = subtoto+".00";
+                  
+            }
+        
+    }
+    
     
     function computetotalpieces(){
         var amount1 = document.getElementById('newamount').value;
