@@ -1,20 +1,5 @@
 <script>
 
-    function pickordeliver(){
-        
-        var transac = document.getElementById('pickupORdeliver').value;
-        
-        if(transac == "pickup"){
-            $('#pickup').slideDown();
-            $('#deliver').slideUp();
-        }
-        else{
-            $('#pickup').slideUp();
-            $('#deliver').slideDown();
-            
-        }
-    }
-    
     function entervoucher(){
         
         $('#voucher').slideDown();
@@ -35,7 +20,25 @@
     }
     
 </script>
+<script>
 
+    function enterpayment(){
+        var payment = document.getElementById('payment').value;
+        var supertotal = document.getElementById('displaytotalco').textContent;
+        var change = document.getElementById('change').value;
+        
+        if(parseFloat(payment) < parseFloat(supertotal)){
+            document.getElementById('finishtransac').disabled = true;
+             swal("Opps!", "INSUFFICIENT MONEY", "error");
+        }
+        else{
+            
+            document.getElementById('change').value = parseFloat(payment) - parseFloat(supertotal) + ".00";
+            document.getElementById('finishtransac').disabled = false;
+        }
+    }
+
+</script>
 <div id="ProceedModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -68,48 +71,29 @@
                             </div>
                           <label>Transaction Type</label>
                             <select class="form-control" id="pickupORdeliver" onchange="pickordeliver()">
-                                <option disabled selected>Select</option>
+                                <option value="" disabled selected>Select</option>
                                 <option value="pickup">Pick-up</option>
                                 <option value="deliver">Deliver</option>
                             </select> 
                           
-                            <div class="row bg-info" id="pickup" style="display:none; border-radius:10px; margin-bottom:5px;">
+                            <div class="row bg-info" id="pickup" style="display:; border-radius:10px; margin-bottom:5px;">
                                 
                                 <div class="col-md-6">
 
-                                    <label>pick-up date</label>
+                                    <label>pick-up/deliver date</label>
                                     <input type="date" name="bday" max="3000-12-31" 
                                     min="1000-01-01" class="form-control">
                                 
                                 </div>
                                 <div class="col-md-6">
 
-                                    <label>pick-up time</label>
+                                    <label>pick-up/deliver time</label>
                                     <input type="time" class="form-control">
                                 
                                 </div>
                           
                           
-                            </div>
-                          
-                            <div class="row bg-danger" id="deliver" style="display:none; border-radius:10px; margin-bottom:5px;">
-                                
-                                <div class="col-md-6">
-
-                                    <label>deliver date</label>
-                                    <input type="date" name="bday" max="3000-12-31" 
-                                    min="1000-01-01" class="form-control">
-                                
-                                </div>
-                                <div class="col-md-6">
-
-                                    <label>deliver time</label>
-                                    <input type="time" class="form-control">
-                                
-                                </div>
-                          
-                          
-                            </div>
+                          </div>
                           
                           
                             <div>
@@ -166,13 +150,17 @@
                                               
                         <div class="row">
                             <div style="text-align:center;">
-                                <h2>Total : ₱ 375.00</h2>  
+                                <h2>
+                                    <label>total ₱</label>
+                                    <div id="displaytotalco" style="color:gray;"></div>
+                                
+                                </h2>  
                             </div>
 
                         </div>
                             <div class="row" style="text-align:center;">
                                 <label>Payment</label>
-                                <input style="text-align:center;" type="number" class="form-control">
+                                <input style="text-align:center;" id="payment" type="number" placeholder="0" class="form-control" onchange="enterpayment()" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
                                 <a style=" cursor:pointer;" onclick="entervoucher()">i have a voucher</a>
                                 <div class="bg-info" id="voucher" style="display:none;">
                                     <label>Voucher code</label><a style="float:right; margin-right:5px; color:red; cursor:pointer" onclick="voucherclose()">&times;</a>
@@ -182,14 +170,14 @@
                         <br>
                         <div class="row" style="text-align:center;">
                                 <label>change</label>
-                                <input style="text-align:center;" type="text" class="form-control" readonly placeholder="0.00">
+                                <input style="text-align:center;" id="change" type="text" class="form-control" readonly placeholder="0.00">
 
                     
                         </div>
                         <br><hr>
                         <div class="row">
                          <a href="#receipt" data-toggle="modal">
-                                <button class="btn btn-success btn-lg" data-dismiss="modal" style="width:100%;">Finish</button>
+                                <button id="finishtransac" class="btn btn-success btn-lg" data-dismiss="modal" style="width:100%;"  onclick="displayreceipt()" disabled>Finish</button>
 
                                 <script type="text/javascript">
 
@@ -223,7 +211,7 @@
                           <label>Free Pick-up and Delivery</label><br>
                           <label>Alabang hills muntinlupa</label>
                       </div>
-                      <div class="col-md-10 col-md-offset-1" align="center">
+                      <div class="row" align="center">
                           <div class="col-md-6">
                               <label>Received Date: 05/26/2019</label>
                               <label>Job Order No : 0098</label>
@@ -238,7 +226,7 @@
                           
                           <div class="col-md-12">
                               
-                              <table class="table">
+                       <!--       <table class="table">
                                 <thead>
                                     <th style="text-align:center;">Items</th>
                                     <th style="text-align:center;">Subtotal</th>
@@ -279,9 +267,11 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                              </table>
-                            
-                            
+                              </table>-->
+                          
+                                  <div id="displayreceipt">
+                                        
+                                  </div>
                           </div>
                           
                       </div>

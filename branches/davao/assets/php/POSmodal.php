@@ -1,16 +1,5 @@
 
 
-<style>
-#enterkilo .modal-dialog {
-    -webkit-transform: translate(0,-50%);
-    -o-transform: translate(0,-50%);
-    transform: translate(0,-50%);
-    top: 50%;
-    margin: 0 auto;
-}
-
-
-</style>
 
 <!--click unpaid modal -->    
 <div id="finishq" class="modal fade" role="dialog">
@@ -36,7 +25,7 @@
                   </div>
               </div>
         </div>
-    </div>
+</div>
 
 <!--click logout modal -->  
     <div id="myModal" class="modal fade" role="dialog">

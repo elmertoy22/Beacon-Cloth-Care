@@ -53,6 +53,8 @@
             document.getElementById('kilo').disabled = true;
             document.getElementById('pieces').disabled = true;
             document.getElementById('status').value = "";
+            
+
         }
         else{
             $("#type-select2").slideDown();
@@ -65,6 +67,7 @@
             document.getElementById('kilo').disabled = true;
             document.getElementById('pieces').disabled = true;
             document.getElementById('status').value = "";
+            
         }
         
     }
@@ -249,7 +252,7 @@
                             <div class="col-md-12">
                                 <label>Type</label>
                                 <select class="form-control" id="items" onchange="typeselect()" required >
-                                  <option value="" disabled selected >Select</option>
+                                  <option value="" disabled selected>Select</option>
                                   <option value="WDF">WASH-DRY-FOLD</option>
                                   <option value="WDP">WASH-DRY-PRESS</option>
                                 </select>
@@ -259,22 +262,30 @@
                             <div class="col-md-12 bg-info" id="type-select1" onchange="WDFchoices()" style="display:none; border-radius:10px;">
                                 <p align="center">WASH-DRY-FOLD</p>
                                 <select class="form-control" id="WDFoption" required >
-                                  <option value="" disabled selected >Select</option>
+                                  <option value="" >Select</option>
                                   <option value="25.00">Regular Clothes</option>
                                   <option value="50.00">Regular Towel/Bedsheet</option>
                                 </select>
+                                 
                             </div>    
 
                             <div class="col-md-12 bg-info" id="type-select2" onchange="WDPchoices()" style="display:none; border-radius:10px;">
                                 <p align="center">WASH-DRY-PRESS</p>
                                 <select class="form-control" id="WDPoption" required >
-                                  <option value="" disabled selected >Select</option>
+                                  <option value="" >Select</option>
                                   <option value="75.00">Regular Clothes</option>
                                   <option value="50.00">Regular Towel/Bedsheet</option>
                                   <option value="6.00">Hanger ₱6/pcs</option>
                                 </select>
 
-                            </div>    
+                            </div>
+                            
+                            
+                                <div class="col-md-12">
+                                    <label>items</label>
+                                    <textarea class="form-control" id="others" style="width:100%;"></textarea>
+                                </div>  
+                            <!--
                             <div class="col-md-12" style="display:none;" id="items-list">
                                 <div class="col-md-12">
                                     <a href="#selectitems-bc" data-toggle="modal">
@@ -282,6 +293,8 @@
                                     </a>
                                 </div>
                             </div>
+
+                            -->
                             <div class="col-md-12">
                                 <div class="col-md-8">
                                     <label>Amount per kilo/pcs</label>
@@ -338,7 +351,7 @@
                             <div class="col-md-12">
                                 <label>Status</label>
                                 <select class="form-control" id="status" onchange="rushregular()" disabled>
-                                    <option value="" selected disabled>Select</option>
+                                    <option value="" disabled selected>Select</option>
                                     <option value="regular" >Regular</option>
                                     <option value="rush">Rush</option>
                                 </select>
@@ -354,7 +367,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="addtocart()" data-dismiss="modal">Okay</button>
+                    <button type="button" class="btn btn-primary" onclick="addtocart()">Okay</button>
                 </div>
             </form>
         </div>
@@ -362,7 +375,7 @@
 </div>
 
 
-<div id="selectitems-bc" class="modal fade" role="dialog">
+<!--<div id="selectitems-bc" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form>
@@ -382,11 +395,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -399,11 +412,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -416,11 +429,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -433,11 +446,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0"  id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -450,11 +463,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -467,11 +480,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -484,11 +497,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -501,11 +514,11 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                             </div>
                         </div>
@@ -518,19 +531,16 @@
 
                                 <div class="col-md-6">
                                     <label>White</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Colored</label>
-                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0" id="jiji">
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="col-md-12">
-                            <label>Others</label>
-                            <textarea style="width:100%;"></textarea>
-                        </div>
+
                         
                     </div>
                 </div>
@@ -542,42 +552,105 @@
             </form>
         </div>
     </div>
-</div>
+</div>-->
 
   <script type="text/javascript">
       
 $(document).ready(function () {
     displaycart(); 
+    displaytotal(); 
 	});
 
       
   	function addtocart(){
-  		var type = "Basic Care - " + $('#items').val();
-  		var description = $('#WDFoption').val();
-  		var items = $('#WDFoption').val();
-  		var amount = $('#newamount').val();
-  		var kilo = $('#kilo').val();
-  		var subtotal = $('#finaltotalamount').val();
+        
+        var desc1 = document.getElementById("WDPoption");
+        var desc2 = document.getElementById("WDFoption");
+        
+        var valid1 = document.getElementById("items").value;
+        var valid2 = document.getElementById("others").value;
+        var valid3 = document.getElementById("amount").value;
+        var valid4 = document.getElementById("totalamount").value;
+        var valid5 = document.getElementById("status").value;
+        
+        if (desc1 != ""){
+            var description =  $('#items').val() +"<br>" + desc1.options[desc1.selectedIndex].text ;
+        }
+        if (desc2 != ""){
+            var description =  $('#items').val() +"<br>" +desc2.options[desc2.selectedIndex].text ;
+        }
 
-  		$.ajax({
-  			url:"assets/php/function/addtocartBC.php",
-  			type:'post',
-  			data: {
-                type :type,
-  				description : description,
-  				items : items,
-  				amount : amount,
-  				kilo : kilo,
-  				subtotal : subtotal
-  			 },
+        if (valid1 == ""){
+            swal("Opps!", "Please fill up the required field", "error");
+        }
+        if (valid2 == ""){
+             swal("Opps!", "Please fill up the required field", "error");
+        }
+        if (valid3 == ""){
+             swal("Opps!", "Please fill up the required field", "error");
+        }
+        if (valid4 == ""){
+             swal("Opps!", "Please fill up the required field", "error");
+        }
+        if (valid5 == ""){
+            swal("Opps!", "Please fill up the required field", "error");
+        }
+        else{
+                   
+            var type = "Basic Care";
+            var items = $('#others').val();
+            var amount = $('#amount').val();
+            var newamount = $('#newamount').val();
+            var kilo = $('#kilo').val();
+            var pieces = $('#pieces').val();
+            var status = $('#status').val();
+            var subtotal = $('#finaltotalamount').val();
 
-  			 success:function(data,status){
-                 console.log(data);
-  			 	displaycart();
-  			 }
+            $.ajax({
+                url:"assets/php/function/addtocartBC.php",
+                type:'post',
+                data: {
+                    type :type,
+                    description : description,
+                    items : items,
+                    amount : amount,
+                    newamount : newamount,
+                    kilo : kilo,
+                    pieces : pieces,
+                    status : status,
+                    subtotal : subtotal
+                 },
 
-  		});
+                 success:function(data,status){
+                     console.log(data);
+                    displaycart();
+                    displaytotal();
+                 }
+
+            });
+            
+            $('#basiccare').modal('hide');
+            
+        }
+
   	}	
+      
+    function displaytotal(){
+		
+		var displaytotal = "displaytotal";
+		$.ajax({
+			url:"assets/php/function/addtocartBC.php",
+			type:"POST",
+			data:{
+                displaytotal:displaytotal
+            },
+			success:function(data,status){
+				$('#displaytotal').html(data+".00");
+				$('#displaytotalco').html(data+".00");
+			},
+
+		});
+	}      
       
     function displaycart(){
 		
@@ -590,6 +663,22 @@ $(document).ready(function () {
             },
 			success:function(data,status){
 				$('#displaycart').html(data);
+                
+			},
+
+		});
+	}      
+    function displayreceipt(){
+		var displayreceipt = "displayreceipt";
+		$.ajax({
+			url:"assets/php/function/addtocartBC.php",
+			type:"POST",
+			data:{
+                displayreceipt:displayreceipt
+            },
+			success:function(data,status){
+				$('#displayreceipt').html(data);
+                
 			},
 
 		});
@@ -606,26 +695,30 @@ function deletecart(deleteid){
 
 		success:function(data, status){
 			displaycart();
+            displaytotal();
 		}
 	});
 	}
 }      
-function canceltransac(canceltransac){
-
-	var conf = confirm("Are you sure you want to cancel this ?");
-	if(conf == true) {
+function canceltransac(){
+    
+    console.log(';wfwf');
+    var deleteall = "del";
+    
 	$.ajax({
 		url:"assets/php/function/addtocartBC.php",
 		type:'POST',
 		data: { 
-        canceltransac:canceltransac
+        deleteall: deleteall
         },
 
 		success:function(data, status){
+             console.log(data);
 			displaycart();
+            displaytotal();
 		}
 	});
-	}
+	
 }
   </script>
 

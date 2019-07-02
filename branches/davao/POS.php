@@ -97,7 +97,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="content">
                                 <div class="row">
@@ -381,11 +381,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div class="card" style="height:100px;">
                             <div style="padding:10px 20px;">
-                                <label style="font-size:20px;">Total</label>
-                                <input style="font-size:50px; background-color:white; text-align:right; padding:10px; border:none;" class="form-control" type="text" id="totaltotal" value="0.00" readonly >
+                                <label style="font-size:20px;">Total</label><br>
+                                <label style="font-size:35px; float:left;" >₱</label>
+                                
+                                    <div id="displaytotal" style="font-size:40px; color:gray; background-color:white; text-align:right; " >
+                                        
+                                    </div>
                             </div>
                         </div>
                         <div class="card" style="margin-top:-15px;" >
@@ -423,6 +427,7 @@
 
                 </div>
             </div>
+    
 </body>
 
  <!--   Core JS Files   -->
