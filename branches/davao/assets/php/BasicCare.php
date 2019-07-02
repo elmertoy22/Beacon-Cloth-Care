@@ -630,9 +630,10 @@ $(document).ready(function () {
             });
             
             $('#basiccare').modal('hide');
-            
+            $(this).removeData('modal');
+           
         }
-
+         
   	}	
       
     function displaytotal(){

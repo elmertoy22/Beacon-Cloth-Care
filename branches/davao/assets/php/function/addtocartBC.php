@@ -39,7 +39,7 @@
     {
         
         $data1 =  '<table class="table" id="myTable" style="font-size:13px;">
-                    <thead style="font-size:13px;">
+                    <thead style="font-size:13px; text-align:center;">
                         <tr>
                             <th>type</th>
                             <th>description</th>
@@ -63,16 +63,16 @@
             while ($row = mysqli_fetch_array($result)) {
              
                 $data1 .= '<tbody>
-                    <tr>  
-                        <td>'.$row['type'].'</td>
-                        <td>'.$row['description'].'</td>
-                        <td>'.$row['items'].'</td>
-                        <td>'.$row['price'].'</td>
-                        <td>'.$row['newprice'].'</td>
-                        <td>'.$row['kilos'].'</td>
-                        <td>'.$row['pieces'].'</td>
-                        <td>'.$row['status'].'</td>
-                        <td>₱'.$row['subtotal'].'</td>
+                    <tr style="text-align:center;">  
+                        <td style="text-align:center;">'.$row['type'].'</td>
+                        <td style="text-align:center;">'.$row['description'].'</td>
+                        <td style="text-align:center;">'.$row['items'].'</td>
+                        <td style="text-align:center;">'.$row['price'].'</td>
+                        <td style="text-align:center;">'.$row['newprice'].'</td>
+                        <td style="text-align:center;">'.$row['kilos'].'</td>
+                        <td style="text-align:center;">'.$row['pieces'].'</td>
+                        <td style="text-align:center;">'.$row['status'].'</td>
+                        <td style="text-align:center;">₱'.$row['subtotal'].'</td>
                     </tr>
                     
                 </tbody>';
@@ -134,15 +134,15 @@
              
                 $data .= '<tbody>
                     <tr>  
-                        <td>'.$row['type'].'</td>
-                        <td>'.$row['description'].'</td>
-                        <td>'.$row['items'].'</td>
-                        <td>'.$row['price'].'</td>
-                        <td>'.$row['newprice'].'</td>
-                        <td>'.$row['kilos'].'</td>
-                        <td>'.$row['pieces'].'</td>
-                        <td>'.$row['status'].'</td>
-                        <td>₱'.$row['subtotal'].'</td>
+                        <td style="text-align:center;">'.$row['type'].'</td>
+                        <td style="text-align:center;">'.$row['description'].'</td>
+                        <td style="text-align:center;">'.$row['items'].'</td>
+                        <td style="text-align:center;">'.$row['price'].'</td>
+                        <td style="text-align:center;">'.$row['newprice'].'</td>
+                        <td style="text-align:center;">'.$row['kilos'].'</td>
+                        <td style="text-align:center;">'.$row['pieces'].'</td>
+                        <td style="text-align:center;">'.$row['status'].'</td>
+                        <td style="text-align:center;">₱'.$row['subtotal'].'</td>
                         <td>
                             <button onclick="deletecart('.$row['id'].')" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                         </td>
