@@ -1,10 +1,7 @@
 <?php
-
     session_start();
     ob_start();
-
 ?>
-<!doctype html>
 <html lang="en">
     <style type="text/css">
         .my-custom-scrollbar {
@@ -132,7 +129,7 @@
                                                     include('assets/php/customerlist.php');
                                                     include('assets/php/corporate.php');
                                                     include('assets/php/vouchers.php');
-
+                                            
                                                 ?>
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade in active" id="tab1primary">
@@ -391,8 +388,8 @@
                                 <input style="font-size:50px; background-color:white; text-align:right; padding:10px; border:none;" class="form-control" type="text" id="totaltotal" value="0.00" readonly >
                             </div>
                         </div>
-                        <div class="card" style="margin-top:-15px;">
-                            <div class="table-wrapper-scroll-x my-custom-scrollbar-2 justify-content-center">
+                        <div class="card" style="margin-top:-15px;" >
+                            <div class="table-wrapper-scroll-x my-custom-scrollbar-2 justify-content-center" id="displaycart" >
                                 <table class="table table-fixed table-hover" id="myTable" >
                                     <thead class="bg-primary">
                                         <tr>
@@ -406,17 +403,7 @@
                                         </tr>
 
                                     </thead>
-                                    <tbody>
-                                        <tr style="cursor:pointer;">
-                                            <td>Basic Care</td>
-                                            <td>Wash-Dry-Fold</td>
-                                            <td>3x white T-shirt<br>10 colored shirt</td>
-                                            <td>₱ 25</td>
-                                            <td>3 kilos</td>
-                                            <td>₱ 75</td>
-                                            <td><button class="btn btn-danger">Remove</button></td>
-                                        </tr>
-                                    </tbody>
+                                    
                                 </table>
                             </div>
                         </div>
@@ -426,7 +413,7 @@
                             </div>
 
                             <div class="col-lg-12"  style="margin-top:15px;">
-                                <button style="width:100%;" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel Transaction</button>
+                                <button style="width:100%;" class="btn btn-danger btn-lg" onclick="canceltransac()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel Transaction</button>
                             </div>
 
                         </center>

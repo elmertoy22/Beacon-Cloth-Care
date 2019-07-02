@@ -1,4 +1,6 @@
-<script>
+
+
+<script type="text/javascript">
     ////// BASIC CARE
     ///// select category 
     function discount(){
@@ -16,15 +18,15 @@
         var amount = document.getElementById('amount').value;
         document.getElementById('newamount').value = amount;
         document.getElementById('totalamount').value = "0";
-        document.getElementById('kilo').value = "0";
+        document.getElementById('kilo').value = "";
         $("#discount-input").slideUp();
     }
     function cancel(){
         document.getElementById('status').value = "";
         document.getElementById('totalamount').value = "0";
         document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
+        document.getElementById('kilo').value = "";
+        document.getElementById('pieces').value = "";
         document.getElementById('amount').value = "0";
         document.getElementById('newamount').value = "0";
         document.getElementById('kilo').disabled = true;
@@ -45,8 +47,8 @@
             $("#type-select1").slideDown();
             $("#type-select2").slideUp();
             document.getElementById('totalamount').value = "0";
-            document.getElementById('kilo').value = "0";
-            document.getElementById('pieces').value = "0";
+            document.getElementById('kilo').value = "";
+            document.getElementById('pieces').value = "";
             document.getElementById('newamount').value = "0";
             document.getElementById('kilo').disabled = true;
             document.getElementById('pieces').disabled = true;
@@ -56,8 +58,8 @@
             $("#type-select2").slideDown();
             $("#type-select1").slideUp ();
             document.getElementById('totalamount').value = "0";
-            document.getElementById('kilo').value = "0";
-            document.getElementById('pieces').value = "0";
+            document.getElementById('kilo').value = "";
+            document.getElementById('pieces').value = "";
             document.getElementById('amount').value = "0";
             document.getElementById('newamount').value = "0";
             document.getElementById('kilo').disabled = true;
@@ -113,8 +115,8 @@
         $("#enterpieces").slideUp();
         document.getElementById('status').value = "";
         document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
+        document.getElementById('kilo').value = "";
+        document.getElementById('pieces').value = "";
     }
     function enterpieces(){
         $("#enterpieces").slideDown();
@@ -122,8 +124,8 @@
         document.getElementById('status').value = "";
         document.getElementById('finaltotalamount').value = "0";
         document.getElementById('totalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
+        document.getElementById('kilo').value = "";
+        document.getElementById('pieces').value = "";
     }
     
     function rushregular(){
@@ -217,8 +219,8 @@
         document.getElementById('status').value = "";
         document.getElementById('totalamount').value = "0";
         document.getElementById('finaltotalamount').value = "0";
-        document.getElementById('kilo').value = "0";
-        document.getElementById('pieces').value = "0";
+        document.getElementById('kilo').value = "";
+        document.getElementById('pieces').value = "";
         document.getElementById('amount').value = "0";
         document.getElementById('newamount').value = "0";
         document.getElementById('kilo').disabled = true;
@@ -229,46 +231,9 @@
         $("#type-select1").hide();
         $("#type-select2").hide();
     }
-    
-     
-    function addto()
-    {
-              var rIndex,
-     table = document.getElementsByTagName('table')[0];
-              
-    
-                  // add new empty row to the table
-                  // 0 = in the top 
-                  // table.rows.length = the end
-                  // table.rows.length/2+1 = the center
-                  var newRow = table.insertRow(table.rows.length);
-                  
-                  // add cells to the row
-                  var cel1 = newRow.insertCell(0);
-                  var cel2 = newRow.insertCell(1);
-                  var cel3 = newRow.insertCell(2);
-                  var cel4 = newRow.insertCell(3);
-                  var cel5 = newRow.insertCell(4);
-                  var cel6 = newRow.insertCell(5);
-                  var cel7 = newRow.insertCell(6);
-        
-                  var type = document.getElementById('items').value;
-                  var type = document.getElementById('items').value;
-                  // add values to the cells
-                  cel1.innerHTML = type;
-                  cel2.innerHTML = "lname";
-                  cel3.innerHTML = "age";
-                  cel4.innerHTML = "age";
-                  cel5.innerHTML = "age";
-                  cel6.innerHTML = "age";
-                  cel7.innerHTML = "<button class='btn btn-danger'>Remove</button>";
-        }  
-
-    
-
 </script>
 
-<div id="basiccare" class="modal fade" role="dialog">
+<div id="basiccare" class="modal fade" role="dialog" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form>
@@ -311,41 +276,11 @@
 
                             </div>    
                             <div class="col-md-12" style="display:none;" id="items-list">
-                                <div class="col-md-3">
-                                    <input type="checkbox">T-Shirt    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
+                                <div class="col-md-12">
+                                    <a href="#selectitems-bc" data-toggle="modal">
+                                     <button class="btn btn-primary">View item list</button>
+                                    </a>
                                 </div>
-                                <div class="col-md-3">
-                                    <input type="checkbox">Shorts    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="checkbox">Pants    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="checkbox">Sando    
-                                    <input type="number" placeholder="Pieces" style="float:right; width:70px;" min="1">
-                                    <select style="float:right;">
-                                        <option>White</option>
-                                        <option>Colored</option>
-                                    </select>
-                                </div>
-                                
-                                <label>Others</label>
-                                <textarea style="width:100%;"></textarea>
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-8">
@@ -385,13 +320,13 @@
                             <div class="col-md-12 bg-info" id="enterkilo" style="display:; border-radius:10px;">
                                 <label>No. of Kilograms</label>
                                 <div class="bg-danger" id="minimumalert" style="display:none; text-align:center; padding:5px;">minimum of 3 kilos   </div>
-                                <input style="text-align:center" type="number" class="form-control" id="kilo" onkeyup="computetotalkilo()" min="1" disabled>
+                                <input style="text-align:center" type="number" class="form-control" id="kilo" onkeyup="computetotalkilo()" min="0" placeholder="0" disabled>
                             </div> 
                             
                             <div class="col-md-12 bg-danger" id="enterpieces" style="display:none; border-radius:10px;">
                                 <label>No. of Pieces</label>
                                 
-                                <input style="text-align:center" type="number" class="form-control" id="pieces" min="1" onkeyup="computetotalpieces()"  disabled>
+                                <input style="text-align:center" type="number" class="form-control" id="pieces" min="0" onkeyup="computetotalpieces()" placeholder="0" disabled>
                             </div> 
 
 
@@ -419,6 +354,188 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="addtocart()" data-dismiss="modal">Okay</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="selectitems-bc" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header bg-primary">
+                        <div class="row">
+                            <h4 class="modal-title" style="text-align:center;">Select Items</h4>
+                        </div>
+                    </div>
+                <div class="modal-body">
+                    <div class="row"> 
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items1" value="option2">
+                                      <label class="form-check-label" for="items1">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items2" value="option2">
+                                      <label class="form-check-label" for="items2">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items3" value="option2">
+                                      <label class="form-check-label" for="items3">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items4" value="option2">
+                                      <label class="form-check-label" for="items4">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items5" value="option2">
+                                      <label class="form-check-label" for="items5">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items6" value="option2">
+                                      <label class="form-check-label" for="items6">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items7" value="option2">
+                                      <label class="form-check-label" for="items7">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items8" value="option2">
+                                      <label class="form-check-label" for="items8">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-12">
+                                <div class="form-check form-check-inline" align="center">
+                                      <input class="form-check-input" type="checkbox" id="items9" value="option2">
+                                      <label class="form-check-label" for="items9">T-Shirt</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>White</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Colored</label>
+                                    <input type="number" class="form-control" placeholder="0" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <label>Others</label>
+                            <textarea style="width:100%;"></textarea>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
                     <button type="submit" class="btn btn-primary" data-dismiss="modal"  onclick="okay()">Okay</button>
 
                 </div>
@@ -426,3 +543,89 @@
         </div>
     </div>
 </div>
+
+  <script type="text/javascript">
+      
+$(document).ready(function () {
+    displaycart(); 
+	});
+
+      
+  	function addtocart(){
+  		var type = "Basic Care - " + $('#items').val();
+  		var description = $('#WDFoption').val();
+  		var items = $('#WDFoption').val();
+  		var amount = $('#newamount').val();
+  		var kilo = $('#kilo').val();
+  		var subtotal = $('#finaltotalamount').val();
+
+  		$.ajax({
+  			url:"assets/php/function/addtocartBC.php",
+  			type:'post',
+  			data: {
+                type :type,
+  				description : description,
+  				items : items,
+  				amount : amount,
+  				kilo : kilo,
+  				subtotal : subtotal
+  			 },
+
+  			 success:function(data,status){
+                 console.log(data);
+  			 	displaycart();
+  			 }
+
+  		});
+  	}	
+      
+    function displaycart(){
+		
+		var displaycart = "displaycart";
+		$.ajax({
+			url:"assets/php/function/addtocartBC.php",
+			type:"POST",
+			data:{
+                displaycart:displaycart
+            },
+			success:function(data,status){
+				$('#displaycart').html(data);
+			},
+
+		});
+	}
+      
+function deletecart(deleteid){
+
+	var conf = confirm("Are you sure you want to remove this ?");
+	if(conf == true) {
+	$.ajax({
+		url:"assets/php/function/addtocartBC.php",
+		type:'POST',
+		data: {  deleteid : deleteid},
+
+		success:function(data, status){
+			displaycart();
+		}
+	});
+	}
+}      
+function canceltransac(canceltransac){
+
+	var conf = confirm("Are you sure you want to cancel this ?");
+	if(conf == true) {
+	$.ajax({
+		url:"assets/php/function/addtocartBC.php",
+		type:'POST',
+		data: { 
+        canceltransac:canceltransac
+        },
+
+		success:function(data, status){
+			displaycart();
+		}
+	});
+	}
+}
+  </script>
+
