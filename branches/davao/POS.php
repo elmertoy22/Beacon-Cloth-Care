@@ -378,6 +378,10 @@
                         <div class="footer">
                             <div class="col-lg-12">
                                 <button class="btn btn-primary" style="width:100%; margin-top:-10px;" disabled>BEACON CLOTH CARE</button>
+                                <div id="dandt">
+                                </div>
+                                <div id="dandt2">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -429,6 +433,13 @@
             </div>
     
 </body>
+    <script>
+    
+    
+        var today = new Date();
+        var date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+        $('#dandt').html(date);
+    </script>
 
  <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>

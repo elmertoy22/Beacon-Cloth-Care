@@ -23,7 +23,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -52,6 +53,7 @@ $(document).ready(function(){
     $("#inventory").removeClass("active");
     $("#logbook").removeClass("active");
     $("#vouchers").removeClass("active");
+    $("#cms").removeClass("active");
     $("#contents").load('assets/partials/sales.php');
   });
     
@@ -61,6 +63,7 @@ $(document).ready(function(){
     $("#inventory").removeClass("active");
     $("#logbook").removeClass("active");
     $("#vouchers").removeClass("active");
+    $("#cms").removeClass("active");
     $("#contents").load('assets/partials/accounts.php');
   });  
   $("#inventory").click(function(){
@@ -69,6 +72,7 @@ $(document).ready(function(){
     $("#accounts").removeClass("active");
     $("#logbook").removeClass("active");
     $("#vouchers").removeClass("active");
+    $("#cms").removeClass("active");
     $("#contents").load('assets/partials/inventory.php');
   });  
   $("#logbook").click(function(){
@@ -77,15 +81,28 @@ $(document).ready(function(){
     $("#accounts").removeClass("active");
     $("#inventory").removeClass("active");
     $("#vouchers").removeClass("active");
+    $("#cms").removeClass("active");
     $("#contents").load('assets/partials/branchreceivinglogbook.php');
   });
+    
     $("#vouchers").click(function(){
     $("#vouchers").addClass("active");
     $("#logbook").removeClass("active");
     $("#accounts").removeClass("active");
     $("#inventory").removeClass("active");
     $("#sales").removeClass("active");
+    $("#cms").removeClass("active");
     $("#contents").load('assets/partials/vouchers.php');
+  });
+    
+    $("#cms").click(function(){
+    $("#cms").addClass("active");
+    $("#vouchers").removeClass("active");
+    $("#logbook").removeClass("active");
+    $("#accounts").removeClass("active");
+    $("#inventory").removeClass("active");
+    $("#sales").removeClass("active");
+    $("#contents").load('assets/partials/cms.php');
   });
 });    
     
@@ -127,6 +144,12 @@ $(document).ready(function(){
                         <a href="#/vouchers">
                             <i class="pe-7s-map-marker"></i>
                             <p>Vouchers</p>
+                        </a>
+                    </li>
+                     <li id="cms">
+                        <a href="#/cms">
+                            <i class="pe-7s-map-marker"></i>
+                            <p>Control Management System</p>
                         </a>
                     </li>
                 </ul>

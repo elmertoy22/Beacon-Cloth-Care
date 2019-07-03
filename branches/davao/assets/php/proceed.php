@@ -53,9 +53,9 @@
                           <label>Customer Type</label>
                             <select class="form-control" id="customertype" onchange="customertype()">
                                 <option disabled selected>Select</option>
-                                <option value="regular">Warehouse</option>
-                                <option value="regular">Branch 1</option>
-                                <option value="regular">Branch 2</option>
+                                <option value="Warehouse">Warehouse</option>
+                                <option value="Branch1">Branch1</option>
+                                <option value="Branch2">Branch2</option>
                                 <option value="branchpartner">Branch Partner</option>
                             </select> 
                             <div id="branchpartner-form" style="display:none;" class="bg-info">
@@ -70,7 +70,7 @@
                                 </select> 
                             </div>
                           <label>Transaction Type</label>
-                            <select class="form-control" id="pickupORdeliver" onchange="pickordeliver()">
+                            <select class="form-control" id="pickordeliver">
                                 <option value="" disabled selected>Select</option>
                                 <option value="pickup">Pick-up</option>
                                 <option value="deliver">Deliver</option>
@@ -81,14 +81,14 @@
                                 <div class="col-md-6">
 
                                     <label>pick-up/deliver date</label>
-                                    <input type="date" name="bday" max="3000-12-31" 
+                                    <input id="pickup_date" type="date" name="bday" max="3000-12-31" 
                                     min="1000-01-01" class="form-control">
                                 
                                 </div>
                                 <div class="col-md-6">
 
                                     <label>pick-up/deliver time</label>
-                                    <input type="time" class="form-control">
+                                    <input id="pickup_time" type="time" class="form-control">
                                 
                                 </div>
                           
@@ -98,22 +98,22 @@
                           
                             <div>
                                 <label>Customer name</label>
-                                <input type="text" class="form-control" placeholder="Full Name">  
+                                <input type="text" class="form-control" placeholder="Full Name" id="name_customer">  
                             </div>
                           
                             <div>
                                 <label>Customer Complete Address</label>
-                                <input type="text" class="form-control" placeholder="House No./Barangay/Street/City">  
+                                <input id="address_customer" type="text" class="form-control" placeholder="House No./Barangay/Street/City">  
                             </div>
                           
                             <div>
                                 <label>Contact No.</label>
-                                <input type="text" class="form-control" placeholder="09350000000">  
+                                <input id="contact_customer" type="text" class="form-control" placeholder="09350000000">  
                             </div>
                           
                             <div>
                                 <label>Notes</label>
-                                <textarea class="form-control"></textarea>  
+                                <textarea id="notes" class="form-control"></textarea>  
                             </div>
                             <br>
                             <div>                  
@@ -153,7 +153,8 @@
                                 <h2>
                                     <label>total ₱</label>
                                     <div id="displaytotalco" style="color:gray;"></div>
-                                
+                                    <div id="displaytotalkilo" style="color:gray;" hidden></div>
+                                    <div id="displaytotalpcs" style="color:gray;" hidden></div>
                                 </h2>  
                             </div>
 
@@ -177,15 +178,9 @@
                         <br><hr>
                         <div class="row">
                          <a href="#receipt" data-toggle="modal">
-                                <button id="finishtransac" class="btn btn-success btn-lg" data-dismiss="modal" style="width:100%;"  onclick="displayreceipt()" disabled>Finish</button>
+                                <button id="finishtransac" class="btn btn-success btn-lg" data-dismiss="modal" style="width:100%;"  onclick="finishtransaction()" disabled>Finish</button>
 
-                                <script type="text/javascript">
-
-                                    function finish(){
-
-                                        swal("Transaction Complete!", "Click okay to exit", "success");
-                                    }
-                                </script>
+ 
                             </a>
                         </div>
                     </div>
@@ -194,7 +189,7 @@
               </div>
         </div>
 </div>
-
+<!--onclick="displayreceipt()"-->
 <div id="receipt" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -384,3 +379,50 @@
     </div>
 </div>
 
+<script>
+    
+    function finishtransaction(){
+        
+        var today = new Date();
+        var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+        var name_customer =  $("#name_customer").val();
+        var contact_customer =  $("#contact_customer").val();
+        var address_customer =  $("#address_customer").val();
+		var total_kilo =  document.getElementById('displaytotalkilo').textContent;
+		var total_pcs =  document.getElementById('displaytotalpcs').textContent;
+		var amount =  document.getElementById('displaytotalco').textContent;
+		var pickordeliver =  $("#pickordeliver").val();
+		var pickup_date =  $("#pickup_date").val();
+		var pickup_time =  $("#pickup_time").val();
+		var date_release =  "wala pa release";
+		var remark =  "paid";
+		var receipt =  "wala pa";
+		var notes =  $("#notes").val();
+
+		$.ajax({
+
+			url:"assets/php/finishtransaction.php",
+			type:'POST',
+			data: {
+				date_received:date_received,
+				name_customer:name_customer,
+				contact_customer:contact_customer,
+				address_customer:address_customer,
+				total_kilo:total_kilo,
+				total_pcs:total_pcs,
+				amount:amount,
+				pickordeliver:pickordeliver,
+				pickup_date:pickup_date,
+				pickup_time:pickup_time,
+				date_release:date_release,
+				remark:remark,
+				receipt:receipt,
+				notes:notes,
+			},
+			success:function(data, status){
+                
+			},
+
+		});
+    }
+</script>

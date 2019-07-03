@@ -53,6 +53,7 @@
             document.getElementById('kilo').disabled = true;
             document.getElementById('pieces').disabled = true;
             document.getElementById('status').value = "";
+            document.getElementById('amount').value = "0";
             
 
         }
@@ -67,6 +68,7 @@
             document.getElementById('kilo').disabled = true;
             document.getElementById('pieces').disabled = true;
             document.getElementById('status').value = "";
+            document.getElementById('amount').value = "0";
             
         }
         
@@ -251,7 +253,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <div class="col-md-12">
                                 <label>Type</label>
-                                <select class="form-control" id="items" onchange="typeselect()" required >
+                                <select class="form-control" id="items" onchange="typeselect()" >
                                   <option value="" disabled selected>Select</option>
                                   <option value="WDF">WASH-DRY-FOLD</option>
                                   <option value="WDP">WASH-DRY-PRESS</option>
@@ -261,22 +263,62 @@
 
                             <div class="col-md-12 bg-info" id="type-select1" onchange="WDFchoices()" style="display:none; border-radius:10px;">
                                 <p align="center">WASH-DRY-FOLD</p>
-                                <select class="form-control" id="WDFoption" required >
-                                  <option value="" >Select</option>
-                                  <option value="25.00">Regular Clothes</option>
-                                  <option value="50.00">Regular Towel/Bedsheet</option>
-                                </select>
+                                
+                                <?php
+                                    include('function/connection/connect.php');
+                                    $displaywdf = " SELECT * FROM `bc-washdryfold` "; 
+                                    $resultwdf = mysqli_query($connect,$displaywdf);
+
+                                    if(mysqli_num_rows($resultwdf) > 0){
+                                        echo '<select class="form-control" id="WDFoption">
+                                                <option value="0" disabled selected>Select</option>
+                                        
+                                        ';
+                                            while ($rowwdf = mysqli_fetch_array($resultwdf)) {
+
+                                                $itemswdf = $rowwdf['items'];
+                                                $pricewdf = $rowwdf['price'];
+                                                echo '
+
+                                                    <option value='.$pricewdf.'>'.$itemswdf.'</option>
+
+                                                ';
+                                            }
+                                        echo '</select>';
+                                    } 
+                                
+                                
+                                ?>
                                  
                             </div>    
 
                             <div class="col-md-12 bg-info" id="type-select2" onchange="WDPchoices()" style="display:none; border-radius:10px;">
                                 <p align="center">WASH-DRY-PRESS</p>
-                                <select class="form-control" id="WDPoption" required >
-                                  <option value="" >Select</option>
-                                  <option value="75.00">Regular Clothes</option>
-                                  <option value="50.00">Regular Towel/Bedsheet</option>
-                                  <option value="6.00">Hanger ₱6/pcs</option>
-                                </select>
+                                <?php
+                                    include('function/connection/connect.php');
+                                    $displaywdp = " SELECT * FROM `bc-washdrypress` "; 
+                                    $resultwdp = mysqli_query($connect,$displaywdp);
+
+                                    if(mysqli_num_rows($resultwdp) > 0){
+                                        echo '<select class="form-control" id="WDPoption">
+                                                <option value="0" disabled selected>Select</option>
+                                        
+                                        ';
+                                            while ($rowwdp = mysqli_fetch_array($resultwdp)) {
+
+                                                $itemswdp = $rowwdp['items'];
+                                                $pricewdp = $rowwdp['price'];
+                                                echo '
+
+                                                    <option value='.$pricewdp.'>'.$itemswdp.'</option>
+
+                                                ';
+                                            }
+                                        echo '</select>';
+                                    } 
+                                
+                                
+                                ?>
 
                             </div>
                             
@@ -322,10 +364,10 @@
         
                             <div class="col-md-12">
                                 <div class="col-md-6" align="center">
-                                    <button class="btn btn-primary" onclick="enterkilo()">Enter Kilos</button>
+                                    <input type="button" class="btn btn-primary" onclick="enterkilo()" value="Enter Kilos">
                                 </div>
                                 <div class="col-md-6" align="center">
-                                    <button class="btn btn-danger" onclick="enterpieces()">Enter Pieces</button>
+                                    <input type="button" class="btn btn-danger" onclick="enterpieces()" value="Enter Pieces">
                                 </div>
                             </div> 
 
@@ -559,6 +601,8 @@
 $(document).ready(function () {
     displaycart(); 
     displaytotal(); 
+    displaytotalkilo(); 
+    displaytotalpcs(); 
 	});
 
       
@@ -574,10 +618,10 @@ $(document).ready(function () {
         var valid5 = document.getElementById("status").value;
         
         if (desc1 != ""){
-            var description =  $('#items').val() +"<br>" + desc1.options[desc1.selectedIndex].text ;
+            var description =  $('#items').val();
         }
         if (desc2 != ""){
-            var description =  $('#items').val() +"<br>" +desc2.options[desc2.selectedIndex].text ;
+            var description =  $('#items').val();
         }
 
         if (valid1 == ""){
@@ -625,12 +669,14 @@ $(document).ready(function () {
                      console.log(data);
                     displaycart();
                     displaytotal();
+                    displaytotalkilo(); 
+                    displaytotalpcs(); 
                  }
 
             });
-            
+                        
             $('#basiccare').modal('hide');
-            $(this).removeData('modal');
+
            
         }
          
@@ -648,6 +694,37 @@ $(document).ready(function () {
 			success:function(data,status){
 				$('#displaytotal').html(data+".00");
 				$('#displaytotalco').html(data+".00");
+			},
+
+		});
+	}        
+    function displaytotalkilo(){
+		
+		var displaytotalkilo = "displaytotalkilo";
+		$.ajax({
+			url:"assets/php/function/addtocartBC.php",
+			type:"POST",
+			data:{
+                displaytotalkilo:displaytotalkilo
+            },
+			success:function(data,status){
+				$('#displaytotalkilo').html(data);
+			},
+
+		});
+	}   
+      
+      function displaytotalpcs(){
+		
+		var displaytotalpcs = "displaytotalpcs";
+		$.ajax({
+			url:"assets/php/function/addtocartBC.php",
+			type:"POST",
+			data:{
+                displaytotalpcs:displaytotalpcs
+            },
+			success:function(data,status){
+				$('#displaytotalpcs').html(data);
 			},
 
 		});
@@ -687,39 +764,69 @@ $(document).ready(function () {
       
 function deletecart(deleteid){
 
-	var conf = confirm("Are you sure you want to remove this ?");
-	if(conf == true) {
-	$.ajax({
-		url:"assets/php/function/addtocartBC.php",
-		type:'POST',
-		data: {  deleteid : deleteid},
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this !",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        
+        $.ajax({
+            url:"assets/php/function/addtocartBC.php",
+            type:'POST',
+            data: {  deleteid : deleteid},
 
-		success:function(data, status){
-			displaycart();
-            displaytotal();
-		}
-	});
-	}
+            success:function(data, status){
+                displaycart();
+                displaytotal();
+                displaytotalkilo(); 
+                displaytotalpcs(); 
+            }
+        }); 
+          
+      } else {
+        
+      }
+    });
+
 }      
 function canceltransac(){
-    
-    console.log(';wfwf');
-    var deleteall = "del";
-    
-	$.ajax({
-		url:"assets/php/function/addtocartBC.php",
-		type:'POST',
-		data: { 
-        deleteall: deleteall
-        },
 
-		success:function(data, status){
-             console.log(data);
-			displaycart();
-            displaytotal();
-		}
-	});
-	
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+          
+        var deleteall = "del";
+        $.ajax({
+
+            url:"assets/php/function/addtocartBC.php",
+            type:'POST',
+            data: { 
+            deleteall: deleteall
+            },
+
+            success:function(data, status){
+                 console.log(data);
+                displaycart();
+                displaytotal();
+                displaytotalkilo(); 
+                displaytotalpcs(); 
+            }
+        });
+      } 
+      else {
+       
+      }
+    });
 }
   </script>
 

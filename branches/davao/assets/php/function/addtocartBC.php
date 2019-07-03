@@ -33,6 +33,36 @@
             echo $dtotalall;
         }
     } 
+    /////displaying total kilo
+    if(isset($_POST['displaytotalkilo']))
+    {
+
+
+        $sql2="SELECT sum(kilos) as totalkilo FROM addtocart";
+
+        $result2 = mysqli_query($connect,$sql2);
+
+        while ($row2 = mysqli_fetch_assoc($result2)){
+            $totalallkilo = $row2['totalkilo'];  
+            $dtotalallkilo = floatval($totalallkilo);
+            echo $dtotalallkilo;
+        }
+    } 
+    /////displaying total kilo
+    if(isset($_POST['displaytotalpcs']))
+    {
+
+
+        $sql3="SELECT sum(pieces) as totalpcs FROM addtocart";
+
+        $result3 = mysqli_query($connect,$sql3);
+
+        while ($row3 = mysqli_fetch_assoc($result3)){
+            $totalallpcs = $row3['totalpcs'];  
+            $dtotalallpcs = floatval($totalallpcs);
+            echo $dtotalallpcs;
+        }
+    } 
 
     /////displaying receipt
     if(isset($_POST['displayreceipt']))
@@ -63,7 +93,7 @@
             while ($row = mysqli_fetch_array($result)) {
              
                 $data1 .= '<tbody>
-                    <tr style="text-align:center;">  
+                    <tr style="text-align:center; color:gray;">  
                         <td style="text-align:center;">'.$row['type'].'</td>
                         <td style="text-align:center;">'.$row['description'].'</td>
                         <td style="text-align:center;">'.$row['items'].'</td>
