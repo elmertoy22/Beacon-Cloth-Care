@@ -8,7 +8,9 @@ session_start();
     $received_by = $_SESSION['username'];
 
 
-    if(isset($_POST['date_received']) && 
+    if(isset($_POST['branch_received_date']) &&
+       isset($_POST['date_received']) && 
+       isset($_POST['type_customer']) && 
        isset($_POST['name_customer']) && 
        isset($_POST['contact_customer']) && 
        isset($_POST['address_customer']) && 
@@ -26,9 +28,11 @@ session_start();
     
     {
         
-        $query = " INSERT INTO `warehouse`
+        $query = " INSERT INTO `allsales`
         (
+            `branch_received_date`,
             `date_received`,
+            `type_customer`,
             `name_customer`,
             `contact_customer`,
             `address_customer`, 
@@ -44,7 +48,9 @@ session_start();
             `receipt`,
             `notes`
         ) VALUES ( 
+            '$branch_received_date', 
             '$date_received',  
+            '$type_customer',  
             '$name_customer',  
             '$contact_customer',  
             '$address_customer', 
@@ -71,4 +77,14 @@ session_start();
 
     }   
 
+
+    if(isset($_POST['nexttransaction'])){
+
+        $querydel = "TRUNCATE TABLE addtocart ";
+        if(mysqli_query($connect,$querydel)){
+             echo '<script>console.log("next transaction complete!" ); </script>';
+        }
+        else{
+        }
+    }
 ?>

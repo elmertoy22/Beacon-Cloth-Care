@@ -22,6 +22,7 @@
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tabprimary">
                 <div class="row">
+                    
                     <!--
                     <div class="col-md-12">
                          <div class="col-md-4"><button class="btn btn-primary" style="width:100%">Yearly Sales list</button></div>
@@ -32,10 +33,9 @@
                     <div class="col-md-12" style="margin-top:10px;">
                         <div class="col-md-5">
                            <select class="form-control" id="selectYorM" onchange="selectYorM()">
-                               <option disabled selected >Select</option>
-                               <option value="yearly">All Sales</option>
-                               <option value="monthly">Paid</option>
-                               <option value="monthly">Unpaid</option>
+                               <option value="" selected>All Sales</option>
+                               <option value="">Paid</option>
+                               <option value="">Unpaid</option>
                            </select>
                         </div>
                         <div class="col-md-3">
@@ -53,77 +53,9 @@
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                        <table class="table table-striped">
-                            <thead class="bg-primary">
-                              <tr>
-                                <th style="color:white;" >Date Received</th>
-                                <th style="color:white;" >Job order #</th>
-                                <th style="color:white;" >name of customer</th>
-                                <th style="color:white;" >kilos/pcs</th>
-                                <th style="color:white;" >amount</th>
-                                <th style="color:white;" >pickup date</th>
-                                <th style="color:white;" >pickup time</th>
-                                <th style="color:white;" >date release</th>
-                                <th style="color:white;" >Deposit/payment</th>
-                                <th style="color:white;" >Date of payment</th>
-                                <th style="color:white;" >Received</th>
-                              </tr>
-                            </thead>
-                            <tbody align="center">
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
+                        <div id="displayallsales"></div>
+                        
                     </div>
                 </div> 
             </div> 
@@ -153,77 +85,9 @@
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                        <table class="table table-striped">
-                            <thead class="bg-primary">
-                              <tr>
-                                <th style="color:white;" >Date Received</th>
-                                <th style="color:white;" >Job order #</th>
-                                <th style="color:white;" >name of customer</th>
-                                <th style="color:white;" >kilos/pcs</th>
-                                <th style="color:white;" >amount</th>
-                                <th style="color:white;" >pickup date</th>
-                                <th style="color:white;" >pickup time</th>
-                                <th style="color:white;" >date release</th>
-                                <th style="color:white;" >Deposit/payment</th>
-                                <th style="color:white;" >Date of payment</th>
-                                <th style="color:white;" >Received</th>
-                              </tr>
-                            </thead>
-                            <tbody align="center">
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
+                        <div id="warehousedisplay"></div>
+                        
                     </div>
                 </div> 
             </div>
@@ -253,77 +117,9 @@
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                        <table class="table table-striped">
-                            <thead class="bg-primary">
-                              <tr>
-                                <th style="color:white;" >Date Received</th>
-                                <th style="color:white;" >Job order #</th>
-                                <th style="color:white;" >name of customer</th>
-                                <th style="color:white;" >kilos/pcs</th>
-                                <th style="color:white;" >amount</th>
-                                <th style="color:white;" >pickup date</th>
-                                <th style="color:white;" >pickup time</th>
-                                <th style="color:white;" >date release</th>
-                                <th style="color:white;" >Deposit/payment</th>
-                                <th style="color:white;" >Date of payment</th>
-                                <th style="color:white;" >Received</th>
-                              </tr>
-                            </thead>
-                            <tbody align="center">
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
+                        <div id="branch1display"></div>
+                        
                     </div>
                 </div> 
             </div>
@@ -353,77 +149,7 @@
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                        <table class="table table-striped">
-                            <thead class="bg-primary">
-                              <tr>
-                                <th style="color:white;" >Date Received</th>
-                                <th style="color:white;" >Job order #</th>
-                                <th style="color:white;" >name of customer</th>
-                                <th style="color:white;" >kilos/pcs</th>
-                                <th style="color:white;" >amount</th>
-                                <th style="color:white;" >pickup date</th>
-                                <th style="color:white;" >pickup time</th>
-                                <th style="color:white;" >date release</th>
-                                <th style="color:white;" >Deposit/payment</th>
-                                <th style="color:white;" >Date of payment</th>
-                                <th style="color:white;" >Received</th>
-                              </tr>
-                            </thead>
-                            <tbody align="center">
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
                     </div>
                 </div> 
             </div>
@@ -463,77 +189,6 @@
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                        <table class="table table-striped">
-                            <thead class="bg-primary">
-                              <tr>
-                                <th style="color:white;" >Date Received</th>
-                                <th style="color:white;" >Job order #</th>
-                                <th style="color:white;" >name of customer</th>
-                                <th style="color:white;" >kilos/pcs</th>
-                                <th style="color:white;" >amount</th>
-                                <th style="color:white;" >pickup date</th>
-                                <th style="color:white;" >pickup time</th>
-                                <th style="color:white;" >date release</th>
-                                <th style="color:white;" >Deposit/payment</th>
-                                <th style="color:white;" >Date of payment</th>
-                                <th style="color:white;" >Received</th>
-                              </tr>
-                            </thead>
-                            <tbody align="center">
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                            </tbody>
-                          </table>
                     </div>
                 </div> 
             
@@ -574,77 +229,7 @@
                         <input type="search" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                        <table class="table table-striped">
-                            <thead class="bg-primary">
-                              <tr>
-                                <th style="color:white;" >Date Received</th>
-                                <th style="color:white;" >Job order #</th>
-                                <th style="color:white;" >name of customer</th>
-                                <th style="color:white;" >kilos/pcs</th>
-                                <th style="color:white;" >amount</th>
-                                <th style="color:white;" >pickup date</th>
-                                <th style="color:white;" >pickup time</th>
-                                <th style="color:white;" >date release</th>
-                                <th style="color:white;" >Deposit/payment</th>
-                                <th style="color:white;" >Date of payment</th>
-                                <th style="color:white;" >Received</th>
-                              </tr>
-                            </thead>
-                            <tbody align="center">
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                              <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                                <tr>
-                                <td>03/02/2019</td>
-                                <td>0081</td>
-                                <td>Juan dela Cruz</td>
-                                <td>3 kilos</td>
-                                <td>150.00</td>
-                                <td>03/04/2019</td>
-                                <td>3:02 pm</td>
-                                <td>03/04/2019</td>
-                                <td>Paid</td>
-                                <td>03/04/2019</td>
-                                <td>employee 1</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
                     </div>
                 </div> 
             
@@ -653,3 +238,59 @@
     </div>
 </div>
 </div>
+
+<script>
+$(document).ready(function () {
+    displayallsales(); 
+    warehousedisplay(); 
+    branch1display(); 
+	});
+    
+    function displayallsales(){
+
+    var displayallsales = "displayallsales";
+    $.ajax({
+        url:"assets/partials/salesfunction/allsalesdisplay.php",
+        type:"POST",
+        data:{
+            displayallsales:displayallsales
+        },
+        success:function(data,status){
+            $('#displayallsales').html(data);
+        },
+
+    });
+}    
+   
+    function warehousedisplay(){
+
+    var warehousedisplay = "warehousedisplay";
+    $.ajax({
+        url:"assets/partials/salesfunction/warehousedisplay.php",
+        type:"POST",
+        data:{
+            warehousedisplay:warehousedisplay
+        },
+        success:function(data,status){
+            $('#warehousedisplay').html(data);
+        },
+
+    });
+}   
+    function branch1display(){
+
+    var branch1display = "branch1display";
+    $.ajax({
+        url:"assets/partials/salesfunction/branch1display.php",
+        type:"POST",
+        data:{
+            branch1display:branch1display
+        },
+        success:function(data,status){
+            $('#branch1display').html(data);
+        },
+
+    });
+}
+    
+</script>

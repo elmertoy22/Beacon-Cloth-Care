@@ -22,6 +22,10 @@
         $("#discount-input").slideUp();
     }
     function cancel(){
+        document.getElementById('WDPoption').value = "0";
+        document.getElementById('WDFoption').value = "0";
+        document.getElementById('items').value = "";
+        document.getElementById('others').value = "";
         document.getElementById('status').value = "";
         document.getElementById('totalamount').value = "0";
         document.getElementById('finaltotalamount').value = "0";
@@ -692,8 +696,8 @@ $(document).ready(function () {
                 displaytotal:displaytotal
             },
 			success:function(data,status){
-				$('#displaytotal').html(data+".00");
-				$('#displaytotalco').html(data+".00");
+				$('#displaytotal').html(data);
+				$('#displaytotalco').html(data);
 			},
 
 		});
@@ -741,6 +745,7 @@ $(document).ready(function () {
             },
 			success:function(data,status){
 				$('#displaycart').html(data);
+                cancel();
                 
 			},
 

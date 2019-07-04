@@ -3,22 +3,22 @@
     ob_start();
 ?>
 <html lang="en">
-    <style type="text/css">
-        .my-custom-scrollbar {
-            position: relative;
-            height: 360px;
-            overflow: auto;
-        }
-        .my-custom-scrollbar-2 {
-            position: relative;
-            height: 370px;
-            overflow: auto;
-            
-        }
-        .table-wrapper-scroll-y {
-            display: block;
-        }
-    </style>
+
+<style>
+    .tableFixHead{
+        overflow-y: auto;
+        height: 350px; 
+    }
+    .tableFixHead thead th {
+        position: sticky;
+        top: 0; 
+    }
+
+    /* Just common table stuff. Really. */
+    table  { border-collapse: collapse; width: 100%; }
+    th, td { padding: 8px 16px; }
+    th     { background-color: #161150; }
+</style>
 <head>
         
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -49,7 +49,7 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
-<body>
+<body onload="startTime()">
     
     <div class="wrapper">      
          <nav class="navbar navbar-default navbar-fixed bg-primary" style="background-color:#181242;">
@@ -139,12 +139,13 @@
                                                             <div class="col-md-12 alert alert-info">
                                                                 <div align="center" style="font-size:20px;">
                                                                     <div class="col-md-6">Sales For Today</div>
-                                                                    <div class="col-md-6">2:28 PM / 6/26/2019</div>
+                                                                    <div class="col-md-6"><div id="clock"></div><div id="date"></div></div>
                                                                 </div>
                                                                 <div align="center" style="margin-top:60px;">
                                                                     <p style="font-size:80px;">₱ 5,353.00</p>
                                                                 </div>
                                                                 <div class="bg-warning" style="height:30px;"></div>
+                                                            
                                                             </div>
                                                             
                                                             <div class="col-md-3">
@@ -378,10 +379,7 @@
                         <div class="footer">
                             <div class="col-lg-12">
                                 <button class="btn btn-primary" style="width:100%; margin-top:-10px;" disabled>BEACON CLOTH CARE</button>
-                                <div id="dandt">
-                                </div>
-                                <div id="dandt2">
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -397,31 +395,17 @@
                             </div>
                         </div>
                         <div class="card" style="margin-top:-15px;" >
-                            <div class="table-wrapper-scroll-x my-custom-scrollbar-2 justify-content-center" id="displaycart" >
-                                <table class="table table-fixed table-hover" id="myTable" >
-                                    <thead class="bg-primary">
-                                        <tr>
-                                            <th style="color:white;">type</th>
-                                            <th style="color:white;">description</th>
-                                            <th style="color:white;">items</th>
-                                            <th style="color:white;">amount</th>
-                                            <th style="color:white;">kilos/pieces</th>
-                                            <th style="color:white;">Subtotal</th>
-                                            <th style="color:white;">remove</th>
-                                        </tr>
+                            <div id="displaycart" >
 
-                                    </thead>
-                                    
-                                </table>
                             </div>
                         </div>
                         <center>
                             <div class="col-lg-12" style="margin-top:-15px;">
-                                <button style="width:100%;" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ProceedModal"><span class="glyphicon glyphicon-ok" ></span>&nbsp;Proceed</button>
+                                <button id="proceedbtn" style="width:100%;" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ProceedModal"><span class="glyphicon glyphicon-ok"></span>&nbsp;Proceed</button>
                             </div>
 
                             <div class="col-lg-12"  style="margin-top:15px;">
-                                <button style="width:100%;" class="btn btn-danger btn-lg" onclick="canceltransac()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel Transaction</button>
+                                <button style="width:100%;" id="canceltransacbtn" class="btn btn-danger btn-lg" onclick="canceltransac()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel Transaction</button>
                             </div>
 
                         </center>
@@ -436,13 +420,53 @@
     <script>
     
     
-        var today = new Date();
-        var date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
-        $('#dandt').html(date);
+        function startTime() {
+            
+            var d = new Date();
+	  
+            var date = d.getDate();
+
+            var month = d.getMonth();
+            var montharr =["Jan","Feb","Mar","April","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+            month=montharr[month];
+
+            var year = d.getFullYear();
+
+            var day = d.getDay();
+            var dayarr =["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
+            day=dayarr[day];
+            
+            
+            
+            
+            var today = new Date();
+            var hr = today.getHours();
+            var min = today.getMinutes();
+            var sec = today.getSeconds();
+            ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+            hr = (hr == 0) ? 12 : hr;
+            hr = (hr > 12) ? hr - 12 : hr;
+            //Add a zero in front of numbers<10
+            hr = checkTime(hr);
+            min = checkTime(min);
+            sec = checkTime(sec);
+            document.getElementById("clock").innerHTML = hr + " : " + min + " : " + sec + " " + ap;
+            document.getElementById("date").innerHTML=day+" "+date+" "+month+" "+year;
+            var time = setTimeout(function(){ startTime() }, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
     </script>
 
  <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript">
+    
+    
+    </script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->

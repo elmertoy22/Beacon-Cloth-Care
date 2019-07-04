@@ -1,5 +1,18 @@
 <script>
 
+    function pickodeliver(){
+        var pick = document.getElementById('pickordeliver').value;
+        
+        if(pick == "pickup"){
+            $('#optional_address').show();
+            $('#required_address').hide();
+        }
+        else{
+            $('#required_address').show();
+            $('#optional_address').hide();
+        }
+            
+    }
     function entervoucher(){
         
         $('#voucher').slideDown();
@@ -10,12 +23,22 @@
     
     function customertype(){
         var customertype = document.getElementById('customertype').value;
+        document.getElementById('branch_received_date').value;
         
         if(customertype == "branchpartner"){
             $('#branchpartner-form').slideDown();
         }
-        else{
+        if(customertype != "branchpartner"){
             $('#branchpartner-form').slideUp();
+        }
+        
+        if(customertype == "Branch1" || customertype == "Branch2"){
+            $('#branch_received').slideDown();
+        }
+
+        else{
+            document.getElementById('branch_received_date').value = null;
+            $('#branch_received').slideUp();
         }
     }
     
@@ -24,11 +47,15 @@
 
     function enterpayment(){
         var payment = document.getElementById('payment').value;
-        var supertotal = document.getElementById('displaytotalco').textContent;
+        var supertotalc = document.getElementById('displaytotalco').textContent;
+        var supertotal = supertotalc.replace(/,/g,"");
+        
         var change = document.getElementById('change').value;
+        
         
         if(parseFloat(payment) < parseFloat(supertotal)){
             document.getElementById('finishtransac').disabled = true;
+            document.getElementById('change').value = 0.00;
              swal("Opps!", "INSUFFICIENT MONEY", "error");
         }
         else{
@@ -50,82 +77,92 @@
               <div class="modal-body">
                   <div class="row">
                       <div class="col-md-10 col-md-offset-1">
-                          <label>Customer Type</label>
+                          <label>Customer Type</label><h6>*required</h6>
                             <select class="form-control" id="customertype" onchange="customertype()">
-                                <option disabled selected>Select</option>
+                                <option value="" disabled selected>Select</option>
                                 <option value="Warehouse">Warehouse</option>
                                 <option value="Branch1">Branch1</option>
                                 <option value="Branch2">Branch2</option>
                                 <option value="branchpartner">Branch Partner</option>
                             </select> 
-                            <div id="branchpartner-form" style="display:none;" class="bg-info">
-                                <label>Branch Partner</label>
+                          <br>
+                          <div id="branch_received" style="display:none;">
+                              <label>Branch Received Date</label><h6>*required</h6>
+                            <input id="branch_received_date" type="date" name="bday" max="3000-12-31" 
+                                    min="1000-01-01" class="form-control">
+                              <br>
+                          </div>
+                          <div id="branchpartner-form" style="display:none;" class="bg-info">
+                                <label>Branch Partner</label><h6>*required</h6>
                                 <select class="form-control">
-                                    <option disabled selected>Select</option>
+                                    <option value="" disabled selected>Select</option>
                                     <option value="">Branch Partner 1</option>
                                     <option value="">Branch Partner 2</option>
                                     <option value="">Branch Partner 3</option>
                                     <option value="">Branch Partner 4</option>
                                     <option value="">Branch Partner 5</option>
                                 </select> 
-                            </div>
-                          <label>Transaction Type</label>
-                            <select class="form-control" id="pickordeliver">
+                              <br>
+                          </div>
+                          <label>Transaction Type</label><h6>*required</h6>
+                            <select class="form-control" id="pickordeliver" onchange="pickodeliver()">
                                 <option value="" disabled selected>Select</option>
                                 <option value="pickup">Pick-up</option>
                                 <option value="deliver">Deliver</option>
                             </select> 
-                          
+                          <br>
                             <div class="row bg-info" id="pickup" style="display:; border-radius:10px; margin-bottom:5px;">
                                 
                                 <div class="col-md-6">
 
-                                    <label>pick-up/deliver date</label>
-                                    <input id="pickup_date" type="date" name="bday" max="3000-12-31" 
-                                    min="1000-01-01" class="form-control">
+                                    <label>pick-up/deliver date</label><h6>*required</h6>
+                                    <input id="pickup_date" type="date" name="bday" max="12-31-3000" 
+                                    min="01-01-1000" class="form-control">
                                 
                                 </div>
                                 <div class="col-md-6">
 
-                                    <label>pick-up/deliver time</label>
-                                    <input id="pickup_time" type="time" class="form-control">
+                                    <label>pick-up/deliver time</label><h6>*required</h6>
+                                    <input id="pickup_time" type="time" name="time" class="form-control">
                                 
                                 </div>
                           
                           
                           </div>
-                          
+                          <br>
                           
                             <div>
-                                <label>Customer name</label>
+                                <label>Customer name</label><h6>*required</h6>
                                 <input type="text" class="form-control" placeholder="Full Name" id="name_customer">  
                             </div>
-                          
+                          <br>
                             <div>
                                 <label>Customer Complete Address</label>
+                                <h6 id="optional_address" style="display:none;">*Optional</h6>
+                                <h6 id="required_address" style="display:none;">*Required</h6>
                                 <input id="address_customer" type="text" class="form-control" placeholder="House No./Barangay/Street/City">  
                             </div>
-                          
+                          <br>
                             <div>
-                                <label>Contact No.</label>
+                                <label>Contact No.</label><h6>*required</h6>
                                 <input id="contact_customer" type="text" class="form-control" placeholder="09350000000">  
                             </div>
-                          
+                          <br>
                             <div>
                                 <label>Notes</label>
                                 <textarea id="notes" class="form-control"></textarea>  
                             </div>
                             <br>
                             <div>                  
-                                <a href="#enterpepe" data-toggle="modal">
-                                    <input  style="width:100%;" class="btn btn-success btn-lg" value="Pay Now" id="paynowbtn" type="button" data-dismiss="modal">
-                                </a>
+                            
+                                    <input  style="width:100%;" class="btn btn-success btn-lg" value="Pay Now" id="paynowbtn" type="button" onclick="customerinfo()">
+                                
                             </div>
                             <br>
                             <div>
-                                <a href="#receipt-unpaid" data-toggle="modal">
-                                    <input style="width:100%;" class="btn btn-warning btn-lg" value="Pay Later" id="paylaterbtn" data-dismiss="modal" type="button">
-                                </a>
+                             <!--   <a href="#receipt-unpaid" data-toggle="modal"></a>-->
+                                    <input style="width:100%;" class="btn btn-warning btn-lg" value="Pay Later" id="paylaterbtn" data-dismiss="modal" type="button" onclick="customerinfo()">
+                                
                             </div>
                         </div>
                     </div>                  
@@ -279,8 +316,9 @@
                 <script type="text/javascript">
 
                     function print(){
-
                         swal("Transaction Complete!", "Click okay to exit", "success");
+                        
+                        location.reload(true);
                     }
                 </script>
             </div>
@@ -381,10 +419,93 @@
 
 <script>
     
+    function customerinfo(){
+        
+        var type_customer =  $("#customertype").val();
+        var branch_received_date =$("#branch_received_date").val();
+        var pickordeliver =  $("#pickordeliver").val();
+		var pickup_date =  $("#pickup_date").val();
+		var pickup_time =  $("#pickup_time").val();
+        var name_customer =  $("#name_customer").val();
+        var contact_customer =  $("#contact_customer").val();
+        var address_customer =  $("#address_customer").val();
+
+        
+        if(type_customer == null){
+            swal("Opps!", "Please fill up the customer type", "error");
+        }
+        else if(type_customer == "Branch1" || type_customer == "Branch2"){
+            
+            if(branch_received_date == ""){
+                swal("Opps!", "Please fill up the branch receiving date", "error");
+            }
+            else{
+                if(pickordeliver == null){
+                    swal("Opps!", "Please fill up the transaction type", "error");
+                }
+                else if (pickordeliver == "deliver" && address_customer == ""){
+                    swal("Opps!", "Please fill up the address", "error");
+                }
+                else if(pickup_date == ""){
+                    swal("Opps!", "Please fill up the delivery/pickup date", "error");
+                }
+                else if(pickup_time == ""){
+                    swal("Opps!", "Please fill up the delivery/pickup time", "error");
+                }
+                else if(name_customer == ""){
+                    swal("Opps!", "Please fill up the customer name", "error");
+                }
+                else if(contact_customer == ""){
+                    swal("Opps!", "Please fill up the customer contact", "error");
+                }
+                else{
+                    $('#ProceedModal').modal("hide");
+                    $('#enterpepe').modal("show");
+                }
+            }
+        }
+            else{
+                if(pickordeliver == null){
+                    swal("Opps!", "Please fill up the transaction type", "error");
+                }
+                else if (pickordeliver == "deliver" && address_customer == ""){
+                    swal("Opps!", "Please fill up the address", "error");
+                }
+                else if(pickup_date == ""){
+                    swal("Opps!", "Please fill up the delivery/pickup date", "error");
+                }
+                else if(pickup_time == ""){
+                    swal("Opps!", "Please fill up the delivery/pickup time", "error");
+                }
+                else if(name_customer == ""){
+                    swal("Opps!", "Please fill up the customer name", "error");
+                }
+                else if(contact_customer == ""){
+                    swal("Opps!", "Please fill up the customer contact", "error");
+                }
+                else{
+                    $('#ProceedModal').modal("hide");
+                    $('#enterpepe').modal("show");
+                }
+            }
+
+    }
+    
+    
     function finishtransaction(){
         
         var today = new Date();
-        var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+        var type_customer =  $("#customertype").val();
+        
+        if(type_customer == "Warehouse"){
+            var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+        }
+        else if (type_customer == "Branch1"){
+            var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
+        }
+        
+        var branch_received_date =$("#branch_received_date").val();
+        var type_customer =  $("#customertype").val();
         var name_customer =  $("#name_customer").val();
         var contact_customer =  $("#contact_customer").val();
         var address_customer =  $("#address_customer").val();
@@ -394,8 +515,8 @@
 		var pickordeliver =  $("#pickordeliver").val();
 		var pickup_date =  $("#pickup_date").val();
 		var pickup_time =  $("#pickup_time").val();
-		var date_release =  "wala pa release";
-		var remark =  "paid";
+		var date_release =  "Pending";
+		var remark =  "Paid";
 		var receipt =  "wala pa";
 		var notes =  $("#notes").val();
 
@@ -404,7 +525,9 @@
 			url:"assets/php/finishtransaction.php",
 			type:'POST',
 			data: {
+				branch_received_date:branch_received_date,
 				date_received:date_received,
+				type_customer:type_customer,
 				name_customer:name_customer,
 				contact_customer:contact_customer,
 				address_customer:address_customer,
@@ -420,9 +543,28 @@
 				notes:notes,
 			},
 			success:function(data, status){
-                
+                console.log(total_kilo);
+                nexttransaction();
 			},
 
 		});
     }
+    
+    function nexttransaction(){
+        var nexttransaction = "nexttransaction";
+        $.ajax({
+
+            url:"assets/php/finishtransaction.php",
+            type:'POST',
+            data: { 
+            nexttransaction: nexttransaction
+            },
+
+            success:function(data, status){
+                 console.log(data);
+                
+            }
+        });
+    }
+    
 </script>

@@ -1,4 +1,5 @@
 
+
 <?php
 
     include('connection/connect.php');
@@ -30,7 +31,7 @@
         while ($row1 = mysqli_fetch_assoc($result1)){
             $totalall = $row1['total'];  
             $dtotalall = floatval($totalall);
-            echo $dtotalall;
+            echo number_format($dtotalall,2);
         }
     } 
     /////displaying total kilo
@@ -137,19 +138,20 @@
     /////displaying cart
     if(isset($_POST['displaycart']))
     {
-        $data =  '<table class="table table-fixed table-hover" id="myTable" style="font-size:13px;" >
-                    <thead class="bg-primary" style="font-size:13px;">
+        $data =  '<div class="tableFixHead">
+                    <table class="table table-striped" style="font-size:12px;">
+                    <thead class="bg-primary">
                         <tr>
-                            <th style="color:white;">type</th>
-                            <th style="color:white;">description</th>
-                            <th style="color:white;">items</th>
-                            <th style="color:white;">price</th>
-                            <th style="color:white;">new price</th>
-                            <th style="color:white;">kilos</th>
-                            <th style="color:white;">pieces</th>
-                            <th style="color:white;">status</th>
-                            <th style="color:white;">Subtotal</th>
-                            <th style="color:white;">remove</th>
+                            <th style="color:white; text-align:center;">type</th>
+                            <th style="color:white; text-align:center;">description</th>
+                            <th style="color:white; text-align:center;">items</th>
+                            <th style="color:white; text-align:center;">price</th>
+                            <th style="color:white; text-align:center;">new price</th>
+                            <th style="color:white; text-align:center;">kilos</th>
+                            <th style="color:white; text-align:center;">pieces</th>
+                            <th style="color:white; text-align:center;">status</th>
+                            <th style="color:white; text-align:center;">Subtotal</th>
+                            <th style="color:white; text-align:center;">remove</th>
                         </tr>
 
                     </thead>
@@ -179,8 +181,14 @@
                     </tr>
                 </tbody>';
             }
+            echo '<script>document.getElementById("proceedbtn").disabled = false;</script>';
+            echo '<script>document.getElementById("canceltransacbtn").disabled = false;</script>';
         } 
-         $data .= '</table>';
+        else{
+            echo '<script>document.getElementById("proceedbtn").disabled = true;</script>';
+            echo '<script>document.getElementById("canceltransacbtn").disabled = true;</script>';
+        }
+         $data .= '</table></div>';
             echo $data;
 
     }   
