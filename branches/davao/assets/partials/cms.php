@@ -11,6 +11,7 @@
             <li><a href="#tab2primary" data-toggle="tab">Special Care</a></li>
             <li><a href="#tab3primary" data-toggle="tab">Premium Care</a></li>
             <li><a href="#tab3primary" data-toggle="tab">Corporate Account</a></li>
+            <li><a href="#tab3primary" data-toggle="tab">Branch Partner</a></li>
         </ul>
     </div>
     <div class="panel-body">
@@ -82,7 +83,7 @@
                                                     </div>                                        
                                                     <div class="col-md-6">
 
-                                                        <button  style="width:100%;" align="center;" class="btn btn-success" type="button" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="collapseExample" onclick="">
+                                                        <button  style="width:100%;" align="center;" class="btn btn-success" type="button"  data-target="" aria-expanded="false" aria-controls="collapseExample" onclick="UpdateItemsDetails()">
                                                             Save
                                                         </button>
                                                         <input type="hidden" id="hidden_wdf_id">
@@ -207,7 +208,6 @@ function wdfdeleteidfunc(wdfdeleteid){
         
     });
     
-    
 }    
     
     
@@ -218,17 +218,32 @@ function wdfgetfunc(id){
             id: id
         },
         function (data, status) {
-            alert(data);
             //JSON.parse() parses a string, written in JSON format, and returns a JavaScript object.
             var wdf = JSON.parse(data);
-            alert(user);
 
-            $("#wdf-items-edit").val(id);
-            $("#wdf-price-edit").val(id);
+            $("#wdf-items-edit").val(wdf.items);
+            $("#wdf-price-edit").val(wdf.price);
         }
     );
     $("#BCWDF-edit").collapse("show");
 }    
     
     
+function UpdateItemsDetails() {
+    var items = $("#wdf-items-edit").val();
+    var price = $("#wdf-price-edit").val();
+    var hidden_wdf_id = $("#hidden_wdf_id").val();
+    $.post("assets/partials/cmsfunction/BasicCareCMS.php", 
+           {
+            hidden_wdf_id: hidden_wdf_id,
+            items: items,
+            price: price
+        },
+        function (data, status) {
+            $("#BCWDF-edit").collapse("hide");
+            swal("Update Complete!", "Click okay to exit", "success");
+            BCwdfitems(); 
+        }
+    );
+}
 </script>

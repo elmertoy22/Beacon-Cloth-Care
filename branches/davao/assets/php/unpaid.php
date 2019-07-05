@@ -1,5 +1,5 @@
 
-<script>
+<!--<script>
     function entervoucher_unpaid(){
         
         $('#voucher_unpaid').show();
@@ -11,7 +11,6 @@
 <div id="unpaid" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
-    <!-- Modal content-->
         <div class="modal-content">
               <div class="modal-header bg-primary">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -120,3 +119,73 @@
               </div>
         </div>
 </div>
+-->
+
+<style>
+    .tableFixHead{
+        overflow-y: auto;
+        height: 350px; 
+    }
+    .tableFixHead thead th {
+        position: sticky;
+        top: 0; 
+    }
+
+    /* Just common table stuff. Really. */
+    #table  { border-collapse: collapse; width: 100%; }
+    th, td { padding: 8px 16px; }
+    th     { background-color: #161150; }
+</style>
+<?php
+    include('function/connection/connect.php');
+    extract($_POST);
+
+
+    /////displaying cart
+    if(isset($_POST['unpaid_list']))
+    {
+        $data =  '
+            <div class="tableFixHead">
+                <table class="table table-striped">
+                    <thead class="">
+                        <tr>
+                            <th style="color:white;">JOb ORder #</th>
+                            <th style="color:white;">customer type</th>
+                            <th style="color:white;">customer name</th>
+                            <th style="color:white;">customer contact</th>
+                            <th style="color:white;">amount</th>
+                            <th style="color:white;">date release</th>
+                            <th style="color:white;"></th>
+                        </tr>
+
+                    </thead>
+                    '; 
+
+        $displayquery = " SELECT * FROM `allsales` WHERE remark = 'Unpaid' "; 
+        $result = mysqli_query($connect,$displayquery);
+
+        if(mysqli_num_rows($result) > 0){
+
+            while ($row = mysqli_fetch_array($result)) {
+             
+                $data .= '<tbody>
+                    <tr>  
+                        <td style="text-align:center;">'.$row['id'].'</td>
+                        <td style="text-align:center;">'.$row['type_customer'].'</td>
+                        <td style="text-align:center;">'.$row['name_customer'].'</td>
+                        <td style="text-align:center;">'.$row['contact_customer'].'</td>
+                        <td style="text-align:center;">'.$row['amount'].'</td>
+                        <td style="text-align:center;">'.$row['date_release'].'</td>
+                        <td style="text-align:center;"><button class="btn btn-success">Pay now</button></td>
+                    </tr>
+                </tbody>';
+            }
+        } 
+        else{
+           echo "NO DATA RECORDS";
+        }
+         $data .= '</table></div>';
+            echo $data;
+
+    }  
+?>

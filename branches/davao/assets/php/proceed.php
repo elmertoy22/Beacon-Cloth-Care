@@ -31,15 +31,6 @@
         if(customertype != "branchpartner"){
             $('#branchpartner-form').slideUp();
         }
-        
-        if(customertype == "Branch1" || customertype == "Branch2"){
-            $('#branch_received').slideDown();
-        }
-
-        else{
-            document.getElementById('branch_received_date').value = null;
-            $('#branch_received').slideUp();
-        }
     }
     
 </script>
@@ -80,9 +71,9 @@
                           <label>Customer Type</label><h6>*required</h6>
                             <select class="form-control" id="customertype" onchange="customertype()">
                                 <option value="" disabled selected>Select</option>
-                                <option value="Warehouse">Warehouse</option>
-                                <option value="Branch1">Branch1</option>
-                                <option value="Branch2">Branch2</option>
+                                <option value="warehouse">Warehouse</option>
+                                <option value="branch1">Branch1</option>
+                                <option value="branch2">Branch2</option>
                                 <option value="branchpartner">Branch Partner</option>
                             </select> 
                           <br>
@@ -161,7 +152,7 @@
                             <br>
                             <div>
                              <!--   <a href="#receipt-unpaid" data-toggle="modal"></a>-->
-                                    <input style="width:100%;" class="btn btn-warning btn-lg" value="Pay Later" id="paylaterbtn" data-dismiss="modal" type="button" onclick="customerinfo()">
+                                    <input style="width:100%;" class="btn btn-warning btn-lg" value="Pay Later" id="paylaterbtn" type="button" onclick="unpaid_customerinfo()">
                                 
                             </div>
                         </div>
@@ -258,49 +249,6 @@
                           
                           <div class="col-md-12">
                               
-                       <!--       <table class="table">
-                                <thead>
-                                    <th style="text-align:center;">Items</th>
-                                    <th style="text-align:center;">Subtotal</th>
-                                </thead>
-                                <tbody>
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <label>WASH-DRY-FOLD</label><br>
-                                            <label>3 kilos regular clothes</label><br>
-                                            <label>X3 T-shirt colored</label><br>
-                                            <label>X2 T-shirt white</label>
-                                            
-                                        </td>
-                                        <td><label>₱ 75.00</label></td>
-                                    </tr>
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <label>WASH-DRY-PRESS</label><br>
-                                            <label>4 kilos regular clothes</label><br>
-                                            <label>X3 T-shirt colored</label><br>
-                                            <label>X2 T-shirt white</label>
-                                            
-                                        </td>
-                                        <td><label>₱ 300.00</label></td>
-                                    </tr>
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <label style="font-size:15px;">TOTAL ₱:</label><br>
-                                            <label style="font-size:15px;">PAYMENT ₱:</label><br>
-                                            <label style="font-size:15px;">CHANGE ₱:</label><br>
-                                            
-                                            
-                                        </td>
-                                        <td>
-                                            <label style="font-size:15px;">375.00</label><br>
-                                            <label  style="font-size:20px;">500.00</label><br>
-                                            <label  style="font-size:25px;">125.00</label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                              </table>-->
-                          
                                   <div id="displayreceipt">
                                         
                                   </div>
@@ -311,16 +259,8 @@
                     </div>
               </div>
             <div class="modal-footer bg-success">
-                <input type="button" class="btn btn-success" value="Print" style="width:100%;" data-dismiss="modal" onclick="print()">
-                
-                <script type="text/javascript">
+                <input type="button" class="btn btn-success" value="okay" style="width:100%;" onclick="nexttransaction_paid()">
 
-                    function print(){
-                        swal("Transaction Complete!", "Click okay to exit", "success");
-                        
-                        location.reload(true);
-                    }
-                </script>
             </div>
         </div>
     </div>
@@ -394,8 +334,6 @@
                                     </tr>
                                 </tbody>
                               </table>
-                            
-                            
                           </div>
                           
                       </div>
@@ -403,21 +341,20 @@
                     </div>
               </div>
             <div class="modal-footer bg-success">
-                <input type="button" class="btn btn-success" value="Print" style="width:100%;" data-dismiss="modal" onclick="print()">
-                
-                <script type="text/javascript">
-
-                    function print(){
-
-                        swal("Transaction Complete!", "Click okay to exit", "success");
-                    }
-                </script>
+                <input type="button" class="btn btn-success" value="Finish" style="width:100%;" onclick="unpaid_finishtransaction()">
             </div>
         </div>
     </div>
 </div>
 
 <script>
+          
+$(document).ready(function () {
+    displaycart(); 
+    displaytotal(); 
+    displaytotalkilo(); 
+    displaytotalpcs(); 
+	});
     
     function customerinfo(){
         
@@ -434,60 +371,69 @@
         if(type_customer == null){
             swal("Opps!", "Please fill up the customer type", "error");
         }
-        else if(type_customer == "Branch1" || type_customer == "Branch2"){
-            
-            if(branch_received_date == ""){
-                swal("Opps!", "Please fill up the branch receiving date", "error");
-            }
-            else{
-                if(pickordeliver == null){
-                    swal("Opps!", "Please fill up the transaction type", "error");
-                }
-                else if (pickordeliver == "deliver" && address_customer == ""){
-                    swal("Opps!", "Please fill up the address", "error");
-                }
-                else if(pickup_date == ""){
-                    swal("Opps!", "Please fill up the delivery/pickup date", "error");
-                }
-                else if(pickup_time == ""){
-                    swal("Opps!", "Please fill up the delivery/pickup time", "error");
-                }
-                else if(name_customer == ""){
-                    swal("Opps!", "Please fill up the customer name", "error");
-                }
-                else if(contact_customer == ""){
-                    swal("Opps!", "Please fill up the customer contact", "error");
-                }
-                else{
-                    $('#ProceedModal').modal("hide");
-                    $('#enterpepe').modal("show");
-                }
-            }
+        else if(pickordeliver == null){
+            swal("Opps!", "Please fill up the transaction type", "error");
         }
-            else{
-                if(pickordeliver == null){
-                    swal("Opps!", "Please fill up the transaction type", "error");
-                }
-                else if (pickordeliver == "deliver" && address_customer == ""){
-                    swal("Opps!", "Please fill up the address", "error");
-                }
-                else if(pickup_date == ""){
-                    swal("Opps!", "Please fill up the delivery/pickup date", "error");
-                }
-                else if(pickup_time == ""){
-                    swal("Opps!", "Please fill up the delivery/pickup time", "error");
-                }
-                else if(name_customer == ""){
-                    swal("Opps!", "Please fill up the customer name", "error");
-                }
-                else if(contact_customer == ""){
-                    swal("Opps!", "Please fill up the customer contact", "error");
-                }
-                else{
-                    $('#ProceedModal').modal("hide");
-                    $('#enterpepe').modal("show");
-                }
-            }
+        else if (pickordeliver == "deliver" && address_customer == ""){
+            swal("Opps!", "Please fill up the address", "error");
+        }
+        else if(pickup_date == ""){
+            swal("Opps!", "Please fill up the delivery/pickup date", "error");
+        }
+        else if(pickup_time == ""){
+            swal("Opps!", "Please fill up the delivery/pickup time", "error");
+        }
+        else if(name_customer == ""){
+            swal("Opps!", "Please fill up the customer name", "error");
+        }
+        else if(contact_customer == ""){
+            swal("Opps!", "Please fill up the customer contact", "error");
+        }
+        else{
+            $('#ProceedModal').modal("hide");
+            $('#enterpepe').modal("show");
+        }
+            
+
+    }    
+    function unpaid_customerinfo(){
+        
+        var type_customer =  $("#customertype").val();
+        var branch_received_date =$("#branch_received_date").val();
+        var pickordeliver =  $("#pickordeliver").val();
+		var pickup_date =  $("#pickup_date").val();
+		var pickup_time =  $("#pickup_time").val();
+        var name_customer =  $("#name_customer").val();
+        var contact_customer =  $("#contact_customer").val();
+        var address_customer =  $("#address_customer").val();
+
+        
+        if(type_customer == null){
+            swal("Opps!", "Please fill up the customer type", "error");
+        }
+        else if(pickordeliver == null){
+            swal("Opps!", "Please fill up the transaction type", "error");
+        }
+        else if (pickordeliver == "deliver" && address_customer == ""){
+            swal("Opps!", "Please fill up the address", "error");
+        }
+        else if(pickup_date == ""){
+            swal("Opps!", "Please fill up the delivery/pickup date", "error");
+        }
+        else if(pickup_time == ""){
+            swal("Opps!", "Please fill up the delivery/pickup time", "error");
+        }
+        else if(name_customer == ""){
+            swal("Opps!", "Please fill up the customer name", "error");
+        }
+        else if(contact_customer == ""){
+            swal("Opps!", "Please fill up the customer contact", "error");
+        }
+        else{
+            $('#ProceedModal').modal("hide");
+            $('#receipt-unpaid').modal("show");
+        }
+            
 
     }
     
@@ -497,14 +443,23 @@
         var today = new Date();
         var type_customer =  $("#customertype").val();
         
-        if(type_customer == "Warehouse"){
+        
+        if(type_customer == "warehouse"){
             var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+            var branch_received_date = ""
+            console.log('pasok sa warehouse');
         }
-        else if (type_customer == "Branch1"){
-            var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
+        if (type_customer == "branch1"){
+            var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
+            var date_received = ""
+            console.log('pasok sa branch1');
+        }
+        if (type_customer == "branch2"){
+            var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
+            var date_received = ""
+            console.log('pasok sa branch2');
         }
         
-        var branch_received_date =$("#branch_received_date").val();
         var type_customer =  $("#customertype").val();
         var name_customer =  $("#name_customer").val();
         var contact_customer =  $("#contact_customer").val();
@@ -548,6 +503,74 @@
 			},
 
 		});
+    }    
+    
+    function unpaid_finishtransaction(){
+        
+        var today = new Date();
+        var type_customer =  $("#customertype").val();
+        
+        
+        if(type_customer == "warehouse"){
+            var date_received = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+            var branch_received_date = ""
+            console.log('pasok sa warehouse');
+        }
+        if (type_customer == "branch1"){
+            var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
+            var date_received = ""
+            console.log('pasok sa branch1');
+        }
+        if (type_customer == "branch2"){
+            var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
+            var date_received = ""
+            console.log('pasok sa branch2');
+        }
+        
+        var type_customer =  $("#customertype").val();
+        var name_customer =  $("#name_customer").val();
+        var contact_customer =  $("#contact_customer").val();
+        var address_customer =  $("#address_customer").val();
+		var total_kilo =  document.getElementById('displaytotalkilo').textContent;
+		var total_pcs =  document.getElementById('displaytotalpcs').textContent;
+		var amount =  document.getElementById('displaytotalco').textContent;
+		var pickordeliver =  $("#pickordeliver").val();
+		var pickup_date =  $("#pickup_date").val();
+		var pickup_time =  $("#pickup_time").val();
+		var date_release =  "Pending";
+		var remark =  "Unpaid";
+		var receipt =  "wala pa";
+		var notes =  $("#notes").val();
+
+		$.ajax({
+
+			url:"assets/php/finishtransaction.php",
+			type:'POST',
+			data: {
+				branch_received_date:branch_received_date,
+				date_received:date_received,
+				type_customer:type_customer,
+				name_customer:name_customer,
+				contact_customer:contact_customer,
+				address_customer:address_customer,
+				total_kilo:total_kilo,
+				total_pcs:total_pcs,
+				amount:amount,
+				pickordeliver:pickordeliver,
+				pickup_date:pickup_date,
+				pickup_time:pickup_time,
+				date_release:date_release,
+				remark:remark,
+				receipt:receipt,
+				notes:notes,
+			},
+			success:function(data, status){
+                console.log(total_kilo);
+                nexttransaction();
+                nexttransaction_unpaid();
+			},
+
+		});
     }
     
     function nexttransaction(){
@@ -565,6 +588,25 @@
                 
             }
         });
+    }
+    
+    function nexttransaction_unpaid(){
+                        
+                swal("Transaction Complete!", "Click okay to exit", "success");
+                
+                setTimeout(function() {
+                   $('#receipt').modal("hide");
+                   location.reload(true);
+                }, 2000);
+    }    
+    function nexttransaction_paid(){
+                        
+                swal("Transaction Complete!", "Click okay to exit", "success");
+                
+                setTimeout(function() {
+                   $('#receipt-unpaid').modal("hide");
+                   location.reload(true);
+                }, 2000);
     }
     
 </script>

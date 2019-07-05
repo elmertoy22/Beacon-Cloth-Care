@@ -22,7 +22,7 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -173,9 +173,9 @@ $(document).ready(function(){
                                 <a href="">
                                     <p><span class="glyphicon glyphicon-user"></span>&nbsp;
                                         <?php
-                                            if(isset($_SESSION['username'])) 
+                                            if(isset($_SESSION['adminusername'])) 
                                             
-                                                echo $_SESSION['username'];
+                                                echo $_SESSION['adminusername'];
                                             
                                             else{
                                                 header("location:../../index.php");

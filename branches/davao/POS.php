@@ -30,7 +30,7 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -184,54 +184,7 @@
                                                                 <input type="search" class="form-control" placeholder="Search">
                                                             </div>
                                                             <div class="col-md-12" style="margin-top:10px;">
-                                                                <table class="table table-striped">
-                                                                    <thead class="bg-primary">
-                                                                      <tr>
-                                                                        <th style="color:white;" >Job Order No.</th>
-                                                                        <th style="color:white;" >Customer Name</th>
-                                                                        <th style="color:white;" >Contact</th>
-                                                                        <th style="color:white;" >Address</th>
-                                                                        <th style="color:white;" ></th>
-                                                                      </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                      <tr>
-                                                                        <td>001</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>002</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>003</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>004</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>005</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><a href="#unpaid" data-toggle="modal"><button class="btn btn-success">Pay now</button></a></td>
-                                                                      </tr>
-                                                                    </tbody>
-                                                                  </table>
+                                                                <div id="unpaid-list"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -241,54 +194,7 @@
                                                                 <input type="search" class="form-control" placeholder="Search">
                                                             </div>
                                                             <div class="col-md-12" style="margin-top:10px;">
-                                                                <table class="table table-striped">
-                                                                    <thead class="bg-primary">
-                                                                      <tr>
-                                                                        <th style="color:white;" >Job Order No.</th>
-                                                                        <th style="color:white;" >Customer Name</th>
-                                                                        <th style="color:white;" >Contact</th>
-                                                                        <th style="color:white;" >Address</th>
-                                                                        <th style="color:white;" ></th>
-                                                                      </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                      <tr>
-                                                                        <td>001</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><a href="#customerlist" data-toggle="modal"><button class="btn btn-success">open</button></a></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>002</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><button class="btn btn-success">open</button></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>003</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><button class="btn btn-success">open</button></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>004</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><button class="btn btn-success">open</button></td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td>005</td>
-                                                                        <td>juan dela cruz</td>
-                                                                        <td>09360459353</td>
-                                                                        <td>001 mandaluyong city</td>
-                                                                        <td><button class="btn btn-success">open</button></td>
-                                                                      </tr>
-                                                                    </tbody>
-                                                                  </table>
+                                                                <div id="customerlist"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -418,7 +324,41 @@
     
 </body>
     <script>
+        $(document).ready(function () {
+            unpaid_list();
+            customerlist();
+            });
     
+        function unpaid_list(){
+
+            var unpaid_list = "unpaid_list";
+            $.ajax({
+                url:"assets/php/unpaid.php",
+                type:"POST",
+                data:{
+                    unpaid_list:unpaid_list
+                },
+                success:function(data,status){
+                    $('#unpaid-list').html(data);
+                },
+
+            });
+        } 
+        function customerlist(){
+
+            var customerlist = "customerlist";
+            $.ajax({
+                url:"assets/php/customerlist.php",
+                type:"POST",
+                data:{
+                    customerlist:customerlist
+                },
+                success:function(data,status){
+                    $('#customerlist').html(data);
+                },
+
+            });
+        }  
     
         function startTime() {
             
