@@ -77,12 +77,6 @@
                                 <option value="branchpartner">Branch Partner</option>
                             </select> 
                           <br>
-                          <div id="branch_received" style="display:none;">
-                              <label>Branch Received Date</label><h6>*required</h6>
-                            <input id="branch_received_date" type="date" name="bday" max="3000-12-31" 
-                                    min="1000-01-01" class="form-control">
-                              <br>
-                          </div>
                           <div id="branchpartner-form" style="display:none;" class="bg-info">
                                 <label>Branch Partner</label><h6>*required</h6>
                                 <select class="form-control">
@@ -249,9 +243,7 @@
                           
                           <div class="col-md-12">
                               
-                                  <div id="displayreceipt">
-                                        
-                                  </div>
+                                  <div id="displayreceipt"></div>
                           </div>
                           
                       </div>
@@ -265,6 +257,8 @@
         </div>
     </div>
 </div>
+
+
 <div id="receipt-unpaid" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -272,72 +266,41 @@
         <div class="modal-content">
               <div class="modal-header bg-primary">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title" style="text-align:center;">This is not a Official Receipt</h4>
+                      <h4 class="modal-title" style="text-align:center;">This is not an Official Receipt</h4>
               </div>
               <div class="modal-body">
                   <div class="row">
-                      <div class="col-md-8 col-md-offset-2" align="center">
-                          <label>BEACON CLOTH CARE LAUNDRY SERVICES INC.</label>
-                          <label>Free Pick-up and Delivery</label><br>
-                          <label>Alabang hills muntinlupa</label>
-                      </div>
-                      <div class="col-md-10 col-md-offset-1" align="center">
-                          <div class="col-md-6">
-                              <label>Received Date: 05/26/2019</label>
-                              <label>Job Order No : 0098</label>
-                              <label>Customer Name: Elmer Torres</label>
-                              
+                      <div class="col-md-12">
+                          <div class="col-md-12" align="center">
+                              <label>BEACON CLOTH CARE LAUNDRY SERVICES INC.</label><br>
+                              <label>Free Pick-up and Delivery</label><br>
+                              <label>Alabang hills muntinlupa city</label><br>
                           </div>
-                          <div class="col-md-6">
-                              <label>Status : Unpaid</label>
-                              <label>Contact # : 09322719208 </label>
-                              <label>Address : muntinlupa alabang city </label>
+                          <div class="col-md-12" align="center">
+                              <label id="ru_pickordeliver" style="font-size:20px;"></label>
+
                           </div>
-                          
-                          <div class="col-md-12">
-                              
-                              <table class="table">
-                                <thead>
-                                    <th style="text-align:center;">Items</th>
-                                    <th style="text-align:center;">Subtotal</th>
-                                </thead>
-                                <tbody>
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <label>WASH-DRY-FOLD</label><br>
-                                            <label>3 kilos regular clothes</label><br>
-                                            <label>X3 T-shirt colored</label><br>
-                                            <label>X2 T-shirt white</label>
-                                            
-                                        </td>
-                                        <td><label>₱ 75.00</label></td>
-                                    </tr>
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <label>WASH-DRY-PRESS</label><br>
-                                            <label>4 kilos regular clothes</label><br>
-                                            <label>X3 T-shirt colored</label><br>
-                                            <label>X2 T-shirt white</label>
-                                            
-                                        </td>
-                                        <td><label>₱ 300.00</label></td>
-                                    </tr>
-                                    <tr style="text-align:center;">
-                                        <td>
-                                            <label style="font-size:15px;">TOTAL ₱:</label><br>
-                                            
-                                            
-                                        </td>
-                                        <td>
-                                            <label style="font-size:15px;">375.00</label><br>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                              </table>
+                          <div class="col-md-12" align="center">
+                              <div class="col-md-6">
+                                  <label>pickup/deliver Date: <label id="ru_pickordeliverdate" ></label></label><br>
+                                  <label>Received Date: <label id="ru_receiveddate" ></label></label><br>
+                                  <label>Job Order No : <label id="joborder"></label></label><br>
+                                  <label>Customer Name: <label id="ru_customername"></label></label><br>
+
+                              </div>
+                              <div class="col-md-6">
+                                  <label>pickup/deliver Time: <label id="ru_pickordelivertime" ></label></label><br>
+                                  <label>Status : <label>Unpaid</label></label><br>
+                                  <label>Contact # : <label id="ru_customercontact"></label> </label><br>
+                                  <label>Address : <label id="ru_customeraddress"></label></label><br>
+                              </div>
+
+
+
                           </div>
-                          
-                      </div>
-                      
+                            <div class="col-md-12" id="displaytotalitems"></div>
+                            <div class="col-md-12" id="displaytotalamount"></div>
+                        </div>
                     </div>
               </div>
             <div class="modal-footer bg-success">
@@ -354,12 +317,14 @@ $(document).ready(function () {
     displaytotal(); 
     displaytotalkilo(); 
     displaytotalpcs(); 
+    
+    
+    
 	});
     
     function customerinfo(){
         
         var type_customer =  $("#customertype").val();
-        var branch_received_date =$("#branch_received_date").val();
         var pickordeliver =  $("#pickordeliver").val();
 		var pickup_date =  $("#pickup_date").val();
 		var pickup_time =  $("#pickup_time").val();
@@ -399,7 +364,6 @@ $(document).ready(function () {
     function unpaid_customerinfo(){
         
         var type_customer =  $("#customertype").val();
-        var branch_received_date =$("#branch_received_date").val();
         var pickordeliver =  $("#pickordeliver").val();
 		var pickup_date =  $("#pickup_date").val();
 		var pickup_time =  $("#pickup_time").val();
@@ -407,6 +371,8 @@ $(document).ready(function () {
         var contact_customer =  $("#contact_customer").val();
         var address_customer =  $("#address_customer").val();
 
+        var ru_today = new Date();
+        var ru_date_received = (ru_today.getMonth()+1)+'/'+ru_today.getDate()+'/'+ru_today.getFullYear();
         
         if(type_customer == null){
             swal("Opps!", "Please fill up the customer type", "error");
@@ -432,6 +398,16 @@ $(document).ready(function () {
         else{
             $('#ProceedModal').modal("hide");
             $('#receipt-unpaid').modal("show");
+            
+            $('#ru_pickordeliverdate').html(pickup_date);
+            $('#ru_pickordelivertime').html(pickup_time);
+            $('#ru_receiveddate').html(ru_date_received);
+            $('#ru_customername').html(name_customer);
+            $('#ru_customercontact').html(contact_customer);
+            $('#ru_customeraddress').html(address_customer);
+            $('#ru_pickordeliver').html("----------------------"+pickordeliver+"----------------------");
+
+            viewallcart();
         }
             
 
@@ -466,7 +442,8 @@ $(document).ready(function () {
         var address_customer =  $("#address_customer").val();
 		var total_kilo =  document.getElementById('displaytotalkilo').textContent;
 		var total_pcs =  document.getElementById('displaytotalpcs').textContent;
-		var amount =  document.getElementById('displaytotalco').textContent;
+        var amountc =  document.getElementById('displaytotalco').textContent;
+        var amount = amountc.replace(/,/g,"");
 		var pickordeliver =  $("#pickordeliver").val();
 		var pickup_date =  $("#pickup_date").val();
 		var pickup_time =  $("#pickup_time").val();
@@ -474,6 +451,7 @@ $(document).ready(function () {
 		var remark =  "Paid";
 		var receipt =  "wala pa";
 		var notes =  $("#notes").val();
+		var paymentdate_received =  (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
 
 		$.ajax({
 
@@ -494,6 +472,7 @@ $(document).ready(function () {
 				pickup_time:pickup_time,
 				date_release:date_release,
 				remark:remark,
+				paymentdate_received:paymentdate_received,
 				receipt:receipt,
 				notes:notes,
 			},
@@ -533,7 +512,8 @@ $(document).ready(function () {
         var address_customer =  $("#address_customer").val();
 		var total_kilo =  document.getElementById('displaytotalkilo').textContent;
 		var total_pcs =  document.getElementById('displaytotalpcs').textContent;
-		var amount =  document.getElementById('displaytotalco').textContent;
+		var amountc =  document.getElementById('displaytotalco').textContent;
+        var amount = amountc.replace(/,/g,"");
 		var pickordeliver =  $("#pickordeliver").val();
 		var pickup_date =  $("#pickup_date").val();
 		var pickup_time =  $("#pickup_time").val();
@@ -541,6 +521,7 @@ $(document).ready(function () {
 		var remark =  "Unpaid";
 		var receipt =  "wala pa";
 		var notes =  $("#notes").val();
+		var paymentdate_received =  "";
 
 		$.ajax({
 
@@ -561,6 +542,7 @@ $(document).ready(function () {
 				pickup_time:pickup_time,
 				date_release:date_release,
 				remark:remark,
+				paymentdate_received:paymentdate_received,
 				receipt:receipt,
 				notes:notes,
 			},
@@ -598,6 +580,10 @@ $(document).ready(function () {
                    $('#receipt').modal("hide");
                    location.reload(true);
                 }, 2000);
+       
+            var receiptunpaid = document.getElementById('receipt-unpaid').textContent;
+            console.log(receiptunpaid);
+            
     }    
     function nexttransaction_paid(){
                         
@@ -609,4 +595,22 @@ $(document).ready(function () {
                 }, 2000);
     }
     
+    ////diplay all carts
+    function viewallcart(){
+	
+		var viewallcart = "viewallcart";
+		$.ajax({
+			url:"assets/php/finishtransaction.php",
+			type:"POST",
+			data:{
+                viewallcart:viewallcart
+            },
+			success:function(data,status){
+				$('#displaytotalitems').html(data);
+				$('#displaytotalamount').html(data1);
+			},
+
+		});
+	
+    }
 </script>

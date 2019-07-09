@@ -32,10 +32,10 @@
                     -->
                     <div class="col-md-12" style="margin-top:10px;">
                         <div class="col-md-5">
-                           <select class="form-control" id="selectYorM" onchange="selectYorM()">
-                               <option value="" selected>All Sales</option>
-                               <option value="">Paid</option>
-                               <option value="">Unpaid</option>
+                           <select class="form-control" id="filtersales" onchange="filtersales()">
+                               <option value="allsales" selected>All Sales</option>
+                               <option value="paid">Paid</option>
+                               <option value="unpaid">Unpaid</option>
                            </select>
                         </div>
                         <div class="col-md-3">
@@ -49,12 +49,39 @@
                         </div>
                     </div> 
                     
-                    <div class="col-md-12" style="margin-top:10px;">
-                        <input type="search" class="form-control" placeholder="Search">
+                    <div class="col-md-8" style="margin-top:10px;">
+                        <input type="search" class="form-control" placeholder="Search" id="allsales_search" onkeyup="allsales_search()">
                     </div>
+                    <div class="col-md-4" style="margin-top:10px;">
+                        <select class="form-control" id="allsales_search_dd">
+                               <option value="id" selected>Job Order #</option>
+                               <option value="branch_received_date">Branch Received Date</option>
+                               <option value="type_customer">Customer Type</option>
+                               <option value="name_customer">Customer Name</option>
+                               <option value="contact_customer">Customer Contact</option>
+                               <option value="address_customer">Customer Address</option>
+                               <option value="total_kilo">Total Kilos</option>
+                               <option value="total_pcs">Total Pieces</option>
+                               <option value="amount">Amount</option>
+                               <option value="pickordeliver">Pickup/Deliver</option>
+                               <option value="pickordeliver">Pickup/Deliver</option>
+                               <option value="pickup_date">Pickup Date</option>
+                               <option value="date_release">Date Release</option>
+                               <option value="remark">Remark</option>
+                               <option value="paymentdate_received">Payment Date Received</option>
+                               <option value="received_by">Received by</option>
+                               <option value="notes">Notes</option>
+                        </select>
+                    </div>
+
                     <div class="col-md-12" style="margin-top:10px;">
                         
                         <div id="displayallsales"></div>
+                        
+                    </div>
+                    <div class="col-md-12 bg-primary" style="margin-top:10px; height:200px;">
+                        <div id="totalallkilosdisplay"></div>
+                        <div id="totalallsales"></div>
                         
                     </div>
                 </div> 
@@ -63,11 +90,10 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top:10px;">
                         <div class="col-md-5">
-                           <select class="form-control" id="selectYorM" onchange="selectYorM()">
-                               <option disabled selected >Select</option>
-                               <option value="yearly">All Sales</option>
-                               <option value="monthly">Paid</option>
-                               <option value="monthly">Unpaid</option>
+                           <select class="form-control" id="filtersales_warehouse" onchange="filtersales_warehouse()">
+                               <option value="allsales" selected>All Sales</option>
+                               <option value="paid">Paid</option>
+                               <option value="unpaid">Unpaid</option>
                            </select>
                         </div>
                         <div class="col-md-3">
@@ -95,11 +121,10 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top:10px;">
                         <div class="col-md-5">
-                           <select class="form-control" id="selectYorM" onchange="selectYorM()">
-                               <option disabled selected >Select</option>
-                               <option value="yearly">All Sales</option>
-                               <option value="monthly">Paid</option>
-                               <option value="monthly">Unpaid</option>
+                           <select class="form-control" id="filtersales_branch1" onchange="filtersales_branch1()">
+                               <option value="allsales" selected>All Sales</option>
+                               <option value="paid">Paid</option>
+                               <option value="unpaid">Unpaid</option>
                            </select>
                         </div>
                         <div class="col-md-3">
@@ -246,8 +271,40 @@ $(document).ready(function () {
     branch1display(); 
 	});
     
-    function displayallsales(){
+    function allsales_search(){
 
+    var allsales_search = document.getElementById('allsales_search').value;
+    var allsales_search_dd = document.getElementById('allsales_search_dd').value;
+    $.ajax({
+        url:"assets/partials/salesfunction/allsalesdisplay.php",
+        type:"POST",
+        data:{
+            allsales_search:allsales_search,
+            allsales_search_dd:allsales_search_dd
+        },
+        success:function(data,status){
+            $('#displayallsales').html(data);
+        },
+
+    });
+}     
+    function filtersales(){
+
+    var filtersales = document.getElementById('filtersales').value;
+    $.ajax({
+        url:"assets/partials/salesfunction/allsalesdisplay.php",
+        type:"POST",
+        data:{
+            filtersales:filtersales
+        },
+        success:function(data,status){
+            $('#displayallsales').html(data);
+        },
+
+    });
+}      
+    function displayallsales(){
+        
     var displayallsales = "displayallsales";
     $.ajax({
         url:"assets/partials/salesfunction/allsalesdisplay.php",
@@ -262,6 +319,21 @@ $(document).ready(function () {
     });
 }    
    
+    function filtersales_warehouse(){
+
+    var filtersales_warehouse = document.getElementById('filtersales_warehouse').value;
+    $.ajax({
+        url:"assets/partials/salesfunction/warehousedisplay.php",
+        type:"POST",
+        data:{
+            filtersales_warehouse:filtersales_warehouse
+        },
+        success:function(data,status){
+            $('#warehousedisplay').html(data);
+        },
+
+    });
+}    
     function warehousedisplay(){
 
     var warehousedisplay = "warehousedisplay";
@@ -277,6 +349,21 @@ $(document).ready(function () {
 
     });
 }   
+    function filtersales_branch1(){
+
+    var filtersales_branch1 = document.getElementById('filtersales_branch1').value;
+    $.ajax({
+        url:"assets/partials/salesfunction/branch1display.php",
+        type:"POST",
+        data:{
+            filtersales_branch1:filtersales_branch1
+        },
+        success:function(data,status){
+            $('#branch1display').html(data);
+        },
+
+    });
+}
     function branch1display(){
 
     var branch1display = "branch1display";
@@ -291,6 +378,6 @@ $(document).ready(function () {
         },
 
     });
-}
-    
+}    
+   
 </script>

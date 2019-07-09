@@ -125,8 +125,7 @@
                                                     include('assets/php/BasicCare.php');
                                                     include('assets/php/SpecialCare.php');
                                                     include('assets/php/PremiumCare.php');
-                                                    include('assets/php/unpaid.php');
-                                                    include('assets/php/customerlist.php');
+                                                    include('assets/php/tabprocess.php');
                                                     include('assets/php/corporate.php');
                                                     include('assets/php/vouchers.php');
                                             
@@ -295,9 +294,7 @@
                                 <label style="font-size:20px;">Total</label><br>
                                 <label style="font-size:35px; float:left;" >₱</label>
                                 
-                                    <div id="displaytotal" style="font-size:40px; color:gray; background-color:white; text-align:right; " >
-                                        
-                                    </div>
+                                    <div id="displaytotal" style="font-size:40px; color:gray; background-color:white; text-align:right;"></div>
                             </div>
                         </div>
                         <div class="card" style="margin-top:-15px;" >
@@ -324,41 +321,6 @@
     
 </body>
     <script>
-        $(document).ready(function () {
-            unpaid_list();
-            customerlist();
-            });
-    
-        function unpaid_list(){
-
-            var unpaid_list = "unpaid_list";
-            $.ajax({
-                url:"assets/php/unpaid.php",
-                type:"POST",
-                data:{
-                    unpaid_list:unpaid_list
-                },
-                success:function(data,status){
-                    $('#unpaid-list').html(data);
-                },
-
-            });
-        } 
-        function customerlist(){
-
-            var customerlist = "customerlist";
-            $.ajax({
-                url:"assets/php/customerlist.php",
-                type:"POST",
-                data:{
-                    customerlist:customerlist
-                },
-                success:function(data,status){
-                    $('#customerlist').html(data);
-                },
-
-            });
-        }  
     
         function startTime() {
             
