@@ -23,7 +23,7 @@
     {
         $data =  '
             <div class="tableFixHead">
-                <table class="table table-striped">
+                <table class="table table-striped" >
                     <thead class="">
                         <tr>
                             <th style="color:white;">JOb ORder #</th>

@@ -328,8 +328,20 @@
                             
                             
                                 <div class="col-md-12">
-                                    <label>items</label>
-                                    <textarea class="form-control" id="others" style="width:100%;"></textarea>
+                                <!--
+                                    <label>items</label><br><br>
+                                    <input type="checkbox" name="itemsss[]" value="items 1">items 1<br>
+                                    <input type="number" name="itemsss[]"><br>
+                                    <input type="checkbox" name="itemsss[]" value="items 2 ">item 2<br>
+                                    <input type="number" name="itemsss[]"><br>
+                                    <input type="checkbox" name="itemsss[]" value="items 3">item 3<br>
+                                    <input type="number" name="itemsss[]"><br>
+                                    <input type="checkbox" name="itemsss[]" value="items 4">item 4<br>
+                                    <input type="number" name="itemsss[]"><br>
+                                    <input type="checkbox" name="itemsss[]" value="items 5">item 5<br>
+                                    <input type="number" name="itemsss[]"><br>
+                                -->
+                                    <textarea class="form-control" id="others" style="width:100%;"></textarea><br>
                                 </div>  
                             <!--
                             <div class="col-md-12" style="display:none;" id="items-list">
@@ -644,7 +656,17 @@ $(document).ready(function () {
             swal("Opps!", "Please fill up the required field", "error");
         }
         else{
-                   
+        /*
+            var checkboxes = document.getElementsByName('itemsss[]');
+            var vals = "";
+            for (var i=0, n=checkboxes.length;i<n;i++) 
+            {
+                if (checkboxes[i].checked) 
+                {
+                  var items =  vals += "-<br>"+checkboxes[i].value;
+                }
+            }
+            */
             var type = "Basic Care";
             var items = $('#others').val();
             var amount = $('#amount').val();

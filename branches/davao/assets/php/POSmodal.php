@@ -1,32 +1,4 @@
 
-
-
-<!--click unpaid modal -->    
-<div id="finishq" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-    <!-- Modal content-->
-        <div class="modal-content">
-              <div class="modal-header bg-primary">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title" style="text-align:center;">Proceed</h4>
-              </div>
-              <div class="modal-body">
-                  <div class="row">
-                      <div class=" col-md-6">
-                          <input type="button" class="btn btn-success btn-lg" value="Pay Now"> 
-                      </div>
-                      <div class=" col-md-6">
-                          <input type="button" class="btn btn-success btn-lg" value="Pay Later">
-                      </div>
-                  
-                  </div>
-                  
-                  </div>
-              </div>
-        </div>
-</div>
-
 <!--click logout modal -->  
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">

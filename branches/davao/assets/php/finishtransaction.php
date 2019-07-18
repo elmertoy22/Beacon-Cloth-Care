@@ -1,6 +1,8 @@
 <?php
-session_start();
+    session_start();
+
     include('function/connection/connect.php');
+    include('../../../../PHPMailer/PHPMailerAutoload.php');
 
     extract($_POST);
     //// add to cart
@@ -23,11 +25,13 @@ session_start();
        isset($_POST['date_release'])&& 
        isset($_POST['remark'])&& 
        isset($_POST['paymentdate_received'])&& 
+       isset($_POST['email_customer'])&& 
        isset($_POST['receipt'])&& 
        isset($_POST['notes'])  
       )
     
     {
+        $_SESSION['email_cus'] = $_POST['email_customer'];
         
         $query = " INSERT INTO `allsales`
         (
@@ -47,6 +51,7 @@ session_start();
             `remark`,
             `paymentdate_received`,
             `received_by`,
+            `email_customer`,
             `receipt`,
             `notes`
         ) VALUES ( 
@@ -66,13 +71,14 @@ session_start();
             '$remark',  
             '$paymentdate_received',  
             '$received_by',  
+            '$email_customer',  
             '$receipt',  
             '$notes'
             ) 
             ";
         
         if(mysqli_query($connect,$query)){
-            echo "pasok na pasok";
+            echo "success";
         }
         else{
             echo "supottt failed";
@@ -81,22 +87,72 @@ session_start();
     }   
 
 
-    if(isset($_POST['nexttransaction'])){
-
-        $querydel = "TRUNCATE TABLE addtocart ";
-        if(mysqli_query($connect,$querydel)){
-             echo '<script>console.log("next transaction complete!" ); </script>';
+    if(isset($_POST['deletecartnewtransac'])){
+                
+        if(isset($_SESSION['email_cus'])){
+            error_log('may email pA ');
         }
         else{
+            
+           $querydel = "DELETE FROM addtocart ";
+            if(mysqli_query($connect,$querydel)){
+                 
+
+            }
         }
+       
     }
 
-    if(isset($_POST['viewallcart'])){
+  /*  if(isset($_POST['viewallcart'])){
+        
 
-        $data =  '<table style="font-size:13px;">
+        $data =  
+            '
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="col-md-12" align="center">
+                      <label>BEACON CLOTH CARE LAUNDRY SERVICES INC.</label><br>
+                      <label>Free Pick-up and Delivery</label><br>
+                      <label>Alabang hills muntinlupa city</label><br>
+                  </div>
+                  <div class="col-md-12" align="center">
+                      <label id="ru_pickordeliver" style="font-size:20px;"></label>
+
+                  </div>
+                  <div class="col-md-12" align="center">
+                      <div class="col-md-6">
+                          <label>pickup/deliver Date: <label id="ru_pickordeliverdate" ></label></label><br>
+                          <label>Received Date: <label id="ru_receiveddate" ></label></label><br>
+                          <label>Job Order No : <label id="joborder_unpaid"></label></label><br>
+                          <label>Customer Name: <label id="ru_customername"><span></span></label></label><br>
+
+                      </div>
+                      <div class="col-md-6">
+                          <label>pickup/deliver Time: <label id="ru_pickordelivertime" ></label></label><br>
+                          <label>Status : <label>Unpaid</label></label><br>
+                          <label>Contact # : <label id="ru_customercontact"></label> </label><br>
+                          <label>Address : <label id="ru_customeraddress"></label></label><br>
+                      </div>
+
+
+
+                  </div>
+                </div>
+            </div>
+            
+            <table style="font-size:12px;" align="center">
+                    <thead>
                             <tr>
-                                <th style="background-color:white; text-align:center;">-----------------Description/Items-----------------</th>
-                            </tr>'; 
+                                <th style="background-color:transparent;">Type/Description</th>
+                                <th style="background-color:transparent;">Items</th>
+                                <th style="background-color:transparent;">Status</th>
+                                <th style="background-color:transparent;">Price</th>
+                                <th style="background-color:transparent;">New price</th>
+                                <th style="background-color:transparent;">Kilos</th>
+                                <th style="background-color:transparent;">Pieces</th>
+                                <th style="background-color:transparent;">Subtotal</th>
+                            </tr>
+                    <thead>'; 
 
         $displayquery = " SELECT * FROM `addtocart` "; 
         $result = mysqli_query($connect,$displayquery);
@@ -111,23 +167,22 @@ session_start();
 
             while ($row = mysqli_fetch_array($result)) {
 
-                $data .= '<tr>  
-                            <td style="text-align:center;">Type: '.$row['type'].'</td>
-                            <td style="text-align:center;">description: '.$row['description'].'</td>
-                            <td style="text-align:center;">Items: '.$row['items'].'</td>
-                            <td style="text-align:center;">Status: '.$row['status'].'</td>
-                            <td style="text-align:center;">Price: '.$row['price'].'</td>
-                            <td style="text-align:center;">New price: '.$row['newprice'].'</td>
-                            <td style="text-align:center;">kilos: '.$row['kilos'].'</td>
-                            <td style="text-align:center;">Pieces: '.$row['pieces'].'</td>
-                            <td style="text-align:center;">Subtotal: ₱'.$row['subtotal'].'</td>
+                $data .= '<tbody>
+                            <tr>  
+                                <td style="text-align:center;">'.$row['type'].'<br>'.$row['description'].'<br></td>
+                                <td style="text-align:center;">'.$row['items'].'</td>
+                                <td style="text-align:center;">'.$row['status'].'</td>
+                                <td style="text-align:center;">'.$row['price'].'</td>
+                                <td style="text-align:center;">'.$row['newprice'].'</td>
+                                <td style="text-align:center;">'.$row['kilos'].'</td>
+                                <td style="text-align:center;">'.$row['pieces'].'</td>
+                                <td style="text-align:center;">₱'.$row['subtotal'].'</td>
                             
-                        </tr>
-                        
+                            </tr>
+                        <tbody>
                             ';
             }
 
-            
         } 
 
          $data .= '</table>
@@ -146,5 +201,6 @@ session_start();
                         </table>';
             }
             echo $data1;
-    }
+    }  */
+
 ?>

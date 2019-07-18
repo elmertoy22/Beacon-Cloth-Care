@@ -1,6 +1,7 @@
 <?php
     session_start();
     ob_start();
+
 ?>
 <html lang="en">
 
@@ -31,6 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -136,12 +138,9 @@
                                                             
                                                             
                                                             <div class="col-md-12 alert alert-info">
-                                                                <div align="center" style="font-size:20px;">
-                                                                    <div class="col-md-6">Sales For Today</div>
-                                                                    <div class="col-md-6"><div id="clock"></div><div id="date"></div></div>
-                                                                </div>
-                                                                <div align="center" style="margin-top:60px;">
-                                                                    <p style="font-size:80px;">₱ 5,353.00</p>
+                                                                <div align="center" style="margin-bottom:30px; margin-top:20px;">
+                                                                    <div id="clock" style="font-size:80px;"></div>
+                                                                    <div id="date" style="font-size:50px;"></div>
                                                                 </div>
                                                                 <div class="bg-warning" style="height:30px;"></div>
                                                             
@@ -180,7 +179,7 @@
                                                     <div class="tab-pane fade" id="tab2primary">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <input type="search" class="form-control" placeholder="Search">
+                                                                <input type="search" class="form-control" placeholder="Search" id="unpaid_search" onkeyup="unpaid_search()">
                                                             </div>
                                                             <div class="col-md-12" style="margin-top:10px;">
                                                                 <div id="unpaid-list"></div>
@@ -190,7 +189,7 @@
                                                     <div class="tab-pane fade" id="tab3primary">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <input type="search" class="form-control" placeholder="Search">
+                                                                <input type="search" class="form-control" placeholder="Search" id="customerlist_search" onkeyup="customerlist_search()">
                                                             </div>
                                                             <div class="col-md-12" style="margin-top:10px;">
                                                                 <div id="customerlist"></div>
@@ -337,8 +336,6 @@
             var day = d.getDay();
             var dayarr =["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
             day=dayarr[day];
-            
-            
             
             
             var today = new Date();

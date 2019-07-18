@@ -32,6 +32,7 @@
             $totalall = $row1['total'];  
             $dtotalall = floatval($totalall);
             echo number_format($dtotalall,2);
+            
         }
     } 
     /////displaying total kilo
@@ -145,7 +146,7 @@
                             <th style="color:white; text-align:center;">type</th>
                             <th style="color:white; text-align:center;">description</th>
                             <th style="color:white; text-align:center;">items</th>
-                            <th style="color:white; text-align:center;">price</th>
+                            <th style="color:white; text-align:center;">Original price</th>
                             <th style="color:white; text-align:center;">new price</th>
                             <th style="color:white; text-align:center;">kilos</th>
                             <th style="color:white; text-align:center;">pieces</th>
@@ -176,7 +177,7 @@
                         <td style="text-align:center;">'.$row['status'].'</td>
                         <td style="text-align:center;">₱'.$row['subtotal'].'</td>
                         <td>
-                            <button onclick="deletecart('.$row['id'].')" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button onclick="deletecart('.$row['id'].')" class="btn btn-danger"><span style="font-weight:bold;">x</span></button>
                         </td>
                     </tr>
                 </tbody>';

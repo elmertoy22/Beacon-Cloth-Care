@@ -54,6 +54,7 @@
                        
                           
                       </div>
+                        <div id="displayreceiptunpaid"></div>
                     </div>
                        <div class="col-md-8 col-md-offset-2">
                         
@@ -76,8 +77,6 @@
                         <div class="row" style="text-align:center;">
                                 <label>change</label>
                                 <input style="text-align:center;" type="text" class="form-control" readonly placeholder="0.00" id="pn_change">
-
-                    
                         </div>
                         <br><hr>
                         <div class="row">
@@ -175,6 +174,38 @@
             });
         } 
     
+    function unpaid_search(){
+
+            var unpaid_search = document.getElementById('unpaid_search').value;
+            $.ajax({
+                url:"assets/php/function/unpaidprocess.php",
+                type:"POST",
+                data:{
+                    unpaid_search:unpaid_search
+                },
+                success:function(data,status){
+                    $('#unpaid-list').html(data);
+                },
+
+            });
+        } 
+    
+        function customerlist_search(){
+
+            var customerlist_search = document.getElementById('customerlist_search').value;
+            $.ajax({
+                url:"assets/php/function/unpaidprocess.php",
+                type:"POST",
+                data:{
+                    customerlist_search:customerlist_search
+                },
+                success:function(data,status){
+                    $('#customerlist').html(data);
+                },
+
+            });
+        } 
+    
         
     function paynowcompute(){
         
@@ -187,9 +218,10 @@
         if (parseFloat(pn_payment) < parseFloat(tototal1)){
             swal("Opps!", "insufficient money!", "error");
             document.getElementById('pn_paynow').disabled = true;
+            document.getElementById('pn_change').value = 0;
         }
         else{
-            document.getElementById('pn_change').value = tototo;
+            document.getElementById('pn_change').value = tototo +'.00';
             document.getElementById('pn_paynow').disabled = false;
         }
         
@@ -213,6 +245,7 @@
                 unpaid_list();
                 customerlist();
                 swal('Payment Complete!', 'Click okay to continue!', 'success');
+                window.open('assets/php/function/printreceipt_unpaidtopaid.php','_blank');
             }
         );
 
@@ -223,7 +256,7 @@
             {
                 id: id
             },
-            function (data, status) {
+            function (data,status) {
                 //JSON.parse() parses a string, written in JSON format, and returns a JavaScript object.
                 var paynow = JSON.parse(data);
               
@@ -235,9 +268,11 @@
                 $("#pn_contact").html(paynow.contact_customer);
                 $("#pn_address").html(paynow.address_customer);
                 $("#pn_totalamount").html(paynow.amount);
+              
             }
         );
     }      
+    
     
     /// getting customer details
     function customer_details(id){
