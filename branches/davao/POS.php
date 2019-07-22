@@ -122,14 +122,14 @@
                                             <div class="panel-body">
                                                 <?php
                                                 
-                                                    include('assets/php/POSmodal.php');
-                                                    include('assets/php/proceed.php');
-                                                    include('assets/php/BasicCare.php');
-                                                    include('assets/php/SpecialCare.php');
-                                                    include('assets/php/PremiumCare.php');
-                                                    include('assets/php/tabprocess.php');
-                                                    include('assets/php/corporate.php');
-                                                    include('assets/php/vouchers.php');
+                                                    require_once('assets/php/POSmodal.php');
+                                                    require_once('assets/php/proceed.php');
+                                                    require_once('assets/php/BasicCare.php');
+                                                    require_once('assets/php/SpecialCare.php');
+                                                    require_once('assets/php/PremiumCare.php');
+                                                    require_once('assets/php/tabprocess.php');
+                                                    require_once('assets/php/corporate.php');
+                                                    require_once('assets/php/vouchers.php');
                                             
                                                 ?>
                                                 <div class="tab-content">
@@ -147,22 +147,22 @@
                                                             </div>
                                                             
                                                             <div class="col-md-3">
-                                                                <a href="#basiccare" data-toggle="modal">
-                                                                    <div class="alert alert-success" style="height:80px; font-size:18px;" >
+                                                                <a href="#services" data-toggle="modal">
+                                                                    <div class="alert alert-success" style="height:80px; font-size:18px;" onclick="basiccare()" >
                                                                         <span>Basic<br>Care</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <a href="#specialcare"  data-toggle="modal">
-                                                                    <div class="alert alert-danger"  style="height:80px; font-size:18px;" >
+                                                                <a href="#services"  data-toggle="modal">
+                                                                    <div class="alert alert-danger"  style="height:80px; font-size:18px;" onclick="specialcare()">
                                                                         <span>Special<br>Care</span>
                                                                     </div>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <a href="#premiumcare" data-toggle="modal">
-                                                                    <div class="alert alert-info"  style="height:80px; font-size:18px;" >
+                                                                <a href="#services" data-toggle="modal">
+                                                                    <div class="alert alert-info"  style="height:80px; font-size:18px;" onclick="premiumcare()">
                                                                         <span>Premium Care</span>
                                                                     </div>
                                                                 </a>
@@ -373,7 +373,7 @@
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
-   
+
     <!--<script type="text/javascript">
     	$(document).ready(function(){
 

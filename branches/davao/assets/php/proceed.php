@@ -72,16 +72,7 @@
               <div class="modal-body">
                   <div class="row">
                       <div class="col-md-10 col-md-offset-1">
-                         
-                            
-                        <button onclick="myFunction()">Try it</button>
-                        <button onclick="jeje()">jeje it</button>
 
-                        <script>
-                        function myFunction() {
-                          window.open("assets/php/printreceipt.php");
-                        }
-                        </script>
                           <label>Customer Type</label><h6>*required</h6>
                             <select class="form-control" id="customertype" onchange="customertype()">
                                 <option value="" disabled selected>Select</option>
@@ -140,7 +131,7 @@
                           <br>
                             <div>
                                 <label>Contact No.</label><h6>*required</h6>
-                                <input id="contact_customer" type="text" class="form-control" placeholder="09350000000">  
+                                <input id="contact_customer" type="text" class="form-control" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" max="11" placeholder="09350000000">  
                             </div>
                             <div>
                             <br>

@@ -1,16 +1,16 @@
 <?php
-    include('cmsfunction/BasicCareCMS.php');
+    include('cmsfunction/ServicesCMS.php');
 ?>
+<style>
 
+</style>
 <div class="col-md-12 bg-primary"><h3>Control Management System</h3></div>
 <div class="col-md-12">
 <div class="panel with-nav-tabs">
     <div class="panel-heading">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1primary" data-toggle="tab">Basic Care</a></li>
-            <li><a href="#tab2primary" data-toggle="tab">Special Care</a></li>
-            <li><a href="#tab3primary" data-toggle="tab">Premium Care</a></li>
-            <li><a href="#tab3primary" data-toggle="tab">Corporate Account</a></li>
+            <li class="active"><a href="#tab1primary" data-toggle="tab">Services</a></li>
+            <li><a href="#tab2primary" data-toggle="tab">Corporate Account</a></li>
             <li><a href="#tab3primary" data-toggle="tab">Branch Partner</a></li>
         </ul>
     </div>
@@ -24,9 +24,13 @@
                     <div class="col-md-12" style="margin-top:10px;">
                         <div class="col-md-12">
                             <div class="col-md-12">
-                                <div class="col-md-" align="center">
-                                    <div class="col-md-10 bg-danger" align="center">
-                                       <p style="font-size:20px;">Wash-Dry-Fold</p>
+                                <div class="col-md-12" align="center">
+                                    <div class="col-md-10" align="center">
+                                       <select class="form-control" id="db-services-display" onchange="BCwdfitems()">
+                                            <option>Basic Care</option>
+                                            <option>Special Care</option>
+                                            <option>Premium Care</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-2">
                                         <button style="width:100%;" class="btn btn-success" type="button" data-toggle="collapse" data-target="#BCWDF" aria-expanded="false" aria-controls="collapseExample">
@@ -40,8 +44,41 @@
                                             <div class="row">
                                                 <h3>Add Items</h3>
                                                 <div class="col-md-8 col-md-offset-2">
+                                                    <label>Services</label>
+                                                        <select id="select-services-cms" class="form-control" required>
+                                                            <option value="" selected disabled>Select</option>
+                                                            <option value="Basic Care">Basic Care</option>
+                                                            <option value="Special Care">Special Care</option>
+                                                            <option value="Premium Care">Premium Care</option>
+                                                        </select>
+                                                    <br>
+                                                    <label>Type</label>
+                                                        <select id="select-type-cms" class="form-control" required>
+                                                            <option value="" selected disabled>Select</option>
+                                                            
+                                                            <option style="font-size:20px; font-weight:bold;" disabled>Basic Care</option> 
+                                                            <option value="WASH-DRY-FOLD">WASH-DRY-FOLD</option>
+                                                            <option value="WASH-DRY-PRESS">WASH-DRY-PRESS</option>
+                                                            
+                                                            <option value=""disabled></option>
+                                                           
+                                                            <option style="font-size:20px; font-weight:bold;" disabled>Special Care</option> 
+                                                            <option value="BULKY ITEMS">BULKY ITEMS</option>
+                                                            <option value="COMFORTER">COMFORTER</option>
+                                                            <option value="HAND WASH">HAND WASH</option>
+                                                            <option value="HEAVY-SOILED ITEMS">HEAVY-SOILED ITEMS</option>
+                                                            
+                                                            <option disabled></option>
+                                                           
+                                                            <option style="font-size:20px; font-weight:bold;" disabled>Premium Care</option> 
+                                                            <option value="DRY CLEANING">DRY CLEANING</option>
+                                                            <option value="GENTLE CARE">GENTLE CARE</option>
+                                                            
+                                                        </select>
+                                                    <br>
                                                     <label>Items</label>
                                                     <input type="text" class="form-control" id="wdf-items">  
+                                                    <br>
                                                     <label>Price</label>
                                                     <input type="number" class="form-control" id="wdf-price">  
                                                     <br>
@@ -133,11 +170,13 @@
 	function BCwdfitems(){
 		
 		var BCwdfitems = "BCwdfitems";
+		var dbservicesdisplay = $("#db-services-display").val();
 		$.ajax({
-			url:"assets/partials/cmsfunction/BasicCareCMS.php",
+			url:"assets/partials/cmsfunction/ServicesCMS.php",
 			type:"POST",
 			data:{
-                BCwdfitems:BCwdfitems
+                BCwdfitems:BCwdfitems,
+                dbservicesdisplay:dbservicesdisplay
             },
 			success:function(data,status){
 				$('#bcwdfitems').html(data);
@@ -147,28 +186,40 @@
 	}
     
   	function bcadditems(){
-        var wdfitems = $('#wdf-items').val();
-        var wdfprice = $('#wdf-price').val();
+        var selectservices = $("#select-services-cms").val();
+        var selecttype = $("#select-type-cms").val();
+        var wdfitems = $("#wdf-items").val();
+        var wdfprice = $("#wdf-price").val();
 
-        if(wdfitems == ""){
+        if(selectservices == null){
+            swal("Opps!", "Please fill up the required field", "error");
+        }
+        else if(selecttype == null){
+            swal("Opps!", "Please fill up the required field", "error");
+        }
+        else if(wdfitems == ""){
             swal("Opps!", "Please fill up the required field", "error");
         }      
-        if(wdfprice == ""){
+        else if(wdfprice == ""){
             swal("Opps!", "Please fill up the required field", "error");
         }      
         else{
             $.ajax({
-                url:"assets/partials/cmsfunction/BasicCareCMS.php",
+                url:"assets/partials/cmsfunction/ServicesCMS.php",
                 type:'post',
                 data: {
+                    selectservices : selectservices,
+                    selecttype : selecttype,
                     wdfitems : wdfitems,
                     wdfprice : wdfprice
                  },
 
                  success:function(data,status){
                     swal('Data Inserted!', 'Click okay to continue!', 'success');
-                    document.getElementById('wdf-items').value = "";
-                    document.getElementById('wdf-price').value = "";
+                    document.getElementById("select-services-cms").value = "";
+                    document.getElementById("select-type-cms").value = "";
+                    document.getElementById("wdf-items").value = "";
+                    document.getElementById("wdf-price").value = "";
                     $('#BCWDF').collapse('hide');
                     console.log(data);
                     BCwdfitems();
@@ -192,7 +243,7 @@ function wdfdeleteidfunc(wdfdeleteid){
         
       if (willDelete) {
         $.ajax({
-            url:"assets/partials/cmsfunction/BasicCareCMS.php",
+            url:"assets/partials/cmsfunction/ServicesCMS.php",
             type:'POST',
             data: {  
                 wdfdeleteid : wdfdeleteid
@@ -213,7 +264,7 @@ function wdfdeleteidfunc(wdfdeleteid){
     
 function wdfgetfunc(id){
     $("#hidden_wdf_id").val(id);
-	  $.post("assets/partials/cmsfunction/BasicCareCMS.php", 
+	  $.post("assets/partials/cmsfunction/ServicesCMS.php", 
         {
             id: id
         },
@@ -233,7 +284,7 @@ function UpdateItemsDetails() {
     var items = $("#wdf-items-edit").val();
     var price = $("#wdf-price-edit").val();
     var hidden_wdf_id = $("#hidden_wdf_id").val();
-    $.post("assets/partials/cmsfunction/BasicCareCMS.php", 
+    $.post("assets/partials/cmsfunction/ServicesCMS.php", 
            {
             hidden_wdf_id: hidden_wdf_id,
             items: items,

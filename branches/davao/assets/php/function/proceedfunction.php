@@ -124,12 +124,12 @@ $(document).ready(function () {
         }
         if (type_customer == "branch1"){
             var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
-            var date_received = ""
+            var date_received = "Pending"
             console.log('pasok sa branch1');
         }
         if (type_customer == "branch2"){
             var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
-            var date_received = ""
+            var date_received = "Pending"
             console.log('pasok sa branch2');
         }
         
@@ -183,17 +183,14 @@ $(document).ready(function () {
                 })
                 .then((willprint) => {
                   if (willprint) {
-                    swal("Transaction Complete!", {
-                      icon: "success",
-                    });
-                        window.open('assets/php/function/printreceipt_paid.php','_blank');
+                        window.open('assets/php/function/printreceipt_paid.php','_self');
                         deletecartnewtransac();
                       
                   } else {
-                        window.open('assets/php/function/printreceipt_paid.php','_blank');
+                        window.open('assets/php/function/printreceipt_paid.php','_self');
                         deletecartnewtransac();
                   }
-                     window.open('assets/php/function/printreceipt_paid.php','_blank');
+                     window.open('assets/php/function/printreceipt_paid.php','_self');
                      deletecartnewtransac();
                 });
 			},
@@ -214,12 +211,12 @@ $(document).ready(function () {
         }
         if (type_customer == "branch1"){
             var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
-            var date_received = ""
+            var date_received = "Pending"
             console.log('pasok sa branch1');
         }
         if (type_customer == "branch2"){
             var branch_received_date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(); 
-            var date_received = ""
+            var date_received = "Pending"
             console.log('pasok sa branch2');
         }
         
@@ -275,18 +272,15 @@ $(document).ready(function () {
                 })
                 .then((willprint) => {
                   if (willprint) {
-                    swal("Transaction Complete!", {
-                      icon: "success",
-                    });
-                        window.open('assets/php/function/printreceipt_unpaid.php','_blank');
+                        window.open('assets/php/function/printreceipt_unpaid.php','_self');
                       
                         deletecartnewtransac();
                       
                   } else {
-                        window.open('assets/php/function/printreceipt_unpaid.php','_blank');
+                        window.open('assets/php/function/printreceipt_unpaid.php','_self');
                         deletecartnewtransac();
                   }
-                     window.open('assets/php/function/printreceipt_unpaid.php','_blank');
+                     window.open('assets/php/function/printreceipt_unpaid.php','_self');
                      deletecartnewtransac();
                 });
 			},
@@ -294,29 +288,10 @@ $(document).ready(function () {
 		});
     }
     
-    function nexttransaction(){
-        var receiptunpaid = document.getElementById('receipt-unpaid').textContent;
-        var nexttransaction = "nexttransaction";
-        var email_customer = $("#email_customer").val();
-        $.ajax({
-
-            url:"assets/php/finishtransaction.php",
-            type:'POST',
-            data: { 
-            email_customer: email_customer,
-            nexttransaction: nexttransaction,
-            receiptunpaid: receiptunpaid
-            },
-
-            success:function(data, status){
-                 console.log(data);
-                 nexttransaction_unpaid();
-            }
-        });
-    }
 
     function deletecartnewtransac(){
-        
+            $('#ProceedModal').modal('hide');
+            $('#resend-ereceipt-loader').modal('show');
             var deletecartnewtransac =  "deletecartnewtransac";
         
             $.ajax({

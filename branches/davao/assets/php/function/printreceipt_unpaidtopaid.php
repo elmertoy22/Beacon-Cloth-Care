@@ -297,12 +297,12 @@
 
                    $body .='      </div>
                             <tr>
-                                <th style="">Type/Description</th>
-                                <th style="">Items</th>
-                                <th style="">Kilos</th>
-                                <th style="">Pieces</th>
-                                <th style="">Status</th>
-                                <th style="">Subtotal</th>
+                                <th style="width:15%;">Type/Description</th>
+                                <th style="width:25%;">Items</th>
+                                <th style="width:15%;">Kilos</th>
+                                <th style="width:15%;">Pieces</th>
+                                <th style="width:15%;">Status</th>
+                                <th style="width:15%;">Subtotal</th>
                             </tr>';
 
                 $query3 = "SELECT * FROM receipt WHERE jo = '$unpaidjono'";
@@ -321,12 +321,12 @@
                     $body .='
                                 <tr>
                                     <tr class="item">
-                                        <td style="text-align:;">'.$ru_type.'</td>
-                                        <td style="text-align:;">'.$ru_items.'</td>
-                                        <td style="text-align:;">'.$ru_kilos.'</td>
-                                        <td style="text-align:;">'.$ru_pieces.'</td>
-                                        <td style="text-align:;">'.$ru_status.'</td>
-                                        <td style="text-align:;">₱ '.$ru_subtotal.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_type.'</td>
+                                        <td style="text-align:center; width:25%;">'.$ru_items.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_kilos.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_pieces.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_status.'</td>
+                                        <td style="text-align:center; width:15%;">₱ '.$ru_subtotal.'</td>
                                     </tr>
                                 </tr>';    
 

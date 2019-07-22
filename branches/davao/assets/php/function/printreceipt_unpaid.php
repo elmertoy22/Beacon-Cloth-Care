@@ -202,7 +202,7 @@
                             while ($row2 = mysqli_fetch_array($result2)) {
                                     
                                 echo '<tr class="item">
-                                        <td style="text-align:center;">'.$row2['type'].'<br>'.$row2['description'].'</td>';
+                                        <td style="text-align:center;">'.$row2['type'].'</td>';
                                 echo '<td style="text-align:center;">'.$row2['items'].'</td>';
                                 echo '<td style="text-align:center;">'.$row2['kilos'].'</td>';
                                 echo '<td style="text-align:center;">'.$row2['pieces'].'</td>';
@@ -315,14 +315,14 @@
                             </div>
                         </div>
                     </div>
-                        <tr>
-                            <th style="">Type/Description</th>
-                            <th style="">Items</th>
-                            <th style="">Kilos</th>
-                            <th style="">Pieces</th>
-                            <th style="">Status</th>
-                            <th style="">Subtotal</th>
-                        </tr>';
+                    <tr>
+                        <th style="width:15%;">Type/Description</th>
+                        <th style="width:25%;">Items</th>
+                        <th style="width:15%;">Kilos</th>
+                        <th style="width:15%;">Pieces</th>
+                        <th style="width:15%;">Status</th>
+                        <th style="width:15%;">Subtotal</th>
+                    </tr>';
 
             $query3 = "SELECT * FROM addtocart";
             $result3 = mysqli_query($connect,$query3);
@@ -330,7 +330,6 @@
                 while ($row3 = mysqli_fetch_array($result3)) {
 
                 $ru_type = $row3['type'];
-                $ru_description = $row3['description'];
                 $ru_items = $row3['items'];
                 $ru_kilos = $row3['kilos'];
                 $ru_pieces = $row3['pieces'];
@@ -341,13 +340,13 @@
                 $body .='
                             <tr>
                                 <tr class="item">
-                                    <td style="text-align:;">'.$ru_type.'<br>'.$ru_description.'</td>
-                                    <td style="text-align:;">'.$ru_items.'</td>
-                                    <td style="text-align:;">'.$ru_kilos.'</td>
-                                    <td style="text-align:;">'.$ru_pieces.'</td>
-                                    <td style="text-align:;">'.$ru_status.'</td>
-                                    <td style="text-align:;">₱ '.$ru_subtotal.'</td>
-                                </tr>
+                                        <td style="text-align:center; width:15%;">'.$ru_type.'</td>
+                                        <td style="text-align:center; width:25%;">'.$ru_items.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_kilos.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_pieces.'</td>
+                                        <td style="text-align:center; width:15%;">'.$ru_status.'</td>
+                                        <td style="text-align:center; width:15%;">₱ '.$ru_subtotal.'</td>
+                                    </tr>
                             </tr>';    
 
                 }
@@ -395,7 +394,6 @@
                         while ($row3 = mysqli_fetch_array($result3)) {
 
                         $ru_type = $row3['type'];
-                        $ru_description = $row3['description'];
                         $ru_items = $row3['items'];
                         $ru_kilos = $row3['kilos'];
                         $ru_pieces = $row3['pieces'];
@@ -405,9 +403,7 @@
                         $ru_subtotal = $row3['subtotal'];
 
 
-                        $td = ' '.$ru_type.''.'\n'.''.$ru_description.'';
-
-                        $queryreceipt    = " INSERT INTO `receipt`(`jo`, `td`, `items`, `kilos`, `pieces`, `price`, `newprice` ,`status`, `subtotal`) VALUES ( '$r_id',  '$td',  '$ru_items',  '$ru_kilos', '$ru_pieces', '$ru_price', '$ru_newprice', '$ru_status', '$ru_subtotal') ";
+                        $queryreceipt    = " INSERT INTO `receipt`(`jo`, `td`, `items`, `kilos`, `pieces`, `price`, `newprice` ,`status`, `subtotal`) VALUES ( '$r_id',  '$ru_type',  '$ru_items',  '$ru_kilos', '$ru_pieces', '$ru_price', '$ru_newprice', '$ru_status', '$ru_subtotal') ";
                         if(mysqli_query($connect,$queryreceipt)){
 
                             unset($_SESSION['email_cus']);

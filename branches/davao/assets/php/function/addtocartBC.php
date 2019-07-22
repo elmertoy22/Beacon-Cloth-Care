@@ -5,10 +5,37 @@
     include('connection/connect.php');
 
     extract($_POST);
+    
+    ////// services choices
+
+    if(isset($_POST['ServicesBasicCare'])){
+        $_SESSION['Services'] = $_POST['ServicesBasicCare'];
+        echo $_SESSION['Services'];
+    }
+
+    if(isset($_POST['ServicesSpecialCare'])){
+        $_SESSION['Services'] = $_POST['ServicesSpecialCare'];
+        echo $_SESSION['Services'];
+    }
+
+    if(isset($_POST['ServicesPremiumCare'])){
+        $_SESSION['Services'] = $_POST['ServicesPremiumCare'];
+        echo $_SESSION['Services'];
+    }
+
+
     //// add to cart
-    if(isset($_POST['type']) && isset($_POST['description']) && isset($_POST['items']) && isset($_POST['amount']) && isset($_POST['newamount']) && isset($_POST['kilo'])&& isset($_POST['pieces'])&&  isset($_POST['status'])&& isset($_POST['subtotal'])  )
+    if(isset($_POST['type']) &&
+       isset($_POST['items']) && 
+       isset($_POST['amount']) &&
+       isset($_POST['newamount']) &&
+       isset($_POST['kilo'])&&
+       isset($_POST['pieces'])&& 
+       isset($_POST['status'])&& 
+       isset($_POST['subtotal'])  )
     {
-        $query = " INSERT INTO `addtocart`(`type`, `description`, `items`, `price`, `newprice`, `kilos`, `pieces`, `status`, `subtotal`) VALUES ( '$type',  '$description',  '$items',  '$amount', '$newamount',  '$kilo', '$pieces', '$status',  '$subtotal') ";
+        $query = " INSERT INTO `addtocart`(`type`, `items`, `price`, `newprice`, `kilos`, `pieces`, `status`, `subtotal`) 
+                VALUES ( '$type',  '$items',  '$amount', '$newamount',  '$kilo', '$pieces', '$status',  '$subtotal') ";
         if(mysqli_query($connect,$query)){
             echo "yes to cart";
         }
@@ -144,7 +171,6 @@
                     <thead class="bg-primary">
                         <tr>
                             <th style="color:white; text-align:center;">type</th>
-                            <th style="color:white; text-align:center;">description</th>
                             <th style="color:white; text-align:center;">items</th>
                             <th style="color:white; text-align:center;">Original price</th>
                             <th style="color:white; text-align:center;">new price</th>
@@ -168,7 +194,6 @@
                 $data .= '<tbody>
                     <tr>  
                         <td style="text-align:center;">'.$row['type'].'</td>
-                        <td style="text-align:center;">'.$row['description'].'</td>
                         <td style="text-align:center;">'.$row['items'].'</td>
                         <td style="text-align:center;">'.$row['price'].'</td>
                         <td style="text-align:center;">'.$row['newprice'].'</td>
