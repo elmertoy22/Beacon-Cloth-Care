@@ -238,7 +238,7 @@
                             $dtotalall = floatval($totalall);
                             $toto = number_format($dtotalall,2);
                             $_SESSION['totototal'] = $toto;
-                            echo '₱ ' .$toto. '';
+                            echo $toto;
 
                         }
 
@@ -345,7 +345,7 @@
                                 <td style="text-align:center; width:15%;">'.$ru_kilos.'</td>
                                 <td style="text-align:center; width:15%;">'.$ru_pieces.'</td>
                                 <td style="text-align:center; width:15%;">'.$ru_status.'</td>
-                                <td style="text-align:center; width:15%;">₱ '.$ru_subtotal.'</td>
+                                <td style="text-align:center; width:15%;">'.$ru_subtotal.'</td>
                             </tr>
                         </tr>';    
 
@@ -359,7 +359,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
 
-                                    <h3 class="panel-title"><strong>Total Amount : ₱ '.$r_totototal.'</strong></h3>
+                                    <h3 class="panel-title"><strong>Total Amount :'.$r_totototal.'</strong></h3>
                                 </div>
                             </div>
                         </div>

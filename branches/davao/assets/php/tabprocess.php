@@ -203,28 +203,27 @@
 </div>
 <div id="resend-ereceipt" class="modal fade" role="dialog">
     <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header bg-primary">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" style="text-align:center;">Resend E-receipt</h4>
+          </div>
+          <div class="modal-body" >
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><div class="spinner-border text-muted"></div>
+                            <form>
+                                <label>Email Address :</label>
+                                <input type="email" class="form-control" id="ereceipt_email" style="text-align:center;" required><br>
+                                <input type="button" class="btn btn-success" value="Resend E-receipt now" onclick="resend_receipt_process()">
+                            </form>
+                        </center>
 
-        <div class="modal-content">
-              <div class="modal-header bg-primary">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title" style="text-align:center;">Resend E-receipt</h4>
-              </div>
-              <div class="modal-body" >
-                    <div class="row">
-                        <div class="col-md-12">
-                            <center><div class="spinner-border text-muted"></div>
-                                <form>
-                                    <label>Email Address :</label>
-                                    <input type="email" class="form-control" id="ereceipt_email" style="text-align:center;" required><br>
-                                    <input type="button" class="btn btn-success" value="Resend E-receipt now" onclick="resend_receipt_process()">
-                                </form>
-                            </center>
-                            
-                        </div>
                     </div>
                 </div>
-              </div>
-        </div>
+            </div>
+          </div>
+    </div>
 </div>
 
 <div id="resend-ereceipt-loader" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">

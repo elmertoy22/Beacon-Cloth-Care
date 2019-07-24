@@ -219,7 +219,7 @@
                                         
                             while ($row = mysqli_fetch_array($result)) {
 
-                                echo '₱ ' .$row['amount']. '';
+                                echo $row['amount'];
                             }
                         }
                     ?>
@@ -348,7 +348,7 @@
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
 
-                                                <h3 class="panel-title"><strong>Total Amount : ₱ '.$row['amount'].'</strong></h3>
+                                                <h3 class="panel-title"><strong>Total Amount :'.$row['amount'].'</strong></h3>
                                             </div>
                                         </div>
                                     </div>

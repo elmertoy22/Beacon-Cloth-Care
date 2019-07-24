@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
   <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -33,7 +35,7 @@
 
     </style>
 </head>
-<body ng-app="myApp" ng-controller="LoginCtrl">
+<body>
 	
 	<div class="body">
         <div class="content-left">
@@ -42,32 +44,28 @@
         <div class="content-right">
             <div class="container-login100">
                 <div class="wrap-login100" data-aos="fade-down">
-                    <form class="login100-form validate-form" method="post" action="index.php" >
+                    <form class="login100-form">
                         <span class="login100-form-title p-b-20 p-t-0">
                             <img class="logo1" src="images/img/logoform2.png">
                         </span>
 
-                        <span>
-                            <?php
-                                if(isset($wrong)){
-                                    echo $wrong;
-                                }
-                            ?> 
+                        <span id="wrong">
+                            
                         </span>
                         
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <p style="color:white">Branches</p>
-                                    <select name="branches" class="form-control" required>
-                                      <option value="" disabled selected ></option>
+                                    <select id="branches" name="branches" class="form-control" required>
+                                      <option value="" disabled selected >select</option>
+                                      <option value="makati">Makati</option>
                                       <option value="davao">Davao</option>
-                                      <option value="cavite">Cavite</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <p style="color:white">Type</p>
-                                    <select name="type" class="form-control" required>
-                                      <option value="" disabled selected></option>
+                                    <select id="type" name="type" class="form-control" required>
+                                      <option value="" disabled selected>select</option>
                                       <option value="employee">Employee</option>
                                       <option value="admin">Admin</option>  
                                     </select>
@@ -75,23 +73,17 @@
                             </div>
                             <br>
                             <div class="wrap-input100 validate-input" data-validate ="Enter username">
-                                <input class="input100" type="text" name="username" placeholder="Username" id="username" value="<?php 
-                                     if (isset($username)) 
-                                      echo $username; 
-                                 ?>" autocomplete="off">
+                                <input class="input100" type="text" name="username" placeholder="Username" id="username"  autocomplete="off">
                                 <span class="focus-input100" data-placeholder="&#xf207;"></span>
                             </div>
 
                             <div class="wrap-input100 validate-input" data-validate="Enter password">
-                                <input class="input100" type="password" name="password" id="password" placeholder="Password" value="<?php 
-                                 if (isset($password)) 
-                                  echo $password; 
-                             ?>" autocomplete="off">
+                                <input class="input100" type="password" name="password" id="password" placeholder="Password" autocomplete="off">
                                 <span class="focus-input100" data-placeholder="&#xf191;"></span>
                             </div>
 
                             <div class="container-login100-form-btn">
-                                <button class="login100-form-btn" type="submit" id="login-form" name="Login">Login</button>
+                                <button class="login100-form-btn" type="button" id="login-form" onclick="login()">Login</button>
                             </div>
                         
                     </form>
@@ -101,6 +93,50 @@
 	<!--	-->
 	</div>
     <script src="js/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function login(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var branches = $("#branches").val();
+        var type = $("#type").val();
+            
+        if(branches == null){
+            swal("Opps!", "Please choose your branches!", "error");
+        }    
+        else if(type == null){
+            swal("Opps!", "Please choose Type!", "error");
+        }   
+        else if(username == ""){
+            swal("Opps!", "Please enter a username!", "error");
+        }  
+        else if(password == ""){
+            swal("Opps!", "Please enter a password!", "error");
+        }
+        else{
+
+            $.ajax({
+                url:"loginform.php",
+                type:"POST",
+                data:{
+                    username:username,
+                    password:password,
+                    branches:branches,
+                    type:type
+                },
+                success:function(data,status){
+                    $('#wrong').show();
+                    $('#wrong').html(data);
+                },
+
+            });
+     
+        }
+        
+        }
+    </script>
+    
+    
 <!--===============================================================================================
     <script>
         $(document).ready(function(){

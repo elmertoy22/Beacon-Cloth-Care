@@ -212,7 +212,7 @@
                 <table class="table table-striped">
                     <thead class="">
                         <tr>
-                            <th style="color:white; width:15%;">Type/Description</th>
+                            <th style="color:white; width:15%;">Type</th>
                             <th style="color:white; width:25%;">Items</th>
                             <th style="color:white; width:15%;">Kilos</th>
                             <th style="color:white; width:15%;">Pieces</th>
@@ -440,7 +440,7 @@
         
         $body .='       </div>
                         <tr>
-                            <th style="width:15%;">Type/Description</th>
+                            <th style="width:15%;">Type</th>
                             <th style="width:25%;">Items</th>
                             <th style="width:15%;">Kilos</th>
                             <th style="width:15%;">Pieces</th>
