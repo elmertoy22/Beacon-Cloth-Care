@@ -96,6 +96,13 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         function login(){
+  
+        var today = new Date();
+        var date = (today.getMonth()+1)+'/'+today.getDate() +'/'+today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var datetime = date+' '+time;
+            
+            
         var username = $("#username").val();
         var password = $("#password").val();
         var branches = $("#branches").val();
@@ -122,7 +129,8 @@
                     username:username,
                     password:password,
                     branches:branches,
-                    type:type
+                    type:type,
+                    datetime:datetime
                 },
                 success:function(data,status){
                     $('#wrong').show();

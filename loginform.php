@@ -13,6 +13,8 @@
         $password = $_POST['password'];
         $branches = $_POST['branches'];
         $type = $_POST['type'];
+        $datetime = $_POST['datetime'];
+        $activity_log = 'Login';
 
         if($branches == "davao"){
             
@@ -41,15 +43,20 @@
             }  
         }
         
-        if($branches == "makati"){
+       else if($branches == "makati"){
             
             include('database/connect_makati.php');
-            $sql1 = "SELECT * FROM accounts WHERE username='$username' AND password='$password' AND type='$type' ";
+            $sql1 = "SELECT * FROM accounts WHERE username='$username' AND password='$password' AND type='$type' AND access_pos = 'yes' ";
             $res1 = mysqli_query($connect,$sql1); 
 
             if(mysqli_num_rows($res1) > 0 && $type == "admin") {
 
                 $_SESSION['adminusername_makati'] = $username;
+                
+                $query = " INSERT INTO `employee_logs`(`employee_name`, `datetime`, `activity_log`) 
+                VALUES ( '$username',  '$datetime',  'Login to Admin panel') ";
+                mysqli_query($connect,$query);
+                
                 echo "<script>window.open('branches/makati/dashboard.php','_self')</script>";
                 exit();
             }
@@ -57,6 +64,11 @@
             else if(mysqli_num_rows($res1) > 0 && $type == "employee") {
 
                 $_SESSION['username_makati'] = $username;
+                
+                $query = " INSERT INTO `employee_logs`(`employee_name`, `datetime`, `activity_log`) 
+                VALUES ( '$username',  '$datetime',  'Login to POS') ";
+                mysqli_query($connect,$query);
+                
                 echo "<script>window.open('branches/makati/POS.php','_self')</script>";
                 exit();
             }
